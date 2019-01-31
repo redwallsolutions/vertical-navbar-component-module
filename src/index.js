@@ -1,14 +1,31 @@
 import React from 'react';
-import { render } from "react-dom";
+import {render} from "react-dom";
 
-const App = () => (
-  <div style={{height:'99vh',width:'99vw',display: 'flex', justifyContent:'center', alignItems:'center',flexDirection:'column'}}>
-    <h1>It worked! ;)</h1>
-    <h4>You can create your components inside <span style={{color: 'red'}}>'/src/lib'</span> folder. </h4>
-    <h3>Don't forget to import and export them in the <span style={{color: 'red'}}>'/src/lib/index.js'</span> file before publish it.</h3>
-    <h5>It was made by <span style={{color: 'red'}}>'Redwall Solutions!</span></h5>
-    <p>Thank you.</p>
-  </div>
-);
+import VerticalNavbar from './lib/VerticalNavbar';
+import { GlobalStyle } from './lib/Style';
 
-render(<App />, document.getElementById("root"));
+import {MdDashboard, MdTune, Md3dRotation} from 'react-icons/md';
+
+const items = [
+  {
+    icon: <MdDashboard size='2.4em'/>,
+    title: 'Visão Geral',
+    subTitle: 'Tenha acesso rápido a todas as funcionalidades.'
+  },{
+    icon: <MdTune size='2.4em'/>,
+    title: 'Other Thing',
+    subTitle: 'Some description to "other thing".'
+  },{
+    icon: <Md3dRotation size='2.4em'/>,
+    title: 'Rotation',
+    subTitle: 'A test about rotation app.'
+  }
+]
+
+const App = () => (<React.Fragment>
+  <GlobalStyle/>
+  <VerticalNavbar items={items
+  }/>
+</React.Fragment>);
+
+render(<App/>, document.getElementById("root"));
