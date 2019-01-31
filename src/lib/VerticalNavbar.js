@@ -29,10 +29,15 @@ class VerticalNavbar extends Component {
     });
   }
 
-  onClickItem = (id) => {
+  onClickItem = (item) => {
     this.setState({
-      activeItem: id
+      activeItem: item.id
     });
+
+    if(item.onClick){
+      const {onClick, ...rest} = item;
+      onClick(rest);
+    }
   }
 
   buildNavbarHeaderItem = () => {
@@ -53,7 +58,7 @@ class VerticalNavbar extends Component {
   buildNavbarItems = () => {
     const {items} = this.props;
     const {activeItem, ...rest} = this.state;
-    return items.map((item, index) => (<NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} onClick={this.onClickItem}>
+    return items.map((item, index) => (<NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem}>
       <NavbarItemIconContainer {...this.state}>
         {item.icon}
       </NavbarItemIconContainer>

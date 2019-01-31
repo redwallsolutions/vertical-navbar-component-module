@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import {NavbarItemStyled} from './Style';
 class NavbarItem extends PureComponent {
 
-  onClick = () => {
-    this.props.onClick(this.props.id);
+  constructor(props) {
+    super(props);
+  }
+
+  onClick = (e) => {
+    this.props.onClick({id: this.props.id, onClick: this.props.customOnClick, ...e});
   }
 
   render() {
