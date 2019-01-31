@@ -10,6 +10,7 @@ import {
   NavbarItemSubtitle,
   NavbarItemIconContainer,
   Content,
+  DefaultFont
 } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
@@ -78,16 +79,19 @@ class VerticalNavbar extends Component {
   }
 
   render() {
-    return (<NavbarContainer>
-      <VerticalNavbarStyled {...this.state}>
-        {this.buildNavbarHeaderItem()}
-        {this.buildNavbarItems()}
-      </VerticalNavbarStyled>
-      <NavbarToggler onClick={this.toggleNavbar} {...this.state}/>
-      <Content>
-        {this.props.children}
-      </Content>
-    </NavbarContainer>);
+    return (<React.Fragment>
+      <DefaultFont/>
+      <NavbarContainer>
+        <VerticalNavbarStyled {...this.state}>
+          {this.buildNavbarHeaderItem()}
+          {this.buildNavbarItems()}
+        </VerticalNavbarStyled>
+        <NavbarToggler onClick={this.toggleNavbar} {...this.state}/>
+        <Content>
+          {this.props.children}
+        </Content>
+      </NavbarContainer>
+    </React.Fragment>);
   }
 
 }
