@@ -8,7 +8,8 @@ import {
   NavbarItemTextContainer,
   NavbarItemTitle,
   NavbarItemSubtitle,
-  NavbarItemIconContainer
+  NavbarItemIconContainer,
+  Content,
 } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
@@ -78,6 +79,9 @@ class VerticalNavbar extends Component {
         {this.buildNavbarItems()}
       </VerticalNavbarStyled>
       <NavbarToggler onClick={this.toggleNavbar} {...this.state}/>
+      <Content>
+        {this.props.children}
+      </Content>
     </NavbarContainer>);
   }
 

@@ -25,13 +25,19 @@ export const VerticalNavbarStyled = styled.div `
   box-shadow: 8px 0 30px -4px rgba(0,0,0,0.1);
   background-color: #fff;
   height: 100vh;
-  transition: width 0.4s cubic-bezier(.86,.47,0,1);
+  transition: width 0.4s cubic-bezier(.86,.47,0,1), min-width 0.4s cubic-bezier(.86,.47,0,1);
   width: ${props => props.isShown
+  ? navbarOpenedWidthMedium
+  : navbarClosedWidthMedim};
+  min-width: ${props => props.isShown
   ? navbarOpenedWidthMedium
   : navbarClosedWidthMedim};
   overflow: hidden;
   @media (max-width: 500px) {
     width: ${props => props.isShown
+    ? navbarOpenedWidthSmall
+    : '0px'};
+    min-width: ${props => props.isShown
     ? navbarOpenedWidthSmall
     : '0px'};
   }
@@ -46,6 +52,7 @@ export const NavbarContainer = styled.div `
 export const NavbarTogglerStyled = styled.div `
   width: 60px;
   height: 60px;
+  min-width: 60px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -160,4 +167,11 @@ margin: 0;
 height: 20px;
 border: 0;
 box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1) inset;
+`
+
+export const Content = styled.div`
+  padding: 10px;
+  padding-top: 20px;
+  overflow-y: scroll;
+  max-height: calc(100vh - 30px);
 `

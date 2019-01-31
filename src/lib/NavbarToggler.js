@@ -7,7 +7,7 @@ class NavbarToggler extends PureComponent {
   buildHumbBars = () => {
     const humbClasses = ['top', 'middle', 'bottom'];
     return humbClasses.map(humbClass => (
-      <HumbBar className={humbClass}/>
+      <HumbBar className={humbClass} key={humbClass}/>
     ));
   }
 
