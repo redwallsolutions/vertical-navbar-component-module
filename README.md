@@ -1,0 +1,1 @@
+# vertical-navbar-component-module  
