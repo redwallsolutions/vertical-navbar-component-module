@@ -1,5 +1,4 @@
 import styled, {createGlobalStyle} from 'styled-components';
-import Raleway from './assets/fonts/Raleway-Light.ttf';
 
 const navbarOpenedWidthLarge = '25vw';
 const navbarClosedWidthLarge = '90px';
@@ -8,6 +7,7 @@ const navbarClosedWidthMedium = '80px';
 const navbarOpenedWidthSmall = '75vw';
 const navbarClosedWidthSmall = '80px';
 const navbarItemTextColorActive = 'rgba(193, 7, 18, 0.86)';
+const redwallColor = "#E20613";
 
 const defaultTheme = {
   navbar: {
@@ -16,6 +16,16 @@ const defaultTheme = {
     header: {
       imgSize: "md",
       subtitleColor: undefined
+    },
+    item: {
+      bg: "transparent",
+      bgHover: "linear-gradient(45deg, rgba(147, 147, 147, 0.12), rgb(255, 233, 233))",
+      markerColor: redwallColor,
+      titleColor: "rgb(66, 66, 66)",
+      activeTitleColor: redwallColor
+    },
+    notification: {
+      bgColor: redwallColor
     }
   }
 }
@@ -29,12 +39,9 @@ export const GlobalStyle = createGlobalStyle `
 `
 
 export const DefaultFont = createGlobalStyle `
-  @font-face {
-    font-family: Raleway;
-    src: url(${Raleway}) format("TrueType");
-    font-style: light;
-    font-weight: 200;
-    font-display: fallback;
+  @import url("https://fonts.googleapis.com/css?family=Quicksand");
+  .vertical-navbar * {
+    font-family: 'Quicksand', cursive;
   }
 `
 
@@ -134,25 +141,42 @@ export const HumbBar = styled.div `
   transform-origin: left center;
 `
 
-export const NavbarItemStyled = styled.div `
+const NavbarItemStyled = styled.div `
   display: flex;
   align-items: center;
   justify-content: ${props => props.isShown
   ? 'flex-start'
   : 'center'};
   padding: 0.3em 0;
-  max-height: 50px;
-  height: 50px;
-  transition: background-color 0.3s;
-  :hover {
-    background-color: rgba(0,0,0,0.03);
-  }
+  min-height: 80px;
+  max-height: 80px;
+  width: 100%;
+  color: ${
+    props =>
+      (props.isActive && (props.theme.navbar.item.activeTitleColor || props.theme.navbar.item.defaultColor)) ||
+      props.theme.navbar.item.titleColor
+  };
+  background: ${props=>props.theme.navbar.item.bg}
   cursor: pointer;
-  color: ${props => props.isActive
-    ? navbarItemTextColorActive
-    : ''}
+  border-left: ${props=>props.isActive ? '4px' : 0} solid ${props=> props.isActive ? props.theme.navbar.item.markerColor : "transparent"}
+  transition: border-left .2s ease-out, color .2s;
+  &:hover {
+    border-left: 4px solid ${props=>props.theme.navbar.item.markerColor}
+  }
+  &:focus {
+    border-left: 4px solid ${props=>props.theme.navbar.item.markerColor}
+  }
+  &:active {
+    border-left: 8px solid ${props=>props.theme.navbar.item.markerColor}
+    color: rgb(47, 47, 47);
+  }
 `
 
+NavbarItemStyled.defaultProps = {
+  theme: defaultTheme
+}
+
+export {NavbarItemStyled};
 export const NavbarItemIconContainer = styled.div `
   width: ${props => props.isShown
   ? '30%'
@@ -173,22 +197,44 @@ export const NavbarItemTextContainer = styled.div `
 export const NavbarItemTitle = styled.h1 `
   padding:0;
   margin:0;
-  font-size: 1.3em;
-  font-family: Raleway;
+  font-size: 17px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: clip;
 `
 export const NavbarItemSubtitle = styled.h3 `
-  font-size: .8em;
+  font-size: .7em;
   padding:0;
   margin:0;
+  letter-spacing: 1px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-family: Raleway;
 `
 
+const NavbarItemBadge = styled.span`
+  display: inline-block;
+  padding: 2px 7px;
+  margin-right: 10%;
+  border-radius: 50px;
+  font-size: 12px;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+  background-color: ${
+    props =>
+      props.theme.navbar.notification.bgColor
+  };
+  color: white;
+  ${
+    props=>
+      !props.isShown && 'position: relative; left: -15%; top: -8px;'
+    }
+`
+
+NavbarItemBadge.defaultProps = {
+  theme: defaultTheme
+}
+
+export {NavbarItemBadge};
 export const NavBarHeaderItem = styled.header `
   display: flex;
   justify-content: center;

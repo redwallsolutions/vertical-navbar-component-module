@@ -68,13 +68,13 @@ class VerticalNavbar extends Component {
       {
         this.state.isShown
           ? <NavbarItemTextContainer>
-              <NavbarItemTitle title='Oi'>
-                {item.title}
-              </NavbarItemTitle>
-              <NavbarItemSubtitle title={item.subTitle}>
-                {item.subTitle}
-              </NavbarItemSubtitle>
-            </NavbarItemTextContainer>
+            <NavbarItemTitle title={item.title}>
+              {item.title}
+            </NavbarItemTitle>
+            <NavbarItemSubtitle title={item.subTitle}>
+              {item.subTitle}
+            </NavbarItemSubtitle>
+          </NavbarItemTextContainer>
           : ''
       }
     </NavbarItem>));
@@ -82,8 +82,7 @@ class VerticalNavbar extends Component {
 
   render() {
     return (<React.Fragment>
-      <DefaultFont/>
-      <NavbarContainer>
+      <NavbarContainer className='vertical-navbar'>
         <VerticalNavbarStyled {...this.state}>
           {this.buildNavbarHeaderItem()}
           {this.buildNavbarItems()}

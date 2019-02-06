@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {NavbarItemStyled} from './Style';
+import {NavbarItemStyled, NavbarItemBadge} from './Style';
 class NavbarItem extends PureComponent {
 
   constructor(props) {
@@ -12,8 +12,10 @@ class NavbarItem extends PureComponent {
   }
 
   render() {
+    const {isShown} = this.props;
     return (<NavbarItemStyled {...this.props} onClick={this.onClick}>
       {this.props.children}
+      <NavbarItemBadge isShown={isShown}>99+</NavbarItemBadge>
     </NavbarItemStyled>);
   }
 
