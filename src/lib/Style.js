@@ -1,9 +1,12 @@
 import styled, {createGlobalStyle} from 'styled-components';
 import Raleway from './assets/fonts/Raleway-Light.ttf';
 
-const navbarOpenedWidthMedium = '20vw';
-const navbarOpenedWidthSmall = '80vw';
-const navbarClosedWidthMedim = '75px';
+const navbarOpenedWidthLarge = '25vw';
+const navbarClosedWidthLarge = '90px';
+const navbarOpenedWidthMedium = '33vw';
+const navbarClosedWidthMedium = '80px';
+const navbarOpenedWidthSmall = '75vw';
+const navbarClosedWidthSmall = '80px';
 const navbarItemTextColorActive = 'rgba(193, 7, 18, 0.86)';
 
 const defaultTheme = {
@@ -41,19 +44,27 @@ const VerticalNavbarStyled = styled.div `
   height: 100vh;
   transition: width 0.4s cubic-bezier(.86,.47,0,1), min-width 0.4s cubic-bezier(.86,.47,0,1);
   width: ${props => props.isShown
-  ? navbarOpenedWidthMedium
-  : navbarClosedWidthMedim};
+  ? navbarOpenedWidthLarge
+  : navbarClosedWidthLarge}
   min-width: ${props => props.isShown
-    ? navbarOpenedWidthMedium
-    : navbarClosedWidthMedim};
+  ? navbarOpenedWidthLarge
+  : navbarClosedWidthLarge}
   overflow: hidden;
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
+    width: ${props => props.isShown
+      ? navbarOpenedWidthMedium
+      : navbarClosedWidthMedium}
+    min-width: ${props => props.isShown
+      ? navbarOpenedWidthMedium
+      : navbarClosedWidthMedium}
+  }
+  @media (max-width: 414px) {
     width: ${props => props.isShown
       ? navbarOpenedWidthSmall
-      : '0px'};
+      : navbarClosedWidthSmall}
     min-width: ${props => props.isShown
-        ? navbarOpenedWidthSmall
-        : '0px'};
+      ? navbarOpenedWidthSmall
+      : navbarClosedWidthSmall}
   }
 `
 
@@ -183,9 +194,7 @@ export const NavBarHeaderItem = styled.header `
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: ${props => props.isShown
-  ? '100%'
-  : '75px'};
+  width: '100%';
   height: ${props => props.isShown ? '30vh': '20vh'}
   max-height: '30vh';
   transition height .2s ease-in-out .3s;
@@ -200,7 +209,7 @@ const NavbarHeaderItemImage = styled.img `
     (props.theme.navbar.header.imgSize === 'md' && !props.isShown && '55%') ||
     (props.theme.navbar.header.imgSize === 'sm' && props.isShown && '50%') ||
     (props.theme.navbar.header.imgSize === 'sm' && !props.isShown && '35%') ||
-    (props.theme.navbar.header.imgSize === 'lg' && props.isShown && '90%')
+    (props.theme.navbar.header.imgSize === 'lg' && props.isShown && '90%') ||
     (props.theme.navbar.header.imgSize === 'lg' && props.isShown && '75%')
     }
 `
