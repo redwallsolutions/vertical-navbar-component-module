@@ -10,7 +10,9 @@ import {
   NavbarItemSubtitle,
   NavbarItemIconContainer,
   Content,
-  DefaultFont
+  DefaultFont,
+  NavbarHeaderItemImage,
+  NavbarHeaderItemSubtitle
 } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
@@ -43,16 +45,16 @@ class VerticalNavbar extends Component {
 
   buildNavbarHeaderItem = () => {
     const {headerItem} = this.props;
-    const {logoImg, logoImgSmall} = headerItem;
+    const {logoImg, logoImgSmall, subtitle} = headerItem;
+    const {isShown} = this.state
     return (<React.Fragment>
-      <NavBarHeaderItem {...this.state}>
-        <img src={this.state.isShown
-          ? logoImg
-          : logoImgSmall} alt='Navbar Header Item' style={{
-            height: '100%'
-          }}/>
+      <NavBarHeaderItem isShown={isShown}>
+        <NavbarHeaderItemImage src={
+          isShown ? logoImg : logoImgSmall} alt={subtitle}/>
+        {isShown && <NavbarHeaderItemSubtitle title={subtitle}>
+          {subtitle}
+        </NavbarHeaderItemSubtitle>}
       </NavBarHeaderItem>
-      <NavbarDivider/>
     </React.Fragment>);
   }
 
@@ -106,7 +108,8 @@ VerticalNavbar.defaultProps = {
   isShown: true,
   headerItem: {
     logoImg,
-    logoImgSmall
+    logoImgSmall,
+    subtitle: 'The vertical navbar.'
   }
 }
 export default VerticalNavbar;

@@ -6,11 +6,22 @@ const navbarOpenedWidthSmall = '80vw';
 const navbarClosedWidthMedim = '75px';
 const navbarItemTextColorActive = 'rgba(193, 7, 18, 0.86)';
 
+const defaultTheme = {
+  navbar: {
+    defaultColor: "rgb(145, 145, 145)",
+    bg: "#fff",
+    header: {
+      imgSize: "md",
+      subtitleColor: undefined
+    }
+  }
+}
+
 export const GlobalStyle = createGlobalStyle `
   body {
     padding:0;
     margin:0;
-    background-color: rgba(33, 29, 29, 0.06);
+    background-color: #F7F8FC;
   }
 `
 
@@ -24,9 +35,9 @@ export const DefaultFont = createGlobalStyle `
   }
 `
 
-export const VerticalNavbarStyled = styled.div `
-  box-shadow: 8px 0 30px -4px rgba(0,0,0,0.1);
-  background-color: #fff;
+const VerticalNavbarStyled = styled.div `
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 43px 0 rgba(0,0,0,.02);
+  background: ${props => props.theme.navbar.bg};
   height: 100vh;
   transition: width 0.4s cubic-bezier(.86,.47,0,1), min-width 0.4s cubic-bezier(.86,.47,0,1);
   width: ${props => props.isShown
@@ -45,6 +56,16 @@ export const VerticalNavbarStyled = styled.div `
         : '0px'};
   }
 `
+
+VerticalNavbarStyled.defaultProps = {
+  theme: {
+    navbar: {
+      bg: '#fff'
+    }
+  }
+}
+
+export {VerticalNavbarStyled};
 
 export const NavbarContainer = styled.div `
   padding: 0px;
@@ -161,18 +182,61 @@ export const NavBarHeaderItem = styled.header `
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.3em 0;
+  flex-direction: column;
   width: ${props => props.isShown
   ? '100%'
   : '75px'};
-  max-height: 50px;
-  height: 50px;
-  transition: background-color 0.3s;
-  :hover {
-    background-color: rgba(0,0,0,0.03);
-  }
+  height: ${props => props.isShown ? '30vh': '20vh'}
+  max-height: '30vh';
+  transition height .2s ease-in-out .3s;
+  min-height: '75px';
   cursor: pointer;
 `
+
+const NavbarHeaderItemImage = styled.img `
+  width: ${
+    props =>
+    (props.theme.navbar.header.imgSize === 'md' && props.isShown && '70%') ||
+    (props.theme.navbar.header.imgSize === 'md' && !props.isShown && '55%') ||
+    (props.theme.navbar.header.imgSize === 'sm' && props.isShown && '50%') ||
+    (props.theme.navbar.header.imgSize === 'sm' && !props.isShown && '35%') ||
+    (props.theme.navbar.header.imgSize === 'lg' && props.isShown && '90%')
+    (props.theme.navbar.header.imgSize === 'lg' && props.isShown && '75%')
+    }
+`
+
+NavbarHeaderItemImage.defaultProps = {
+  theme: defaultTheme
+}
+
+export {NavbarHeaderItemImage}
+
+const NavbarHeaderItemSubtitle = styled.h4`
+  color: ${
+    props =>
+      props.theme.navbar.header.subtitleColor ||
+      props.theme.navbar.defaultColor
+  };
+  width: ${
+    props =>
+      (props.theme.navbar.header.imgSize === 'md' && '70%') ||
+      (props.theme.navbar.header.imgSize === 'sm' && '50%') ||
+      (props.theme.navbar.header.imgSize === 'lg' && '90%')
+    }
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  text-align: center;
+  margin:15px 0 0 0;
+`
+
+NavbarHeaderItemSubtitle.defaultProps = {
+  theme: defaultTheme
+}
+
+export {NavbarHeaderItemSubtitle}
 
 export const NavbarDivider = styled.hr `
 padding: 0;
