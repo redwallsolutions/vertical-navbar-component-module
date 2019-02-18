@@ -302,9 +302,8 @@ box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1) inset;
 `
 
 export const Content = styled.div `
-  padding: 10px;
-  padding-top: 20px;
   overflow-y: auto;
   max-height: calc(100vh - 30px);
   width: 100%;
+  background: #F7F8FC;
 `
