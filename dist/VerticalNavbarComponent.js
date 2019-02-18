@@ -5,7 +5,6 @@ import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConst
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { NavbarContainer, VerticalNavbarStyled, NavBarHeaderItem, NavbarDivider, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, DefaultFont, NavbarHeaderItemImage, NavbarHeaderItemSubtitle } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
@@ -113,19 +112,7 @@ function (_Component) {
   return VerticalNavbarComponent;
 }(Component);
 
-VerticalNavbar.propTypes = {
-  isShown: PropTypes.bool,
-  headerItem: PropTypes.shape({
-    logoImg: PropTypes.string,
-    logoImgSmall: PropTypes.string
-  }),
-  items: PropTypes.arrayOf(PropTypes.shape({
-    icon: PropTypes.element,
-    title: PropTypes.string,
-    subTitle: PropTypes.string
-  }))
-};
-VerticalNavbar.defaultProps = {
+VerticalNavbarComponent.defaultProps = {
   isShown: true,
   headerItem: {
     logoImg: logoImg,

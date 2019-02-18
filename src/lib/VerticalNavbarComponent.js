@@ -99,13 +99,13 @@ class VerticalNavbarComponent extends Component {
 
 }
 
-VerticalNavbar.propTypes = {
+VerticalNavbarComponent.propTypes = {
   isShown: PropTypes.bool,
   headerItem: PropTypes.shape({logoImg: PropTypes.string, logoImgSmall: PropTypes.string}),
   items: PropTypes.arrayOf(PropTypes.shape({icon: PropTypes.element, title: PropTypes.string, subTitle: PropTypes.string}))
 }
 
-VerticalNavbar.defaultProps = {
+VerticalNavbarComponent.defaultProps = {
   isShown: true,
   headerItem: {
     logoImg,
