@@ -4,13 +4,11 @@ import {
   NavbarContainer,
   VerticalNavbarStyled,
   NavBarHeaderItem,
-  NavbarDivider,
   NavbarItemTextContainer,
   NavbarItemTitle,
   NavbarItemSubtitle,
   NavbarItemIconContainer,
   Content,
-  DefaultFont,
   NavbarHeaderItemImage,
   NavbarHeaderItemSubtitle
 } from './Style';

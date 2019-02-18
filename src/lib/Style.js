@@ -6,7 +6,6 @@ const navbarOpenedWidthMedium = '33vw';
 const navbarClosedWidthMedium = '80px';
 const navbarOpenedWidthSmall = '75vw';
 const navbarClosedWidthSmall = '80px';
-const navbarItemTextColorActive = 'rgba(193, 7, 18, 0.86)';
 const redwallColor = "#E20613";
 
 const defaultTheme = {
@@ -40,7 +39,7 @@ export const GlobalStyle = createGlobalStyle `
 
 export const DefaultFont = createGlobalStyle `
   @import url("https://fonts.googleapis.com/css?family=Quicksand");
-  .vertical-navbar * {
+  .vertical-navbar {
     font-family: 'Quicksand', cursive;
   }
   .vertical-navbar {
@@ -295,14 +294,6 @@ NavbarHeaderItemSubtitle.defaultProps = {
 }
 
 export {NavbarHeaderItemSubtitle}
-
-export const NavbarDivider = styled.hr `
-padding: 0;
-margin: 0;
-height: 20px;
-border: 0;
-box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1) inset;
-`
 
 export const Content = styled.div `
   overflow-y: auto;

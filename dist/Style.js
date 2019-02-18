@@ -1,17 +1,7 @@
 import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
-function _templateObject17() {
-  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: calc(100vh - 30px);\n  width: 100%;\n"]);
-
-  _templateObject17 = function _templateObject17() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject16() {
-  var data = _taggedTemplateLiteral(["\npadding: 0;\nmargin: 0;\nheight: 20px;\nborder: 0;\nbox-shadow: 0 10px 20px -10px rgba(0,0,0,0.1) inset;\n"]);
+  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: calc(100vh - 30px);\n  width: 100%;\n"]);
 
   _templateObject16 = function _templateObject16() {
     return data;
@@ -151,7 +141,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar * {\n    font-family: 'Quicksand', cursive;\n  }\n  .vertical-navbar {\n    background: #F7F8FC;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar {\n    font-family: 'Quicksand', cursive;\n  }\n  .vertical-navbar {\n    background: #F7F8FC;\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -177,7 +167,6 @@ var navbarOpenedWidthMedium = '33vw';
 var navbarClosedWidthMedium = '80px';
 var navbarOpenedWidthSmall = '75vw';
 var navbarClosedWidthSmall = '80px';
-var navbarItemTextColorActive = 'rgba(193, 7, 18, 0.86)';
 var redwallColor = "#E20613";
 var defaultTheme = {
   navbar: {
@@ -294,5 +283,4 @@ NavbarHeaderItemSubtitle.defaultProps = {
   theme: defaultTheme
 };
 export { NavbarHeaderItemSubtitle };
-export var NavbarDivider = styled.hr(_templateObject16());
-export var Content = styled.div(_templateObject17());
+export var Content = styled.div(_templateObject16());

@@ -5,7 +5,7 @@ import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConst
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
-import { NavbarContainer, VerticalNavbarStyled, NavBarHeaderItem, NavbarDivider, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, DefaultFont, NavbarHeaderItemImage, NavbarHeaderItemSubtitle } from './Style';
+import { NavbarContainer, VerticalNavbarStyled, NavBarHeaderItem, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, NavbarHeaderItemImage, NavbarHeaderItemSubtitle } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
 import logoImg from './assets/img/redwall-logo.png';

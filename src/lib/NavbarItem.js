@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import {NavbarItemStyled, NavbarItemBadge} from './Style';
 class NavbarItem extends PureComponent {
 
-  constructor(props) {
-    super(props);
-  }
-
   onClick = (e) => {
     this.props.onClick({id: this.props.id, onClick: this.props.customOnClick, ...e});
   }
@@ -15,7 +11,7 @@ class NavbarItem extends PureComponent {
     const {isShown, notificationCount} = this.props;
     return (<NavbarItemStyled {...this.props} onClick={this.onClick}>
       {this.props.children}
-      {this.props.notificationCount && <NavbarItemBadge isShown={isShown}>{this.props.notificationCount}</NavbarItemBadge>}
+      {notificationCount && <NavbarItemBadge isShown={isShown}>{notificationCount}</NavbarItemBadge>}
     </NavbarItemStyled>);
   }
 

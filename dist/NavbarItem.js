@@ -12,12 +12,18 @@ var NavbarItem =
 function (_PureComponent) {
   _inherits(NavbarItem, _PureComponent);
 
-  function NavbarItem(props) {
+  function NavbarItem() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, NavbarItem);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(NavbarItem).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(NavbarItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _this.onClick = function (e) {
       _this.props.onClick(_objectSpread({
@@ -37,9 +43,9 @@ function (_PureComponent) {
           notificationCount = _this$props.notificationCount;
       return React.createElement(NavbarItemStyled, Object.assign({}, this.props, {
         onClick: this.onClick
-      }), this.props.children, this.props.notificationCount && React.createElement(NavbarItemBadge, {
+      }), this.props.children, notificationCount && React.createElement(NavbarItemBadge, {
         isShown: isShown
-      }, this.props.notificationCount));
+      }, notificationCount));
     }
   }]);
 
