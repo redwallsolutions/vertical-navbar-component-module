@@ -5,7 +5,7 @@ import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConst
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
-import { NavbarContainer, VerticalNavbarStyled, NavBarHeaderItem, NavbarDivider, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, DefaultFont } from './Style';
+import { NavbarContainer, VerticalNavbarStyled, NavBarHeaderItem, NavbarDivider, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, DefaultFont, NavbarHeaderItemImage, NavbarHeaderItemSubtitle } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
 import logoImg from './assets/img/redwall-logo.png';
@@ -55,14 +55,17 @@ function (_Component) {
     _this.buildNavbarHeaderItem = function () {
       var headerItem = _this.props.headerItem;
       var logoImg = headerItem.logoImg,
-          logoImgSmall = headerItem.logoImgSmall;
-      return React.createElement(React.Fragment, null, React.createElement(NavBarHeaderItem, _this.state, React.createElement("img", {
-        src: _this.state.isShown ? logoImg : logoImgSmall,
-        alt: "Navbar Header Item",
-        style: {
-          height: '100%'
-        }
-      })), React.createElement(NavbarDivider, null));
+          logoImgSmall = headerItem.logoImgSmall,
+          subtitle = headerItem.subtitle;
+      var isShown = _this.state.isShown;
+      return React.createElement(React.Fragment, null, React.createElement(NavBarHeaderItem, {
+        isShown: isShown
+      }, React.createElement(NavbarHeaderItemImage, {
+        src: isShown ? logoImg : logoImgSmall,
+        alt: subtitle
+      }), isShown && React.createElement(NavbarHeaderItemSubtitle, {
+        title: subtitle
+      }, subtitle)));
     };
 
     _this.buildNavbarItems = function () {
@@ -80,7 +83,7 @@ function (_Component) {
           customOnClick: item.onClick,
           onClick: _this.onClickItem
         }), React.createElement(NavbarItemIconContainer, _this.state, item.icon), _this.state.isShown ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
-          title: "Oi"
+          title: item.title
         }, item.title), React.createElement(NavbarItemSubtitle, {
           title: item.subTitle
         }, item.subTitle)) : '');
@@ -93,7 +96,9 @@ function (_Component) {
   _createClass(VerticalNavbar, [{
     key: "render",
     value: function render() {
-      return React.createElement(React.Fragment, null, React.createElement(DefaultFont, null), React.createElement(NavbarContainer, null, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems()), React.createElement(NavbarToggler, Object.assign({
+      return React.createElement(React.Fragment, null, React.createElement(NavbarContainer, {
+        className: "vertical-navbar"
+      }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems()), React.createElement(NavbarToggler, Object.assign({
         onClick: this.toggleNavbar
       }, this.state)), React.createElement(Content, null, this.props.children)));
     }
@@ -106,7 +111,8 @@ VerticalNavbar.defaultProps = {
   isShown: true,
   headerItem: {
     logoImg: logoImg,
-    logoImgSmall: logoImgSmall
+    logoImgSmall: logoImgSmall,
+    subtitle: 'The vertical navbar.'
   }
 };
 export default VerticalNavbar;

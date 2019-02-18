@@ -5,7 +5,7 @@ import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConst
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { PureComponent } from 'react';
-import { NavbarItemStyled } from './Style';
+import { NavbarItemStyled, NavbarItemBadge } from './Style';
 
 var NavbarItem =
 /*#__PURE__*/
@@ -32,9 +32,12 @@ function (_PureComponent) {
   _createClass(NavbarItem, [{
     key: "render",
     value: function render() {
+      var isShown = this.props.isShown;
       return React.createElement(NavbarItemStyled, Object.assign({}, this.props, {
         onClick: this.onClick
-      }), this.props.children);
+      }), this.props.children, React.createElement(NavbarItemBadge, {
+        isShown: isShown
+      }, "99+"));
     }
   }]);
 

@@ -1,7 +1,37 @@
 import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
-function _templateObject14() {
+function _templateObject17() {
   var data = _taggedTemplateLiteral(["\n  padding: 10px;\n  padding-top: 20px;\n  overflow-y: auto;\n  max-height: calc(100vh - 30px);\n  width: 100%;\n"]);
+
+  _templateObject17 = function _templateObject17() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject16() {
+  var data = _taggedTemplateLiteral(["\npadding: 0;\nmargin: 0;\nheight: 20px;\nborder: 0;\nbox-shadow: 0 10px 20px -10px rgba(0,0,0,0.1) inset;\n"]);
+
+  _templateObject16 = function _templateObject16() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject15() {
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  width: ", "\n  }\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 12px;\n  text-align: center;\n  margin:15px 0 0 0;\n"]);
+
+  _templateObject15 = function _templateObject15() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject14() {
+  var data = _taggedTemplateLiteral(["\n  width: ", "\n"]);
 
   _templateObject14 = function _templateObject14() {
     return data;
@@ -11,7 +41,7 @@ function _templateObject14() {
 }
 
 function _templateObject13() {
-  var data = _taggedTemplateLiteral(["\npadding: 0;\nmargin: 0;\nheight: 20px;\nborder: 0;\nbox-shadow: 0 10px 20px -10px rgba(0,0,0,0.1) inset;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: '100%';\n  height: ", "\n  max-height: '30vh';\n  transition height .2s ease-in-out .3s;\n  min-height: '75px';\n  cursor: pointer;\n"]);
 
   _templateObject13 = function _templateObject13() {
     return data;
@@ -21,7 +51,7 @@ function _templateObject13() {
 }
 
 function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0.3em 0;\n  width: ", ";\n  max-height: 50px;\n  height: 50px;\n  transition: background-color 0.3s;\n  :hover {\n    background-color: rgba(0,0,0,0.03);\n  }\n  cursor: pointer;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: inline-block;\n  padding: 2px 7px;\n  margin-right: 10%;\n  border-radius: 50px;\n  font-size: 12px;\n  box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);\n  background-color: ", ";\n  color: white;\n  ", "\n"]);
 
   _templateObject12 = function _templateObject12() {
     return data;
@@ -31,7 +61,7 @@ function _templateObject12() {
 }
 
 function _templateObject11() {
-  var data = _taggedTemplateLiteral(["\n  font-size: .8em;\n  padding:0;\n  margin:0;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: Raleway;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: .7em;\n  padding:0;\n  margin:0;\n  letter-spacing: 1px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n"]);
 
   _templateObject11 = function _templateObject11() {
     return data;
@@ -41,7 +71,7 @@ function _templateObject11() {
 }
 
 function _templateObject10() {
-  var data = _taggedTemplateLiteral(["\n  padding:0;\n  margin:0;\n  font-size: 1.3em;\n  font-family: Raleway;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: clip;\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding:0;\n  margin:0;\n  font-size: 17px;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: clip;\n"]);
 
   _templateObject10 = function _templateObject10() {
     return data;
@@ -71,7 +101,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: ", ";\n  padding: 0.3em 0;\n  max-height: 50px;\n  height: 50px;\n  transition: background-color 0.3s;\n  :hover {\n    background-color: rgba(0,0,0,0.03);\n  }\n  cursor: pointer;\n  color: ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: ", ";\n  padding: 0.3em 0;\n  min-height: 80px;\n  max-height: 80px;\n  width: 100%;\n  color: ", ";\n  background: ", "\n  cursor: pointer;\n  border-left: ", " solid ", "\n  transition: border-left .2s ease-out, color .2s;\n  &:hover {\n    border-left: 4px solid ", "\n  }\n  &:focus {\n    border-left: 4px solid ", "\n  }\n  &:active {\n    border-left: 8px solid ", "\n    color: rgb(47, 47, 47);\n  }\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -111,7 +141,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  box-shadow: 8px 0 30px -4px rgba(0,0,0,0.1);\n  background-color: #fff;\n  height: 100vh;\n  transition: width 0.4s cubic-bezier(.86,.47,0,1), min-width 0.4s cubic-bezier(.86,.47,0,1);\n  width: ", ";\n  min-width: ", ";\n  overflow: hidden;\n  @media (max-width: 500px) {\n    width: ", ";\n    min-width: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 43px 0 rgba(0,0,0,.02);\n  background: ", ";\n  height: 100vh;\n  transition: width 0.4s cubic-bezier(.86,.47,0,1), min-width 0.4s cubic-bezier(.86,.47,0,1);\n  width: ", "\n  min-width: ", "\n  overflow: hidden;\n  @media (max-width: 768px) {\n    width: ", "\n    min-width: ", "\n  }\n  @media (max-width: 414px) {\n    width: ", "\n    min-width: ", "\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -121,7 +151,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  @font-face {\n    font-family: Raleway;\n    src: url(", ") format(\"TrueType\");\n    font-style: light;\n    font-weight: 200;\n    font-display: fallback;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar * {\n    font-family: 'Quicksand', cursive;\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -131,7 +161,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  body {\n    padding:0;\n    margin:0;\n    background-color: rgba(33, 29, 29, 0.06);\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  body {\n    padding:0;\n    margin:0;\n    background-color: #F7F8FC;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -141,22 +171,59 @@ function _templateObject() {
 }
 
 import styled, { createGlobalStyle } from 'styled-components';
-import Raleway from './assets/fonts/Raleway-Light.ttf';
-var navbarOpenedWidthMedium = '20vw';
-var navbarOpenedWidthSmall = '80vw';
-var navbarClosedWidthMedim = '75px';
+var navbarOpenedWidthLarge = '25vw';
+var navbarClosedWidthLarge = '90px';
+var navbarOpenedWidthMedium = '33vw';
+var navbarClosedWidthMedium = '80px';
+var navbarOpenedWidthSmall = '75vw';
+var navbarClosedWidthSmall = '80px';
 var navbarItemTextColorActive = 'rgba(193, 7, 18, 0.86)';
+var redwallColor = "#E20613";
+var defaultTheme = {
+  navbar: {
+    defaultColor: "rgb(145, 145, 145)",
+    bg: "#fff",
+    header: {
+      imgSize: "md",
+      subtitleColor: undefined
+    },
+    item: {
+      bg: "transparent",
+      bgHover: "linear-gradient(45deg, rgba(147, 147, 147, 0.12), rgb(255, 233, 233))",
+      markerColor: redwallColor,
+      titleColor: "rgb(66, 66, 66)",
+      activeTitleColor: redwallColor
+    },
+    notification: {
+      bgColor: redwallColor
+    }
+  }
+};
 export var GlobalStyle = createGlobalStyle(_templateObject());
-export var DefaultFont = createGlobalStyle(_templateObject2(), Raleway);
-export var VerticalNavbarStyled = styled.div(_templateObject3(), function (props) {
-  return props.isShown ? navbarOpenedWidthMedium : navbarClosedWidthMedim;
+export var DefaultFont = createGlobalStyle(_templateObject2());
+var VerticalNavbarStyled = styled.div(_templateObject3(), function (props) {
+  return props.theme.navbar.bg;
 }, function (props) {
-  return props.isShown ? navbarOpenedWidthMedium : navbarClosedWidthMedim;
+  return props.isShown ? navbarOpenedWidthLarge : navbarClosedWidthLarge;
 }, function (props) {
-  return props.isShown ? navbarOpenedWidthSmall : '0px';
+  return props.isShown ? navbarOpenedWidthLarge : navbarClosedWidthLarge;
 }, function (props) {
-  return props.isShown ? navbarOpenedWidthSmall : '0px';
+  return props.isShown ? navbarOpenedWidthMedium : navbarClosedWidthMedium;
+}, function (props) {
+  return props.isShown ? navbarOpenedWidthMedium : navbarClosedWidthMedium;
+}, function (props) {
+  return props.isShown ? navbarOpenedWidthSmall : navbarClosedWidthSmall;
+}, function (props) {
+  return props.isShown ? navbarOpenedWidthSmall : navbarClosedWidthSmall;
 });
+VerticalNavbarStyled.defaultProps = {
+  theme: {
+    navbar: {
+      bg: '#fff'
+    }
+  }
+};
+export { VerticalNavbarStyled };
 export var NavbarContainer = styled.div(_templateObject4());
 export var NavbarTogglerStyled = styled.div(_templateObject5(), function (props) {
   return props.isShown ? 'translateX(5.5px) rotate(45deg)' : 'rotate(0)';
@@ -172,19 +239,60 @@ export var NavbarTogglerStyled = styled.div(_templateObject5(), function (props)
   return props.isShown ? 'rotateY(-25deg)' : 'rotateY(18deg)';
 });
 export var HumbBar = styled.div(_templateObject6());
-export var NavbarItemStyled = styled.div(_templateObject7(), function (props) {
+var NavbarItemStyled = styled.div(_templateObject7(), function (props) {
   return props.isShown ? 'flex-start' : 'center';
 }, function (props) {
-  return props.isActive ? navbarItemTextColorActive : '';
+  return props.isActive && (props.theme.navbar.item.activeTitleColor || props.theme.navbar.item.defaultColor) || props.theme.navbar.item.titleColor;
+}, function (props) {
+  return props.theme.navbar.item.bg;
+}, function (props) {
+  return props.isActive ? '4px' : 0;
+}, function (props) {
+  return props.isActive ? props.theme.navbar.item.markerColor : "transparent";
+}, function (props) {
+  return props.theme.navbar.item.markerColor;
+}, function (props) {
+  return props.theme.navbar.item.markerColor;
+}, function (props) {
+  return props.theme.navbar.item.markerColor;
 });
+NavbarItemStyled.defaultProps = {
+  theme: defaultTheme
+};
+export { NavbarItemStyled };
 export var NavbarItemIconContainer = styled.div(_templateObject8(), function (props) {
   return props.isShown ? '30%' : '';
 });
 export var NavbarItemTextContainer = styled.div(_templateObject9());
 export var NavbarItemTitle = styled.h1(_templateObject10());
 export var NavbarItemSubtitle = styled.h3(_templateObject11());
-export var NavBarHeaderItem = styled.header(_templateObject12(), function (props) {
-  return props.isShown ? '100%' : '75px';
+var NavbarItemBadge = styled.span(_templateObject12(), function (props) {
+  return props.theme.navbar.notification.bgColor;
+}, function (props) {
+  return !props.isShown && 'position: relative; left: -15%; top: -8px;';
 });
-export var NavbarDivider = styled.hr(_templateObject13());
-export var Content = styled.div(_templateObject14());
+NavbarItemBadge.defaultProps = {
+  theme: defaultTheme
+};
+export { NavbarItemBadge };
+export var NavBarHeaderItem = styled.header(_templateObject13(), function (props) {
+  return props.isShown ? '30vh' : '20vh';
+});
+var NavbarHeaderItemImage = styled.img(_templateObject14(), function (props) {
+  return props.theme.navbar.header.imgSize === 'md' && props.isShown && '70%' || props.theme.navbar.header.imgSize === 'md' && !props.isShown && '55%' || props.theme.navbar.header.imgSize === 'sm' && props.isShown && '50%' || props.theme.navbar.header.imgSize === 'sm' && !props.isShown && '35%' || props.theme.navbar.header.imgSize === 'lg' && props.isShown && '90%' || props.theme.navbar.header.imgSize === 'lg' && props.isShown && '75%';
+});
+NavbarHeaderItemImage.defaultProps = {
+  theme: defaultTheme
+};
+export { NavbarHeaderItemImage };
+var NavbarHeaderItemSubtitle = styled.h4(_templateObject15(), function (props) {
+  return props.theme.navbar.header.subtitleColor || props.theme.navbar.defaultColor;
+}, function (props) {
+  return props.theme.navbar.header.imgSize === 'md' && '70%' || props.theme.navbar.header.imgSize === 'sm' && '50%' || props.theme.navbar.header.imgSize === 'lg' && '90%';
+});
+NavbarHeaderItemSubtitle.defaultProps = {
+  theme: defaultTheme
+};
+export { NavbarHeaderItemSubtitle };
+export var NavbarDivider = styled.hr(_templateObject16());
+export var Content = styled.div(_templateObject17());
