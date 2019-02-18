@@ -61,7 +61,7 @@ class VerticalNavbarComponent extends Component {
   buildNavbarItems = () => {
     const {items} = this.props;
     const {activeItem, ...rest} = this.state;
-    return items.map((item, index) => (<NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem}>
+    return items.map((item, index) => (<NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem} notificationCount={item.notificationCount}>
       <NavbarItemIconContainer {...this.state}>
         {item.icon}
       </NavbarItemIconContainer>

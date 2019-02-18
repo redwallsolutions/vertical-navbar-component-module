@@ -32,12 +32,14 @@ function (_PureComponent) {
   _createClass(NavbarItem, [{
     key: "render",
     value: function render() {
-      var isShown = this.props.isShown;
+      var _this$props = this.props,
+          isShown = _this$props.isShown,
+          notificationCount = _this$props.notificationCount;
       return React.createElement(NavbarItemStyled, Object.assign({}, this.props, {
         onClick: this.onClick
-      }), this.props.children, React.createElement(NavbarItemBadge, {
+      }), this.props.children, this.props.notificationCount && React.createElement(NavbarItemBadge, {
         isShown: isShown
-      }, "99+"));
+      }, this.props.notificationCount));
     }
   }]);
 

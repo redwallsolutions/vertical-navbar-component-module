@@ -1,7 +1,7 @@
 import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
 function _templateObject17() {
-  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: calc(100vh - 30px);\n  width: 100%;\n  background: #F7F8FC;\n"]);
+  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: calc(100vh - 30px);\n  width: 100%;\n"]);
 
   _templateObject17 = function _templateObject17() {
     return data;
@@ -151,7 +151,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar * {\n    font-family: 'Quicksand', cursive;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar * {\n    font-family: 'Quicksand', cursive;\n  }\n  .vertical-navbar {\n    background: #F7F8FC;\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;

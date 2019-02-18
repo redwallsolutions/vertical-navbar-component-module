@@ -17,6 +17,7 @@ const items = [
   }, {
     icon: <MdTune size='1.9em'/>,
     title: 'Other Thing',
+    notificationCount: 4
   }, {
     icon: <Md3dRotation size='1.9em'/>,
     title: 'Rotation',

@@ -81,7 +81,8 @@ function (_Component) {
           key: index,
           id: index,
           customOnClick: item.onClick,
-          onClick: _this.onClickItem
+          onClick: _this.onClickItem,
+          notificationCount: item.notificationCount
         }), React.createElement(NavbarItemIconContainer, _this.state, item.icon), _this.state.isShown ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
           title: item.title
         }, item.title), React.createElement(NavbarItemSubtitle, {

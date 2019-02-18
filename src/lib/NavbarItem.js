@@ -12,10 +12,10 @@ class NavbarItem extends PureComponent {
   }
 
   render() {
-    const {isShown} = this.props;
+    const {isShown, notificationCount} = this.props;
     return (<NavbarItemStyled {...this.props} onClick={this.onClick}>
       {this.props.children}
-      <NavbarItemBadge isShown={isShown}>99+</NavbarItemBadge>
+      {this.props.notificationCount && <NavbarItemBadge isShown={isShown}>{this.props.notificationCount}</NavbarItemBadge>}
     </NavbarItemStyled>);
   }
 
@@ -23,6 +23,7 @@ class NavbarItem extends PureComponent {
 
 NavbarItem.propTypes = {
   onClick: PropTypes.func,
-  isActive: PropTypes.bool
+  isActive: PropTypes.bool,
+  notificationCount: PropTypes.string
 }
 export default NavbarItem;

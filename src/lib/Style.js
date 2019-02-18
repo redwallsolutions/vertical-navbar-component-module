@@ -43,6 +43,9 @@ export const DefaultFont = createGlobalStyle `
   .vertical-navbar * {
     font-family: 'Quicksand', cursive;
   }
+  .vertical-navbar {
+    background: #F7F8FC;
+  }
 `
 
 const VerticalNavbarStyled = styled.div `
@@ -305,5 +308,4 @@ export const Content = styled.div `
   overflow-y: auto;
   max-height: calc(100vh - 30px);
   width: 100%;
-  background: #F7F8FC;
 `
