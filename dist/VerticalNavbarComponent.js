@@ -52,6 +52,18 @@ function (_Component) {
       }
     };
 
+    _this.setItem = function (itemIndex) {
+      _this.setState({
+        activeItem: itemIndex
+      });
+    };
+
+    _this.exposeVerticalNavbarController = function () {
+      return {
+        setItem: _this.setItem
+      };
+    };
+
     _this.buildNavbarHeaderItem = function () {
       var headerItem = _this.props.headerItem;
       var logoImg = headerItem.logoImg,
@@ -95,6 +107,11 @@ function (_Component) {
   }
 
   _createClass(VerticalNavbarComponent, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.getVerticalNavbarController(this.exposeVerticalNavbarController());
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(React.Fragment, null, React.createElement(NavbarContainer, {

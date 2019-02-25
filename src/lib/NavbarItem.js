@@ -20,6 +20,6 @@ class NavbarItem extends PureComponent {
 NavbarItem.propTypes = {
   onClick: PropTypes.func,
   isActive: PropTypes.bool,
-  notificationCount: PropTypes.string
+  notificationCount: PropTypes.number
 }
 export default NavbarItem;

@@ -19,6 +19,10 @@ import logoImgSmall from './assets/img/redwall-logo-small.png';
 
 class VerticalNavbarComponent extends Component {
 
+  componentDidMount() {
+    this.props.getVerticalNavbarController(this.exposeVerticalNavbarController());
+  }
+
   state = {
     activeItem: -1,
     isShown: true
@@ -40,6 +44,18 @@ class VerticalNavbarComponent extends Component {
       onClick(rest);
     }
   }
+
+  setItem = (itemIndex) => {
+    this.setState({
+      activeItem:itemIndex
+    })
+  }
+
+  exposeVerticalNavbarController = () => ({
+    setItem: this.setItem
+  })
+
+
 
   buildNavbarHeaderItem = () => {
     const {headerItem} = this.props;
