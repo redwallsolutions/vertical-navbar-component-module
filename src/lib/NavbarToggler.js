@@ -1,16 +1,20 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { NavbarTogglerStyled, NavbarTogglerContainer } from './Style';
+import { NavbarTogglerStyled, NavbarTogglerContainer, NavbarTogglerIndicator } from './Style';
+import { FaAngleRight } from 'react-icons/fa';
 import Swipe from 'react-easy-swipe';
 
 class NavbarToggler extends PureComponent {
 
   render() {
-    const {onSwipeLeft, onSwipeRight, onClick} = this.props
+    const {onSwipeLeft, onSwipeRight, onClick, currentMode} = this.props
     return (
       <Swipe onSwipeRight={onSwipeRight} onSwipeLeft={onSwipeLeft}>
         <NavbarTogglerContainer onClick={onClick}>
-          <NavbarTogglerStyled />
+          <NavbarTogglerIndicator currentMode={currentMode}>
+            <FaAngleRight/>
+          </NavbarTogglerIndicator>
+          <NavbarTogglerStyled currentMode={currentMode}/>
         </NavbarTogglerContainer>
       </Swipe>
     );

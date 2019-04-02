@@ -8,11 +8,11 @@ class NavbarItem extends PureComponent {
   }
 
   render() {
-    const {isShown, notificationCount} = this.props;
+    const {currentMode, notificationCount} = this.props;
     return (
       <NavbarItemStyled {...this.props} onClick={this.onClick}>
         {this.props.children}
-        {notificationCount && <NavbarItemBadge isShown={isShown}>{notificationCount}</NavbarItemBadge>}
+        {notificationCount && <NavbarItemBadge currentMode={currentMode}>{notificationCount}</NavbarItemBadge>}
       </NavbarItemStyled>
     );
   }

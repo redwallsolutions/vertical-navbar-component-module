@@ -5,38 +5,86 @@ import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConst
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
-import { NavbarContainer, VerticalNavbarStyled, NavBarHeaderItem, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, NavbarHeaderItemImage, NavbarHeaderItemSubtitle } from './Style';
+import { NavbarContainer, VerticalNavbarStyled, NavbarHeaderItem, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, NavbarHeaderItemImage, NavbarHeaderItemSubtitle } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
 import logoImg from './assets/img/redwall-logo.png';
 import logoImgSmall from './assets/img/redwall-logo-small.png';
+export var MODES = {
+  hidden: 1,
+  partiallyShown: 2,
+  totallyShown: 3
+};
 
 var VerticalNavbarComponent =
 /*#__PURE__*/
 function (_Component) {
   _inherits(VerticalNavbarComponent, _Component);
 
-  function VerticalNavbarComponent() {
-    var _getPrototypeOf2;
-
+  function VerticalNavbarComponent(props) {
     var _this;
 
     _classCallCheck(this, VerticalNavbarComponent);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(VerticalNavbarComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(VerticalNavbarComponent).call(this, props));
     _this.state = {
       activeItem: -1,
-      isShown: true
+      currentMode: MODES.partiallyShown
+    };
+
+    _this.isCurrentModeTotallyShown = function () {
+      return _this.state.currentMode === MODES.totallyShown;
     };
 
     _this.toggleNavbar = function () {
+      var newMode = undefined;
+
+      if (_this.state.currentMode !== MODES.hidden) {
+        newMode = MODES.hidden;
+        _this.previousMode = _this.state.currentMode;
+      } else {
+        newMode = _this.previousMode;
+      }
+
       _this.setState({
-        isShown: !_this.state.isShown
+        currentMode: newMode
       });
+    };
+
+    _this.sequentiallyToggle = function () {
+      var currentMode = _this.state.currentMode;
+      var newMode = currentMode;
+      if (currentMode === MODES.hidden) newMode = MODES.partiallyShown;else if (currentMode === MODES.partiallyShown) newMode = MODES.totallyShown;else if (currentMode === MODES.totallyShown) newMode = MODES.hidden;
+
+      _this.setState({
+        currentMode: newMode
+      });
+    };
+
+    _this.changeMode = function (newMode) {
+      _this.setState({
+        currentMode: newMode
+      });
+    };
+
+    _this.hide = function () {
+      _this.changeMode(MODES.hidden);
+    };
+
+    _this.showPartially = function () {
+      _this.changeMode(MODES.partiallyShown);
+    };
+
+    _this.showTotally = function () {
+      _this.changeMode(MODES.totallyShown);
+    };
+
+    _this.onSwipeLeft = function () {
+      _this.changeMode(MODES.hidden);
+    };
+
+    _this.onSwipeRight = function () {
+      _this.changeMode(MODES.totallyShown);
     };
 
     _this.onClickItem = function (item) {
@@ -69,13 +117,15 @@ function (_Component) {
       var logoImg = headerItem.logoImg,
           logoImgSmall = headerItem.logoImgSmall,
           subtitle = headerItem.subtitle;
-      var isShown = _this.state.isShown;
-      return React.createElement(React.Fragment, null, React.createElement(NavBarHeaderItem, {
-        isShown: isShown
+      var currentMode = _this.state.currentMode;
+      var isTotallyShown = currentMode === MODES.totallyShown;
+      return React.createElement(React.Fragment, null, React.createElement(NavbarHeaderItem, {
+        currentMode: currentMode
       }, React.createElement(NavbarHeaderItemImage, {
-        src: isShown ? logoImg : logoImgSmall,
-        alt: subtitle
-      }), isShown && React.createElement(NavbarHeaderItemSubtitle, {
+        src: isTotallyShown ? logoImg : logoImgSmall,
+        alt: subtitle,
+        currentMode: currentMode
+      }), isTotallyShown && React.createElement(NavbarHeaderItemSubtitle, {
         title: subtitle
       }, subtitle)));
     };
@@ -95,14 +145,15 @@ function (_Component) {
           customOnClick: item.onClick,
           onClick: _this.onClickItem,
           notificationCount: item.notificationCount
-        }), React.createElement(NavbarItemIconContainer, _this.state, item.icon), _this.state.isShown ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
+        }), React.createElement(NavbarItemIconContainer, _this.state, item.icon), _this.isCurrentModeTotallyShown() ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
           title: item.title
         }, item.title), React.createElement(NavbarItemSubtitle, {
           title: item.subTitle
-        }, item.subTitle)) : '');
+        }, item.subTitle)) : null);
       });
     };
 
+    _this.previousMode = MODES.hidden;
     return _this;
   }
 
@@ -114,16 +165,17 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var currentMode = this.state.currentMode;
       return React.createElement(React.Fragment, null, React.createElement(NavbarContainer, {
         className: "vertical-navbar"
-      }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems()), React.createElement(NavbarToggler, Object.assign({
-        onClick: this.toggleNavbar
-      }, this.state)), React.createElement(Content, null, React.createElement("div", {
-        style: {
-          padding: '10px',
-          paddingTop: '20px'
-        }
-      }, this.props.children))));
+      }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems()), React.createElement(NavbarToggler, {
+        onClick: this.sequentiallyToggle,
+        onSwipeLeft: this.onSwipeLeft,
+        onSwipeRight: this.onSwipeRight,
+        currentMode: currentMode
+      }), React.createElement(Content, {
+        currentMode: currentMode
+      }, this.props.children)));
     }
   }]);
 

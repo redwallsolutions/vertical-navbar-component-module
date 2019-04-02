@@ -1,12 +1,6 @@
 import styled, {createGlobalStyle} from 'styled-components';
 import { MODES } from './VerticalNavbarComponent';
 
-const navbarOpenedWidthLarge = '25vw';
-const navbarClosedWidthLarge = '90px';
-const navbarOpenedWidthMedium = '33vw';
-const navbarClosedWidthMedium = '80px';
-const navbarOpenedWidthSmall = '75vw';
-const navbarClosedWidthSmall = '80px';
 const redwallColor = "#E20613";
 
 const defaultTheme = {
@@ -72,14 +66,14 @@ const VerticalNavbarStyled = styled.div`
         '40vw' :
         '0'
       };
-  };
+  }
   @media (max-width: 414px) {
     width: ${
       props =>
         props.currentMode === MODES.partiallyShown ?
         '85px' :
         props.currentMode === MODES.totallyShown ?
-        '80vw' :
+        '200vw' :
         '0px'
     };
   }
@@ -102,25 +96,49 @@ export const NavbarContainer = styled.div `
 `
 
 export const NavbarTogglerStyled = styled.div `
-  width: 5px;
+  display: inline-block;
+  width: 2px;
   height: 100vh;
-  cursor: pointer;
-  background-color: ${redwallColor}
+  background-color: ${redwallColor};
+  opacity: ${props => props.currentMode === MODES.hidden ? .9 : 0};
+  margin-left: 3px;
+  transition: opacity .3s .8s ease-out;
 `
 
 export const NavbarTogglerContainer = styled.div`
-  width: 50px;
+  position: relative;
+  width: 30px;
+  cursor: pointer;
   background-color: transparent;
-  border: .5px dotted blue;
+  &:hover span, &:hover div {
+    transition: all .3s ease-out;
+    opacity: .9;
+  }
 `
+
+const NavbarTogglerIndicator = styled.span`
+  position: absolute;
+  top: 50%;
+  color: ${props => props.theme.primary};
+  opacity: ${props => props.currentMode === MODES.hidden ? .9 : 0};
+  transform: ${props => props.currentMode === MODES.totallyShown ? 'rotate(180deg)': 'rotate(0deg)'};
+  transition: all .3s .8s ease-out;
+  left: 5px;
+`
+
+NavbarTogglerIndicator.defaultProps = {
+  theme: {
+    primary: redwallColor
+  }
+}
+
+export {NavbarTogglerIndicator}
 
 const NavbarItemStyled = styled.div `
   display: flex;
+  position: relative;
   align-items: center;
-  justify-content: ${props => props.isShown
-  ? 'flex-start'
-  : 'center'};
-  padding: 0.3em 0;
+  justify-content: center;
   min-height: 80px;
   max-height: 80px;
   width: 100%;
@@ -149,15 +167,16 @@ NavbarItemStyled.defaultProps = {
   theme: defaultTheme
 }
 
-export {NavbarItemStyled};
+export {NavbarItemStyled}
+
 export const NavbarItemIconContainer = styled.div `
-  width: ${props => props.isShown
+  width: ${props => props.currentMode === MODES.totallyShown
   ? '30%'
-  : ''};
+  : '100%'};
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: ${props => props.currentMode === MODES.totallyShown ? 'flex-end' : 'center'};
 `
 
 export const NavbarItemTextContainer = styled.div `
@@ -187,6 +206,7 @@ export const NavbarItemSubtitle = styled.h3 `
 
 const NavbarItemBadge = styled.span`
   display: inline-block;
+  position: absolute;
   padding: 2px 7px;
   margin-right: 10%;
   border-radius: 50px;
@@ -197,10 +217,7 @@ const NavbarItemBadge = styled.span`
       props.theme.navbar.notification.bgColor
   };
   color: white;
-  ${
-    props=>
-      !props.isShown && 'position: relative; left: -15%; top: -8px;'
-    }
+  right: 0;
 `
 
 NavbarItemBadge.defaultProps = {
@@ -224,12 +241,9 @@ export const NavbarHeaderItem = styled.header `
 const NavbarHeaderItemImage = styled.img `
   width: ${
     props =>
-    (props.theme.navbar.header.imgSize === 'md' && props.isShown && '70%') ||
-    (props.theme.navbar.header.imgSize === 'md' && !props.isShown && '55%') ||
-    (props.theme.navbar.header.imgSize === 'sm' && props.isShown && '50%') ||
-    (props.theme.navbar.header.imgSize === 'sm' && !props.isShown && '35%') ||
-    (props.theme.navbar.header.imgSize === 'lg' && props.isShown && '90%') ||
-    (props.theme.navbar.header.imgSize === 'lg' && props.isShown && '75%')
+    (props.theme.navbar.header.imgSize === 'md'&& '70%') ||
+    (props.theme.navbar.header.imgSize === 'sm' && '50%') ||
+    (props.theme.navbar.header.imgSize === 'lg' && '90%')
     }
 `
 
@@ -267,7 +281,7 @@ NavbarHeaderItemSubtitle.defaultProps = {
 export {NavbarHeaderItemSubtitle}
 
 export const Content = styled.div `
-  overflow-y: auto;
-  max-height: 99.5vh;
-  width: auto;
+  overflow: auto;
+  max-height: 99vh;
+  padding-top: 20px;
 `

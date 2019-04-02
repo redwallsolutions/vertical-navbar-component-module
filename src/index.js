@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from "react-dom";
 
 import VerticalNavbar from './lib/VerticalNavbar';
-import { GlobalStyle, DefaultFont } from './lib/Style';
+import { GlobalStyle } from './lib/Style';
 
 import { MdDashboard, MdTune, Md3dRotation, } from 'react-icons/md';
 
@@ -36,6 +36,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <GlobalStyle/>
         <VerticalNavbar items={items} getVerticalNavbarController={this.setVerticalNavbarController}>
           Lorem ipsum
         </VerticalNavbar>

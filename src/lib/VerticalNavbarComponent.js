@@ -38,6 +38,10 @@ class VerticalNavbarComponent extends Component {
     currentMode: MODES.partiallyShown
   }
 
+  isCurrentModeTotallyShown = () => {
+    return this.state.currentMode === MODES.totallyShown
+  }
+
   toggleNavbar = () => {
     let newMode = undefined;
     if(this.state.currentMode !== MODES.hidden){
@@ -117,12 +121,14 @@ class VerticalNavbarComponent extends Component {
     const { logoImg, logoImgSmall, subtitle } = headerItem;
     const {currentMode} = this.state
     const isTotallyShown =  currentMode === MODES.totallyShown
-    const isPartiallyShown = currentMode === MODES.partiallyShown
     return (
       <React.Fragment>
         <NavbarHeaderItem currentMode={currentMode}>
           <NavbarHeaderItemImage src={
-            isTotallyShown ? logoImg : logoImgSmall} alt={subtitle}/>
+            isTotallyShown ?
+            logoImg :
+            logoImgSmall
+          } alt={subtitle} currentMode={currentMode}/>
           {isTotallyShown && <NavbarHeaderItemSubtitle title={subtitle}>
             {subtitle}
           </NavbarHeaderItemSubtitle>}
@@ -140,8 +146,8 @@ class VerticalNavbarComponent extends Component {
           {item.icon}
         </NavbarItemIconContainer>
         {
-          this.state.isShown
-            ? <NavbarItemTextContainer>
+          this.isCurrentModeTotallyShown() ?
+            <NavbarItemTextContainer>
               <NavbarItemTitle title={item.title}>
                 {item.title}
               </NavbarItemTitle>
@@ -149,13 +155,14 @@ class VerticalNavbarComponent extends Component {
                 {item.subTitle}
               </NavbarItemSubtitle>
             </NavbarItemTextContainer>
-            : ''
+            : null
         }
       </NavbarItem>
     ));
   }
 
   render() {
+    const {currentMode} = this.state
     return (
       <React.Fragment>
         <NavbarContainer className='vertical-navbar'>
@@ -163,11 +170,9 @@ class VerticalNavbarComponent extends Component {
             {this.buildNavbarHeaderItem()}
             {this.buildNavbarItems()}
           </VerticalNavbarStyled>
-          <NavbarToggler onClick={this.sequentiallyToggle} onSwipeLeft={this.onSwipeLeft} onSwipeRight={this.onSwipeRight} {...this.state}/>
-          <Content>
-            <div style={{padding: '10px'}}>
-              {this.props.children}
-            </div>
+          <NavbarToggler onClick={this.sequentiallyToggle} onSwipeLeft={this.onSwipeLeft} onSwipeRight={this.onSwipeRight} currentMode={currentMode}/>
+          <Content currentMode={currentMode}>
+            {this.props.children}
           </Content>
         </NavbarContainer>
       </React.Fragment>

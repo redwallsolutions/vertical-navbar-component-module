@@ -39,12 +39,12 @@ function (_PureComponent) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          isShown = _this$props.isShown,
+          currentMode = _this$props.currentMode,
           notificationCount = _this$props.notificationCount;
       return React.createElement(NavbarItemStyled, Object.assign({}, this.props, {
         onClick: this.onClick
       }), this.props.children, notificationCount && React.createElement(NavbarItemBadge, {
-        isShown: isShown
+        currentMode: currentMode
       }, notificationCount));
     }
   }]);
