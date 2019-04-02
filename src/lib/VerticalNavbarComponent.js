@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   NavbarContainer,
   VerticalNavbarStyled,
-  NavBarHeaderItem,
+  NavbarHeaderItem,
   NavbarItemTextContainer,
   NavbarItemTitle,
   NavbarItemSubtitle,
@@ -17,21 +17,76 @@ import NavbarToggler from './NavbarToggler';
 import logoImg from './assets/img/redwall-logo.png';
 import logoImgSmall from './assets/img/redwall-logo-small.png';
 
+export const MODES = {
+  hidden: 1,
+  partiallyShown: 2,
+  totallyShown: 3
+}
+
 class VerticalNavbarComponent extends Component {
 
+  constructor(props) {
+    super(props);
+    this.previousMode = MODES.hidden
+  }
   componentDidMount() {
     this.props.getVerticalNavbarController(this.exposeVerticalNavbarController());
   }
 
   state = {
     activeItem: -1,
-    isShown: true
+    currentMode: MODES.partiallyShown
   }
 
   toggleNavbar = () => {
+    let newMode = undefined;
+    if(this.state.currentMode !== MODES.hidden){
+      newMode = MODES.hidden
+      this.previousMode = this.state.currentMode
+    } else {
+      newMode = this.previousMode
+    }
     this.setState({
-      isShown: !this.state.isShown
+      currentMode: newMode
+    })
+  }
+
+  sequentiallyToggle = () => {
+    const {currentMode} = this.state
+    let newMode = currentMode
+    if(currentMode === MODES.hidden) newMode = MODES.partiallyShown
+    else if(currentMode === MODES.partiallyShown) newMode = MODES.totallyShown
+    else if(currentMode === MODES.totallyShown) newMode = MODES.hidden
+
+    this.setState({
+      currentMode: newMode
     });
+  }
+
+  changeMode = (newMode) => {
+    this.setState({
+      currentMode:newMode
+    });
+  }
+
+  hide = () => {
+    this.changeMode(MODES.hidden)
+  }
+
+  showPartially = () => {
+    this.changeMode(MODES.partiallyShown)
+  }
+
+  showTotally = () => {
+    this.changeMode(MODES.totallyShown)
+  }
+
+  onSwipeLeft = () => {
+    this.changeMode(MODES.hidden)
+  }
+
+  onSwipeRight = () => {
+    this.changeMode(MODES.totallyShown)
   }
 
   onClickItem = (item) => {
@@ -60,16 +115,18 @@ class VerticalNavbarComponent extends Component {
   buildNavbarHeaderItem = () => {
     const { headerItem } = this.props;
     const { logoImg, logoImgSmall, subtitle } = headerItem;
-    const { isShown } = this.state
+    const {currentMode} = this.state
+    const isTotallyShown =  currentMode === MODES.totallyShown
+    const isPartiallyShown = currentMode === MODES.partiallyShown
     return (
       <React.Fragment>
-        <NavBarHeaderItem isShown={isShown}>
+        <NavbarHeaderItem currentMode={currentMode}>
           <NavbarHeaderItemImage src={
-            isShown ? logoImg : logoImgSmall} alt={subtitle}/>
-          {isShown && <NavbarHeaderItemSubtitle title={subtitle}>
+            isTotallyShown ? logoImg : logoImgSmall} alt={subtitle}/>
+          {isTotallyShown && <NavbarHeaderItemSubtitle title={subtitle}>
             {subtitle}
           </NavbarHeaderItemSubtitle>}
-        </NavBarHeaderItem>
+        </NavbarHeaderItem>
       </React.Fragment>
     );
   }
@@ -106,9 +163,9 @@ class VerticalNavbarComponent extends Component {
             {this.buildNavbarHeaderItem()}
             {this.buildNavbarItems()}
           </VerticalNavbarStyled>
-          <NavbarToggler onClick={this.toggleNavbar} {...this.state}/>
+          <NavbarToggler onClick={this.sequentiallyToggle} onSwipeLeft={this.onSwipeLeft} onSwipeRight={this.onSwipeRight} {...this.state}/>
           <Content>
-            <div style={{padding: '10px', paddingTop: '20px'}}>
+            <div style={{padding: '10px'}}>
               {this.props.children}
             </div>
           </Content>

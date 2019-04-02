@@ -1,6 +1,6 @@
 {
   "name": "vertical-navbar-component-module",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -29,6 +29,7 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "react-easy-swipe": "^0.0.17",
     "react-icons": "^3.3.0",
     "styled-components": "^4.1.3"
   }

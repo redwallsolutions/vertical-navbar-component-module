@@ -1,4 +1,5 @@
 import styled, {createGlobalStyle} from 'styled-components';
+import { MODES } from './VerticalNavbarComponent';
 
 const navbarOpenedWidthLarge = '25vw';
 const navbarClosedWidthLarge = '90px';
@@ -9,6 +10,7 @@ const navbarClosedWidthSmall = '80px';
 const redwallColor = "#E20613";
 
 const defaultTheme = {
+  primary: redwallColor,
   navbar: {
     defaultColor: "rgb(145, 145, 145)",
     bg: "#fff",
@@ -47,33 +49,39 @@ export const DefaultFont = createGlobalStyle `
   }
 `
 
-const VerticalNavbarStyled = styled.div `
+const VerticalNavbarStyled = styled.div`
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 43px 0 rgba(0,0,0,.02);
   background: ${props => props.theme.navbar.bg};
   height: 100vh;
-  transition: width 0.4s cubic-bezier(.86,.47,0,1), min-width 0.4s cubic-bezier(.86,.47,0,1);
-  width: ${props => props.isShown
-  ? navbarOpenedWidthLarge
-  : navbarClosedWidthLarge}
-  min-width: ${props => props.isShown
-  ? navbarOpenedWidthLarge
-  : navbarClosedWidthLarge}
+  transition: width 0.4s cubic-bezier(.86,.47,0,1);
+  width: ${
+    props =>
+      props.currentMode === MODES.partiallyShown ?
+        '90px' :
+        props.currentMode === MODES.totallyShown ?
+          '25vw' :
+          '0px'
+  };
   overflow: hidden;
   @media (max-width: 768px) {
-    width: ${props => props.isShown
-      ? navbarOpenedWidthMedium
-      : navbarClosedWidthMedium}
-    min-width: ${props => props.isShown
-      ? navbarOpenedWidthMedium
-      : navbarClosedWidthMedium}
-  }
+    width: ${
+      props =>
+       props.currentMode === MODES.partiallyShown ?
+       '85px' :
+       props.currentMode === MODES.totallyShown ?
+        '40vw' :
+        '0'
+      };
+  };
   @media (max-width: 414px) {
-    width: ${props => props.isShown
-      ? navbarOpenedWidthSmall
-      : navbarClosedWidthSmall}
-    min-width: ${props => props.isShown
-      ? navbarOpenedWidthSmall
-      : navbarClosedWidthSmall}
+    width: ${
+      props =>
+        props.currentMode === MODES.partiallyShown ?
+        '85px' :
+        props.currentMode === MODES.totallyShown ?
+        '80vw' :
+        '0px'
+    };
   }
 `
 
@@ -94,53 +102,16 @@ export const NavbarContainer = styled.div `
 `
 
 export const NavbarTogglerStyled = styled.div `
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
+  width: 5px;
+  height: 100vh;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:center;
-  background-color: white;
-  box-shadow: 0 10px 25px -2px rgba(0,0,0,0.1);
-  transform-origin: left center;
-  transition: transform .3s, box-shadow .3s;
-  .top {
-    transform: ${props => props.isShown
-  ? 'translateX(5.5px) rotate(45deg)'
-  : 'rotate(0)'};
-    width: 50%;
-    margin: ${props => props.isShown && '1.6px'};
-  }
-  .middle {
-    opacity: ${props => props.isShown
-    ? 0
-    : 1}
-  }
-  .bottom {
-    transform: ${props => props.isShown
-      ? 'translateX(5.5px) rotate(-45deg)'
-      : 'rotate(0)'};
-    width: 50%;
-    margin: ${props => props.isShown && '1.6px'};
-  }
-
-  &:hover{
-    box-shadow: -5px 5px 25px -2px rgba(0,0,0,0.1);
-    transform: perspective(20em) ${props => props.isShown
-        ? 'rotateY(-25deg)'
-        : 'rotateY(18deg)'};
-  }
+  background-color: ${redwallColor}
 `
 
-export const HumbBar = styled.div `
-  width: 63%;
-  height: 5px;
-  margin: 4px 0;
-  background-color: rgba(84, 84, 84, 0.77);
-  transition: transform 0.2s;
-  transform-origin: left center;
+export const NavbarTogglerContainer = styled.div`
+  width: 50px;
+  background-color: transparent;
+  border: .5px dotted blue;
 `
 
 const NavbarItemStyled = styled.div `
@@ -237,16 +208,16 @@ NavbarItemBadge.defaultProps = {
 }
 
 export {NavbarItemBadge};
-export const NavBarHeaderItem = styled.header `
+export const NavbarHeaderItem = styled.header `
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: '100%';
-  height: ${props => props.isShown ? '30vh': '20vh'}
-  max-height: '30vh';
-  transition height .2s ease-in-out .3s;
-  min-height: '75px';
+  width: 100%;
+  height: ${props => props.currentMode === MODES.totallyShown ? '30vh': '20vh'};
+  max-height: 30vh;
+  transition: height .2s ease-in-out .3s;
+  min-height: 75px;
   cursor: pointer;
 `
 
@@ -298,5 +269,5 @@ export {NavbarHeaderItemSubtitle}
 export const Content = styled.div `
   overflow-y: auto;
   max-height: 99.5vh;
-  width: 100%;
+  width: auto;
 `

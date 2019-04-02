@@ -1,22 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { NavbarTogglerStyled, HumbBar } from './Style';
+import { NavbarTogglerStyled, NavbarTogglerContainer } from './Style';
+import Swipe from 'react-easy-swipe';
 
 class NavbarToggler extends PureComponent {
 
-  buildHumbBars = () => {
-    const humbClasses = ['top', 'middle', 'bottom'];
-    return humbClasses.map(humbClass => (
-      <HumbBar className={humbClass} key={humbClass}/>
-    ));
-  }
-
   render() {
-    const {onClick, ...rest} = this.props;
+    const {onSwipeLeft, onSwipeRight, onClick} = this.props
     return (
-      <NavbarTogglerStyled onClick={onClick} {...rest}>
-        {this.buildHumbBars()}
-      </NavbarTogglerStyled>
+      <Swipe onSwipeRight={onSwipeRight} onSwipeLeft={onSwipeLeft}>
+        <NavbarTogglerContainer onClick={onClick}>
+          <NavbarTogglerStyled />
+        </NavbarTogglerContainer>
+      </Swipe>
     );
   }
 

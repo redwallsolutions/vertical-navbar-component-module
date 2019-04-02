@@ -37,6 +37,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <VerticalNavbar items={items} getVerticalNavbarController={this.setVerticalNavbarController}>
+          Lorem ipsum
         </VerticalNavbar>
       </React.Fragment>
     )
