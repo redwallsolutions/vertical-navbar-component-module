@@ -297,6 +297,6 @@ export {NavbarHeaderItemSubtitle}
 
 export const Content = styled.div `
   overflow-y: auto;
-  max-height: calc(100vh - 30px);
+  max-height: 99.5vh;
   width: 100%;
 `

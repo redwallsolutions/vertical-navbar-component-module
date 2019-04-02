@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   NavbarContainer,
@@ -39,15 +39,15 @@ class VerticalNavbarComponent extends Component {
       activeItem: item.id
     });
 
-    if(item.onClick){
-      const {onClick, ...rest} = item;
+    if (item.onClick) {
+      const { onClick, ...rest } = item;
       onClick(rest);
     }
   }
 
   setItem = (itemIndex) => {
     this.setState({
-      activeItem:itemIndex
+      activeItem: itemIndex
     })
   }
 
@@ -58,65 +58,71 @@ class VerticalNavbarComponent extends Component {
 
 
   buildNavbarHeaderItem = () => {
-    const {headerItem} = this.props;
-    const {logoImg, logoImgSmall, subtitle} = headerItem;
-    const {isShown} = this.state
-    return (<React.Fragment>
-      <NavBarHeaderItem isShown={isShown}>
-        <NavbarHeaderItemImage src={
-          isShown ? logoImg : logoImgSmall} alt={subtitle}/>
-        {isShown && <NavbarHeaderItemSubtitle title={subtitle}>
-          {subtitle}
-        </NavbarHeaderItemSubtitle>}
-      </NavBarHeaderItem>
-    </React.Fragment>);
+    const { headerItem } = this.props;
+    const { logoImg, logoImgSmall, subtitle } = headerItem;
+    const { isShown } = this.state
+    return (
+      <React.Fragment>
+        <NavBarHeaderItem isShown={isShown}>
+          <NavbarHeaderItemImage src={
+            isShown ? logoImg : logoImgSmall} alt={subtitle}/>
+          {isShown && <NavbarHeaderItemSubtitle title={subtitle}>
+            {subtitle}
+          </NavbarHeaderItemSubtitle>}
+        </NavBarHeaderItem>
+      </React.Fragment>
+    );
   }
 
   buildNavbarItems = () => {
-    const {items} = this.props;
-    const {activeItem, ...rest} = this.state;
-    return items.map((item, index) => (<NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem} notificationCount={item.notificationCount}>
-      <NavbarItemIconContainer {...this.state}>
-        {item.icon}
-      </NavbarItemIconContainer>
-      {
-        this.state.isShown
-          ? <NavbarItemTextContainer>
-            <NavbarItemTitle title={item.title}>
-              {item.title}
-            </NavbarItemTitle>
-            <NavbarItemSubtitle title={item.subTitle}>
-              {item.subTitle}
-            </NavbarItemSubtitle>
-          </NavbarItemTextContainer>
-          : ''
-      }
-    </NavbarItem>));
+    const { items } = this.props;
+    const { activeItem, ...rest } = this.state;
+    return items.map((item, index) => (
+      <NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem} notificationCount={item.notificationCount}>
+        <NavbarItemIconContainer {...this.state}>
+          {item.icon}
+        </NavbarItemIconContainer>
+        {
+          this.state.isShown
+            ? <NavbarItemTextContainer>
+              <NavbarItemTitle title={item.title}>
+                {item.title}
+              </NavbarItemTitle>
+              <NavbarItemSubtitle title={item.subTitle}>
+                {item.subTitle}
+              </NavbarItemSubtitle>
+            </NavbarItemTextContainer>
+            : ''
+        }
+      </NavbarItem>
+    ));
   }
 
   render() {
-    return (<React.Fragment>
-      <NavbarContainer className='vertical-navbar'>
-        <VerticalNavbarStyled {...this.state}>
-          {this.buildNavbarHeaderItem()}
-          {this.buildNavbarItems()}
-        </VerticalNavbarStyled>
-        <NavbarToggler onClick={this.toggleNavbar} {...this.state}/>
-        <Content>
-          <div style={{padding: '10px', paddingTop: '20px'}}>
-            {this.props.children}
-          </div>
-        </Content>
-      </NavbarContainer>
-    </React.Fragment>);
+    return (
+      <React.Fragment>
+        <NavbarContainer className='vertical-navbar'>
+          <VerticalNavbarStyled {...this.state}>
+            {this.buildNavbarHeaderItem()}
+            {this.buildNavbarItems()}
+          </VerticalNavbarStyled>
+          <NavbarToggler onClick={this.toggleNavbar} {...this.state}/>
+          <Content>
+            <div style={{padding: '10px', paddingTop: '20px'}}>
+              {this.props.children}
+            </div>
+          </Content>
+        </NavbarContainer>
+      </React.Fragment>
+    );
   }
 
 }
 
 VerticalNavbarComponent.propTypes = {
   isShown: PropTypes.bool,
-  headerItem: PropTypes.shape({logoImg: PropTypes.string, logoImgSmall: PropTypes.string}),
-  items: PropTypes.arrayOf(PropTypes.shape({icon: PropTypes.element, title: PropTypes.string, subTitle: PropTypes.string}))
+  headerItem: PropTypes.shape({ logoImg: PropTypes.string, logoImgSmall: PropTypes.string }),
+  items: PropTypes.arrayOf(PropTypes.shape({ icon: PropTypes.element, title: PropTypes.string, subTitle: PropTypes.string }))
 }
 
 VerticalNavbarComponent.defaultProps = {
