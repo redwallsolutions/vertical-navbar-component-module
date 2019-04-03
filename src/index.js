@@ -6,6 +6,8 @@ import { GlobalStyle } from './lib/Style';
 
 import { MdDashboard, MdTune, Md3dRotation, } from 'react-icons/md';
 
+import DashPage from 'dash-page-component-module';
+
 const items = [{
   icon: <MdDashboard size='1.9em'/>,
   title: 'Visão Geral',
@@ -38,7 +40,13 @@ class App extends React.Component {
       <React.Fragment>
         <GlobalStyle/>
         <VerticalNavbar items={items} getVerticalNavbarController={this.setVerticalNavbarController}>
-          Lorem ipsum
+          <DashPage>
+            <React.Fragment>
+              <div style={{height: '100vh'}}>OI</div>
+              <div style={{height: '100vh'}}>OI</div>
+              <div style={{height: '100vh'}}>OI</div>
+            </React.Fragment>
+          </DashPage>
         </VerticalNavbar>
       </React.Fragment>
     )

@@ -1,6 +1,6 @@
 {
   "name": "vertical-navbar-component-module",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -17,6 +17,7 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-react": "^7.0.0",
+    "dash-page-component-module": "https://4c4f37bb6657744cab12a1d1c42e40ef1252aa1c:x-oauth-basic@github.com/redwallsolutions/dash-page-component-module.git",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-scripts": "^2.1.3",

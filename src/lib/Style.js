@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from 'styled-components';
+import styled, {createGlobalStyle, css} from 'styled-components';
 import { MODES } from './VerticalNavbarComponent';
 
 const redwallColor = "#E20613";
@@ -41,42 +41,34 @@ export const DefaultFont = createGlobalStyle `
   .vertical-navbar {
     background: #F7F8FC;
   }
+  .vertical-navbar * {
+    padding: 0;
+    margin: 0;
+  }
+`
+
+const applyToNavbarWhenTottalyShown = css`
+  min-width: 25vw;
+  @media (max-width: 768px){
+    min-width: 40vw;
+  }
+  @media (max-width: 414px){
+    min-width: 85vw;
+  }
+`
+const applyToNavbarWhenPartiallyShown = css `
+  min-width: 80px;
 `
 
 const VerticalNavbarStyled = styled.div`
-  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 43px 0 rgba(0,0,0,.02);
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.08);
   background: ${props => props.theme.navbar.bg};
-  height: 100vh;
-  transition: width 0.4s cubic-bezier(.86,.47,0,1);
-  width: ${
-    props =>
-      props.currentMode === MODES.partiallyShown ?
-        '90px' :
-        props.currentMode === MODES.totallyShown ?
-          '25vw' :
-          '0px'
-  };
   overflow: hidden;
-  @media (max-width: 768px) {
-    width: ${
-      props =>
-       props.currentMode === MODES.partiallyShown ?
-       '85px' :
-       props.currentMode === MODES.totallyShown ?
-        '40vw' :
-        '0'
-      };
-  }
-  @media (max-width: 414px) {
-    width: ${
-      props =>
-        props.currentMode === MODES.partiallyShown ?
-        '85px' :
-        props.currentMode === MODES.totallyShown ?
-        '200vw' :
-        '0px'
-    };
-  }
+  min-width: 0;
+  width: 0;
+  transition: min-width .4s cubic-bezier(.86,.47,0,1);
+  ${props => props.currentMode === MODES.totallyShown && applyToNavbarWhenTottalyShown}
+  ${props => props.currentMode === MODES.partiallyShown && applyToNavbarWhenPartiallyShown}
 `
 
 VerticalNavbarStyled.defaultProps = {
@@ -90,15 +82,14 @@ VerticalNavbarStyled.defaultProps = {
 export {VerticalNavbarStyled};
 
 export const NavbarContainer = styled.div `
-  padding: 0px;
-  margin: 0px;
   display: flex;
+  width: 100vw;
+  height: 100vh;
 `
 
-export const NavbarTogglerStyled = styled.div `
-  display: inline-block;
+export const NavbarTogglerStyled = styled.div`
   width: 2px;
-  height: 100vh;
+  height: inherit;
   background-color: ${redwallColor};
   opacity: ${props => props.currentMode === MODES.hidden ? .9 : 0};
   margin-left: 3px;
@@ -108,6 +99,7 @@ export const NavbarTogglerStyled = styled.div `
 export const NavbarTogglerContainer = styled.div`
   position: relative;
   width: 30px;
+  height: 100%;
   cursor: pointer;
   background-color: transparent;
   &:hover span, &:hover div {
@@ -281,7 +273,7 @@ NavbarHeaderItemSubtitle.defaultProps = {
 export {NavbarHeaderItemSubtitle}
 
 export const Content = styled.div `
-  overflow: auto;
-  max-height: 99vh;
-  padding-top: 20px;
+  overflow-y: auto;
+  max-height: 100vh;
+  width: 100%;
 `
