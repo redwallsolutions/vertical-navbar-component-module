@@ -276,5 +276,5 @@ export const Content = styled.div `
   overflow-y: auto;
   max-height: 100vh;
   width: 99%;
-  padding: 5px 8px 0px 0px;
+  padding: 10px;
 `

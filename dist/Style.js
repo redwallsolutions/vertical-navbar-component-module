@@ -1,7 +1,7 @@
 import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
 function _templateObject19() {
-  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: 100vh;\n  width: 99%;\n  padding: 5px 8px 0px 0px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: 100vh;\n  width: 99%;\n  padding: 10px;\n"]);
 
   _templateObject19 = function _templateObject19() {
     return data;
