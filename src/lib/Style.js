@@ -275,5 +275,6 @@ export {NavbarHeaderItemSubtitle}
 export const Content = styled.div `
   overflow-y: auto;
   max-height: 100vh;
-  width: 100%;
+  width: 99%;
+  padding: 5px 8px 0px 0px;
 `
