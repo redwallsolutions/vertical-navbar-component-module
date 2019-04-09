@@ -19,8 +19,6 @@ export const DefaultFont = createGlobalStyle `
   }
   .vertical-navbar {
     background: #F7F8FC;
-  }
-  .vertical-navbar * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;

@@ -171,7 +171,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar {\n    font-family: 'Quicksand', cursive;\n  }\n  .vertical-navbar {\n    background: #F7F8FC;\n  }\n  .vertical-navbar * {\n    padding: 0;\n    margin: 0;\n    box-sizing: border-box;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar {\n    font-family: 'Quicksand', cursive;\n  }\n  .vertical-navbar {\n    background: #F7F8FC;\n    padding: 0;\n    margin: 0;\n    box-sizing: border-box;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
