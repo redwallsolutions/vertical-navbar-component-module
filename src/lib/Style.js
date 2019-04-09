@@ -1,37 +1,16 @@
 import styled, {createGlobalStyle, css} from 'styled-components';
 import { MODES } from './VerticalNavbarComponent';
+import Color from 'color';
+import Theming from 'theming-component-module';
 
-const redwallColor = "#E20613";
+const theming = Theming.createThemeWithAppearance();
 
-const defaultTheme = {
-  primary: redwallColor,
-  navbar: {
-    defaultColor: "rgb(145, 145, 145)",
-    bg: "#fff",
-    header: {
-      imgSize: "md",
-      subtitleColor: undefined
-    },
-    item: {
-      bg: "transparent",
-      bgHover: "linear-gradient(45deg, rgba(147, 147, 147, 0.12), rgb(255, 233, 233))",
-      markerColor: redwallColor,
-      titleColor: "rgb(66, 66, 66)",
-      activeTitleColor: redwallColor
-    },
-    notification: {
-      bgColor: redwallColor
-    }
+const defaultProps = {
+  appearance: 'primary',
+  theme: {
+    mode: 'light'
   }
 }
-
-export const GlobalStyle = createGlobalStyle `
-  body {
-    padding:0;
-    margin:0;
-    background-color: #F7F8FC;
-  }
-`
 
 export const DefaultFont = createGlobalStyle `
   @import url("https://fonts.googleapis.com/css?family=Quicksand");
@@ -44,6 +23,7 @@ export const DefaultFont = createGlobalStyle `
   .vertical-navbar * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
   }
 `
 
@@ -62,7 +42,7 @@ const applyToNavbarWhenPartiallyShown = css `
 
 const VerticalNavbarStyled = styled.div`
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.08);
-  background: ${props => props.theme.navbar.bg};
+  background: white;
   overflow: hidden;
   min-width: 0;
   width: 0;
@@ -71,13 +51,7 @@ const VerticalNavbarStyled = styled.div`
   ${props => props.currentMode === MODES.partiallyShown && applyToNavbarWhenPartiallyShown}
 `
 
-VerticalNavbarStyled.defaultProps = {
-  theme: {
-    navbar: {
-      bg: '#fff'
-    }
-  }
-}
+VerticalNavbarStyled.defaultProps = defaultProps
 
 export {VerticalNavbarStyled};
 
@@ -87,14 +61,18 @@ export const NavbarContainer = styled.div `
   height: 100vh;
 `
 
-export const NavbarTogglerStyled = styled.div`
+const NavbarTogglerStyled = styled.div`
   width: 2px;
   height: inherit;
-  background-color: ${redwallColor};
-  opacity: ${props => props.currentMode === MODES.hidden ? .9 : 0};
+  background-color: ${props => theming(props).color};
+  opacity: ${props => props.currentMode === MODES.hidden ? .7 : 0};
   margin-left: 3px;
   transition: opacity .3s .8s ease-out;
 `
+
+NavbarTogglerStyled.defaultProps = defaultProps;
+
+export {NavbarTogglerStyled}
 
 export const NavbarTogglerContainer = styled.div`
   position: relative;
@@ -111,18 +89,14 @@ export const NavbarTogglerContainer = styled.div`
 const NavbarTogglerIndicator = styled.span`
   position: absolute;
   top: 50%;
-  color: ${props => props.theme.primary};
-  opacity: ${props => props.currentMode === MODES.hidden ? .9 : 0};
+  color: ${props => theming(props).color};
+  opacity: ${props => props.currentMode === MODES.hidden ? .7 : 0};
   transform: ${props => props.currentMode === MODES.totallyShown ? 'rotate(180deg)': 'rotate(0deg)'};
   transition: all .3s .8s ease-out;
   left: 5px;
 `
 
-NavbarTogglerIndicator.defaultProps = {
-  theme: {
-    primary: redwallColor
-  }
-}
+NavbarTogglerIndicator.defaultProps = defaultProps
 
 export {NavbarTogglerIndicator}
 
@@ -136,28 +110,27 @@ const NavbarItemStyled = styled.div `
   width: 100%;
   color: ${
     props =>
-      (props.isActive && (props.theme.navbar.item.activeTitleColor || props.theme.navbar.item.defaultColor)) ||
-      props.theme.navbar.item.titleColor
+      props.isActive ?
+        theming(props).color :
+        Color(theming(props).contrast(props)).darken(.7).string()
   };
-  background: ${props=>props.theme.navbar.item.bg}
   cursor: pointer;
-  border-left: ${props=>props.isActive ? '4px' : 0} solid ${props=> props.isActive ? props.theme.navbar.item.markerColor : "transparent"}
-  transition: border-left .2s ease-out, color .2s;
+  border-left-style: solid;
+  border-left-width: 4px;
+  border-left-color: ${props => props.isActive ? theming(props).color : 'transparent'};
+  transition: all .2s ease-in-out;
   &:hover {
-    border-left: 4px solid ${props=>props.theme.navbar.item.markerColor}
+    border-left-color: ${props => theming(props).color};
   }
   &:focus {
-    border-left: 4px solid ${props=>props.theme.navbar.item.markerColor}
+    border-left-color: ${props => theming(props).color};
   }
   &:active {
-    border-left: 8px solid ${props=>props.theme.navbar.item.markerColor}
-    color: rgb(47, 47, 47);
+    color: ${props => Color(theming(props).color(props)).lighten(.6).string()};
   }
 `
 
-NavbarItemStyled.defaultProps = {
-  theme: defaultTheme
-}
+NavbarItemStyled.defaultProps = defaultProps
 
 export {NavbarItemStyled}
 
@@ -204,17 +177,12 @@ const NavbarItemBadge = styled.span`
   border-radius: 50px;
   font-size: 12px;
   box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
-  background-color: ${
-    props =>
-      props.theme.navbar.notification.bgColor
-  };
-  color: white;
+  background-color: ${props => theming(props).color};
+  color: ${props => theming(props).contrast};
   right: 0;
 `
 
-NavbarItemBadge.defaultProps = {
-  theme: defaultTheme
-}
+NavbarItemBadge.defaultProps = defaultProps
 
 export {NavbarItemBadge};
 export const NavbarHeaderItem = styled.header `
@@ -231,33 +199,16 @@ export const NavbarHeaderItem = styled.header `
 `
 
 const NavbarHeaderItemImage = styled.img `
-  width: ${
-    props =>
-    (props.theme.navbar.header.imgSize === 'md'&& '70%') ||
-    (props.theme.navbar.header.imgSize === 'sm' && '50%') ||
-    (props.theme.navbar.header.imgSize === 'lg' && '90%')
-    }
+  width: 70%;
 `
 
-NavbarHeaderItemImage.defaultProps = {
-  theme: defaultTheme
-}
+NavbarHeaderItemImage.defaultProps = defaultProps
 
 export {NavbarHeaderItemImage}
 
 const NavbarHeaderItemSubtitle = styled.h4`
-  color: ${
-    props =>
-      props.theme.navbar.header.subtitleColor ||
-      props.theme.navbar.defaultColor
-  };
-  width: ${
-    props =>
-      (props.theme.navbar.header.imgSize === 'md' && '70%') ||
-      (props.theme.navbar.header.imgSize === 'sm' && '50%') ||
-      (props.theme.navbar.header.imgSize === 'lg' && '90%')
-    }
-  }
+  color: ${props => Color(theming(props).color(props)).fade(.7).string()};
+  width: $70%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -266,9 +217,7 @@ const NavbarHeaderItemSubtitle = styled.h4`
   margin:15px 0 0 0;
 `
 
-NavbarHeaderItemSubtitle.defaultProps = {
-  theme: defaultTheme
-}
+NavbarHeaderItemSubtitle.defaultProps = defaultProps
 
 export {NavbarHeaderItemSubtitle}
 

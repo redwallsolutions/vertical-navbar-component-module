@@ -2,11 +2,16 @@ import React from 'react';
 import { render } from "react-dom";
 
 import VerticalNavbar from './lib/VerticalNavbar';
-import { GlobalStyle } from './lib/Style';
-
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { MdDashboard, MdTune, Md3dRotation, } from 'react-icons/md';
-
 import DashPage from 'dash-page-component-module';
+
+const ResetCSS = createGlobalStyle`
+  body {
+    padding: 0;
+    margin: 0;
+  }
+`
 
 const items = [{
   icon: <MdDashboard size='1.9em'/>,
@@ -37,18 +42,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <GlobalStyle/>
-        <VerticalNavbar items={items} getVerticalNavbarController={this.setVerticalNavbarController}>
-          <DashPage>
-            <React.Fragment>
-              <div style={{height: '100vh'}}>OI</div>
-              <div style={{height: '100vh'}}>OI</div>
-              <div style={{height: '100vh'}}>OI</div>
-            </React.Fragment>
-          </DashPage>
-        </VerticalNavbar>
-      </React.Fragment>
+      <ThemeProvider theme={{mode:'light'}}>
+        <React.Fragment>
+          <ResetCSS/>
+          <VerticalNavbar items={items} getVerticalNavbarController={this.setVerticalNavbarController}>
+            <DashPage>
+              <React.Fragment>
+                <div style={{height: '100vh'}}>OI</div>
+                <div style={{height: '100vh'}}>OI</div>
+                <div style={{height: '100vh'}}>OI</div>
+              </React.Fragment>
+            </DashPage>
+          </VerticalNavbar>
+        </React.Fragment>
+      </ThemeProvider>
     )
   }
 }

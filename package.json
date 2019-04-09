@@ -1,6 +1,6 @@
 {
   "name": "vertical-navbar-component-module",
-  "version": "1.7.3",
+  "version": "1.8.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -30,8 +30,11 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "color": "^3.1.0",
+    "color-pallete-component-module": "https://4c4f37bb6657744cab12a1d1c42e40ef1252aa1c:x-oauth-basic@github.com/redwallsolutions/color-pallete-component-module",
     "react-easy-swipe": "^0.0.17",
     "react-icons": "^3.5.0",
-    "styled-components": "^4.1.3"
+    "styled-components": "^4.1.3",
+    "theming-component-module": "https://4c4f37bb6657744cab12a1d1c42e40ef1252aa1c:x-oauth-basic@github.com/redwallsolutions/theming-component-module"
   }
 }
