@@ -74,7 +74,7 @@ export {NavbarTogglerStyled}
 
 export const NavbarTogglerContainer = styled.div`
   position: relative;
-  width: 30px;
+  width: 16px;
   height: 100%;
   cursor: pointer;
   background-color: transparent;
@@ -224,4 +224,5 @@ export const Content = styled.div `
   max-height: 100vh;
   width: 99%;
   padding: 10px;
+  padding-left: 0;
 `
