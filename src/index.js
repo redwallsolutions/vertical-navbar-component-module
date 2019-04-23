@@ -42,7 +42,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <ThemeProvider theme={{mode:'light'}}>
+      <ThemeProvider theme={{mode:'dark', primaryContrastDark: '#2b324c', primaryDark: '#ebebeb' }}>
         <React.Fragment>
           <ResetCSS/>
           <VerticalNavbar items={items} getVerticalNavbarController={this.setVerticalNavbarController}>

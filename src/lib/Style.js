@@ -18,7 +18,6 @@ export const DefaultFont = createGlobalStyle `
     font-family: 'Quicksand', cursive;
   }
   .vertical-navbar {
-    background: #F7F8FC;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -39,31 +38,36 @@ const applyToNavbarWhenPartiallyShown = css `
 `
 
 const VerticalNavbarStyled = styled.div`
-  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.08);
-  background: white;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.06);
+  background: ${props => props.theme.mode === 'light' ? 'white' : theming(props).contrast};
   overflow: hidden;
   min-width: 0;
   width: 0;
   transition: min-width .4s cubic-bezier(.86,.47,0,1);
   ${props => props.currentMode === MODES.totallyShown && applyToNavbarWhenTottalyShown}
   ${props => props.currentMode === MODES.partiallyShown && applyToNavbarWhenPartiallyShown}
+  z-index: 1;
 `
 
 VerticalNavbarStyled.defaultProps = defaultProps
 
 export {VerticalNavbarStyled};
 
-export const NavbarContainer = styled.div `
+const NavbarContainer = styled.div `
   display: flex;
   width: 100vw;
   height: 100vh;
 `
 
+NavbarContainer.defaultProps = defaultProps
+
+export {NavbarContainer}
+
 const NavbarTogglerStyled = styled.div`
   width: 2px;
   height: inherit;
   background-color: ${props => theming(props).color};
-  opacity: ${props => props.currentMode === MODES.hidden ? .7 : 0};
+  opacity: ${props => props.currentMode === MODES.hidden ? .3 : 0};
   margin-left: 3px;
   transition: opacity .3s .8s ease-out;
 `
@@ -72,23 +76,27 @@ NavbarTogglerStyled.defaultProps = defaultProps;
 
 export {NavbarTogglerStyled}
 
-export const NavbarTogglerContainer = styled.div`
+const NavbarTogglerContainer = styled.div`
   position: relative;
   width: 16px;
   height: 100%;
   cursor: pointer;
-  background-color: transparent;
+  background-color: ${props => props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string()};
   &:hover span, &:hover div {
     transition: all .3s ease-out;
-    opacity: .9;
+    opacity: .7;
   }
 `
+
+NavbarTogglerContainer.defaultProps = defaultProps;
+
+export {NavbarTogglerContainer}
 
 const NavbarTogglerIndicator = styled.span`
   position: absolute;
   top: 50%;
   color: ${props => theming(props).color};
-  opacity: ${props => props.currentMode === MODES.hidden ? .7 : 0};
+  opacity: ${props => props.currentMode === MODES.hidden ? .3 : 0};
   transform: ${props => props.currentMode === MODES.totallyShown ? 'rotate(180deg)': 'rotate(0deg)'};
   transition: all .3s .8s ease-out;
   left: 5px;
@@ -110,8 +118,11 @@ const NavbarItemStyled = styled.div `
     props =>
       props.isActive ?
         theming(props).color :
-        Color(theming(props).contrast(props)).darken(.7).string()
+        props.theme.mode === 'light' ?
+          Color(theming(props).color(props)).darken(.7).string() :
+          Color(theming(props).color(props)).darken(.3).string()
   };
+  background: ${props => props.isActive ? props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string() : 'none'};
   cursor: pointer;
   border-left-style: solid;
   border-left-width: 4px;
@@ -219,10 +230,14 @@ NavbarHeaderItemSubtitle.defaultProps = defaultProps
 
 export {NavbarHeaderItemSubtitle}
 
-export const Content = styled.div `
+const Content = styled.div `
   overflow-y: auto;
   max-height: 100vh;
   width: 99%;
   padding: 10px;
   padding-left: 0;
+  background-color: ${props => props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string()};
 `
+Content.defaultProps = defaultProps
+
+export {Content};
