@@ -1,7 +1,7 @@
 import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
 function _templateObject18() {
-  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: 100vh;\n  width: 99%;\n  padding: 10px;\n  padding-left: 0;\n"]);
+  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: 100vh;\n  width: 99%;\n  padding: 10px;\n  padding-left: 0;\n  background-color: ", ";\n"]);
 
   _templateObject18 = function _templateObject18() {
     return data;
@@ -91,7 +91,7 @@ function _templateObject10() {
 }
 
 function _templateObject9() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: relative;\n  align-items: center;\n  justify-content: center;\n  min-height: 80px;\n  max-height: 80px;\n  width: 100%;\n  color: ", ";\n  cursor: pointer;\n  border-left-style: solid;\n  border-left-width: 4px;\n  border-left-color: ", ";\n  transition: all .2s ease-in-out;\n  &:hover {\n    border-left-color: ", ";\n  }\n  &:focus {\n    border-left-color: ", ";\n  }\n  &:active {\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: relative;\n  align-items: center;\n  justify-content: center;\n  min-height: 80px;\n  max-height: 80px;\n  width: 100%;\n  color: ", ";\n  background: ", ";\n  cursor: pointer;\n  border-left-style: solid;\n  border-left-width: 4px;\n  border-left-color: ", ";\n  transition: all .2s ease-in-out;\n  &:hover {\n    border-left-color: ", ";\n  }\n  &:focus {\n    border-left-color: ", ";\n  }\n  &:active {\n    color: ", ";\n  }\n"]);
 
   _templateObject9 = function _templateObject9() {
     return data;
@@ -111,7 +111,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  width: 16px;\n  height: 100%;\n  cursor: pointer;\n  background-color: transparent;\n  &:hover span, &:hover div {\n    transition: all .3s ease-out;\n    opacity: .9;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: relative;\n  width: 16px;\n  height: 100%;\n  cursor: pointer;\n  background-color: ", ";\n  &:hover span, &:hover div {\n    transition: all .3s ease-out;\n    opacity: .7;\n  }\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -141,7 +141,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.08);\n  background: white;\n  overflow: hidden;\n  min-width: 0;\n  width: 0;\n  transition: min-width .4s cubic-bezier(.86,.47,0,1);\n  ", "\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.06);\n  background: ", ";\n  overflow: hidden;\n  min-width: 0;\n  width: 0;\n  transition: min-width .4s cubic-bezier(.86,.47,0,1);\n  ", "\n  ", "\n  z-index: 1;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -171,7 +171,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar {\n    font-family: 'Quicksand', cursive;\n  }\n  .vertical-navbar {\n    background: #F7F8FC;\n    padding: 0;\n    margin: 0;\n    box-sizing: border-box;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar {\n    font-family: 'Quicksand', cursive;\n  }\n  .vertical-navbar {\n    padding: 0;\n    margin: 0;\n    box-sizing: border-box;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -195,32 +195,42 @@ export var DefaultFont = createGlobalStyle(_templateObject());
 var applyToNavbarWhenTottalyShown = css(_templateObject2());
 var applyToNavbarWhenPartiallyShown = css(_templateObject3());
 var VerticalNavbarStyled = styled.div(_templateObject4(), function (props) {
+  return props.theme.mode === 'light' ? 'white' : theming(props).contrast;
+}, function (props) {
   return props.currentMode === MODES.totallyShown && applyToNavbarWhenTottalyShown;
 }, function (props) {
   return props.currentMode === MODES.partiallyShown && applyToNavbarWhenPartiallyShown;
 });
 VerticalNavbarStyled.defaultProps = defaultProps;
 export { VerticalNavbarStyled };
-export var NavbarContainer = styled.div(_templateObject5());
+var NavbarContainer = styled.div(_templateObject5());
+NavbarContainer.defaultProps = defaultProps;
+export { NavbarContainer };
 var NavbarTogglerStyled = styled.div(_templateObject6(), function (props) {
   return theming(props).color;
 }, function (props) {
-  return props.currentMode === MODES.hidden ? .7 : 0;
+  return props.currentMode === MODES.hidden ? .3 : 0;
 });
 NavbarTogglerStyled.defaultProps = defaultProps;
 export { NavbarTogglerStyled };
-export var NavbarTogglerContainer = styled.div(_templateObject7());
+var NavbarTogglerContainer = styled.div(_templateObject7(), function (props) {
+  return props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string();
+});
+NavbarTogglerContainer.defaultProps = defaultProps;
+export { NavbarTogglerContainer };
 var NavbarTogglerIndicator = styled.span(_templateObject8(), function (props) {
   return theming(props).color;
 }, function (props) {
-  return props.currentMode === MODES.hidden ? .7 : 0;
+  return props.currentMode === MODES.hidden ? .3 : 0;
 }, function (props) {
   return props.currentMode === MODES.totallyShown ? 'rotate(180deg)' : 'rotate(0deg)';
 });
 NavbarTogglerIndicator.defaultProps = defaultProps;
 export { NavbarTogglerIndicator };
 var NavbarItemStyled = styled.div(_templateObject9(), function (props) {
-  return props.isActive ? theming(props).color : Color(theming(props).contrast(props)).darken(.7).string();
+  return props.isActive ? theming(props).color : props.theme.mode === 'light' ? Color(theming(props).color(props)).darken(.7).string() : Color(theming(props).color(props)).darken(.3).string();
+}, function (props) {
+  return props.isActive ? props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string() : 'none';
 }, function (props) {
   return props.isActive ? theming(props).color : 'transparent';
 }, function (props) {
@@ -258,4 +268,8 @@ var NavbarHeaderItemSubtitle = styled.h4(_templateObject17(), function (props) {
 });
 NavbarHeaderItemSubtitle.defaultProps = defaultProps;
 export { NavbarHeaderItemSubtitle };
-export var Content = styled.div(_templateObject18());
+var Content = styled.div(_templateObject18(), function (props) {
+  return props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string();
+});
+Content.defaultProps = defaultProps;
+export { Content };
