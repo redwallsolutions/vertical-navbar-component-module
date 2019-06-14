@@ -51,7 +51,7 @@ function _templateObject14() {
 }
 
 function _templateObject13() {
-  var data = _taggedTemplateLiteral(["\n  font-size: .7em;\n  padding:0;\n  margin:0;\n  letter-spacing: 1px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: .8em;\n  padding:0;\n  margin: 5px 0 0 0;\n  font-weight: 300;\n  letter-spacing: 1px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n"]);
 
   _templateObject13 = function _templateObject13() {
     return data;
@@ -61,7 +61,7 @@ function _templateObject13() {
 }
 
 function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n  padding:0;\n  margin:0;\n  font-size: 17px;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: clip;\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding:0;\n  margin:0 0 5px 0;\n  font-size: 17px;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: clip;\n"]);
 
   _templateObject12 = function _templateObject12() {
     return data;
@@ -71,7 +71,7 @@ function _templateObject12() {
 }
 
 function _templateObject11() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  overflow: hidden;\n  padding: 1em;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 1em;\n"]);
 
   _templateObject11 = function _templateObject11() {
     return data;
@@ -171,7 +171,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  @import url(\"https://fonts.googleapis.com/css?family=Quicksand\");\n  .vertical-navbar {\n    font-family: 'Quicksand', cursive;\n  }\n  .vertical-navbar {\n    padding: 0;\n    margin: 0;\n    box-sizing: border-box;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  .vertical-navbar {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;

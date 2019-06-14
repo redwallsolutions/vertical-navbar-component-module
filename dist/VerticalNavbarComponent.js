@@ -10,6 +10,7 @@ import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
 import logoImg from './assets/img/redwall-logo.png';
 import logoImgSmall from './assets/img/redwall-logo-small.png';
+import Tooltip from 'react-tooltip';
 export var MODES = {
   hidden: 1,
   partiallyShown: 2,
@@ -34,6 +35,10 @@ function (_Component) {
 
     _this.isCurrentModeTotallyShown = function () {
       return _this.state.currentMode === MODES.totallyShown;
+    };
+
+    _this.isCurrentModePartiallyShown = function () {
+      return _this.state.currentMode === MODES.partiallyShown;
     };
 
     _this.toggleNavbar = function () {
@@ -144,12 +149,18 @@ function (_Component) {
           id: index,
           customOnClick: item.onClick,
           onClick: _this.onClickItem,
-          notificationCount: item.notificationCount
+          notificationCount: item.notificationCount,
+          "data-tip": item.title
         }), React.createElement(NavbarItemIconContainer, _this.state, item.icon), _this.isCurrentModeTotallyShown() ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
           title: item.title
         }, item.title), React.createElement(NavbarItemSubtitle, {
           title: item.subTitle
-        }, item.subTitle)) : null);
+        }, item.subTitle)) : null, _this.isCurrentModePartiallyShown() && React.createElement(Tooltip, {
+          place: "right",
+          effect: "solid",
+          type: "dark",
+          delayShow: 200
+        }));
       });
     };
 
@@ -166,7 +177,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       var currentMode = this.state.currentMode;
-      return React.createElement(React.Fragment, null, React.createElement(NavbarContainer, {
+      return React.createElement(NavbarContainer, {
         className: "vertical-navbar"
       }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems()), React.createElement(NavbarToggler, {
         onClick: this.sequentiallyToggle,
@@ -175,7 +186,7 @@ function (_Component) {
         currentMode: currentMode
       }), React.createElement(Content, {
         currentMode: currentMode
-      }, this.props.children)));
+      }, this.props.children));
     }
   }]);
 

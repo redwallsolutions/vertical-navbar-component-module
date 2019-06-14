@@ -16,6 +16,7 @@ import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
 import logoImg from './assets/img/redwall-logo.png';
 import logoImgSmall from './assets/img/redwall-logo-small.png';
+import Tooltip from 'react-tooltip';
 
 export const MODES = {
   hidden: 1,
@@ -40,6 +41,9 @@ class VerticalNavbarComponent extends Component {
 
   isCurrentModeTotallyShown = () => {
     return this.state.currentMode === MODES.totallyShown
+  }
+  isCurrentModePartiallyShown = () => {
+    return this.state.currentMode === MODES.partiallyShown
   }
 
   toggleNavbar = () => {
@@ -141,7 +145,7 @@ class VerticalNavbarComponent extends Component {
     const { items } = this.props;
     const { activeItem, ...rest } = this.state;
     return items.map((item, index) => (
-      <NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem} notificationCount={item.notificationCount}>
+      <NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem} notificationCount={item.notificationCount} data-tip={item.title}>
         <NavbarItemIconContainer {...this.state}>
           {item.icon}
         </NavbarItemIconContainer>
@@ -155,8 +159,9 @@ class VerticalNavbarComponent extends Component {
                 {item.subTitle}
               </NavbarItemSubtitle>
             </NavbarItemTextContainer>
-            : null
+          : null
         }
+        {this.isCurrentModePartiallyShown() && <Tooltip place='right' effect='solid' type='dark' delayShow={200}/>}
       </NavbarItem>
     ));
   }
@@ -164,18 +169,16 @@ class VerticalNavbarComponent extends Component {
   render() {
     const {currentMode} = this.state
     return (
-      <React.Fragment>
-        <NavbarContainer className='vertical-navbar'>
-          <VerticalNavbarStyled {...this.state}>
-            {this.buildNavbarHeaderItem()}
-            {this.buildNavbarItems()}
-          </VerticalNavbarStyled>
-          <NavbarToggler onClick={this.sequentiallyToggle} onSwipeLeft={this.onSwipeLeft} onSwipeRight={this.onSwipeRight} currentMode={currentMode}/>
-          <Content currentMode={currentMode}>
-            {this.props.children}
-          </Content>
-        </NavbarContainer>
-      </React.Fragment>
+      <NavbarContainer className='vertical-navbar'>
+        <VerticalNavbarStyled {...this.state}>
+          {this.buildNavbarHeaderItem()}
+          {this.buildNavbarItems()}
+        </VerticalNavbarStyled>
+        <NavbarToggler onClick={this.sequentiallyToggle} onSwipeLeft={this.onSwipeLeft} onSwipeRight={this.onSwipeRight} currentMode={currentMode}/>
+        <Content currentMode={currentMode}>
+          {this.props.children}
+        </Content>
+      </NavbarContainer>
     );
   }
 

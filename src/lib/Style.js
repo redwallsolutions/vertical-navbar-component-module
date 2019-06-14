@@ -13,14 +13,8 @@ const defaultProps = {
 }
 
 export const DefaultFont = createGlobalStyle `
-  @import url("https://fonts.googleapis.com/css?family=Quicksand");
   .vertical-navbar {
-    font-family: 'Quicksand', cursive;
-  }
-  .vertical-navbar {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;
   }
 `
 
@@ -155,23 +149,24 @@ export const NavbarItemIconContainer = styled.div `
 
 export const NavbarItemTextContainer = styled.div `
   max-width: 100%;
+  width: 100%;
   overflow: hidden;
   padding: 1em;
-  width: 100%;
 `
 
 export const NavbarItemTitle = styled.h1 `
   padding:0;
-  margin:0;
+  margin:0 0 5px 0;
   font-size: 17px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: clip;
 `
 export const NavbarItemSubtitle = styled.h3 `
-  font-size: .7em;
+  font-size: .8em;
   padding:0;
-  margin:0;
+  margin: 5px 0 0 0;
+  font-weight: 300;
   letter-spacing: 1px;
   white-space: nowrap;
   text-overflow: ellipsis;
