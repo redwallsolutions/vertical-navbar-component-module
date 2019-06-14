@@ -141,7 +141,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.06);\n  background: ", ";\n  overflow: hidden;\n  min-width: 0;\n  width: 0;\n  transition: min-width .4s cubic-bezier(.86,.47,0,1);\n  ", "\n  ", "\n  z-index: 1;\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.06);\n  background: ", ";\n  overflow-x: hidden;\n  scrollbar-width: none;\n  &::-webkit-scrollbar {\n    width: 0px;\n  }\n  min-width: 0;\n  width: 0;\n  transition: min-width .4s cubic-bezier(.86,.47,0,1);\n  ", "\n  ", "\n  z-index: 1;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;

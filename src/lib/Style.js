@@ -34,7 +34,11 @@ const applyToNavbarWhenPartiallyShown = css `
 const VerticalNavbarStyled = styled.div`
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.06);
   background: ${props => props.theme.mode === 'light' ? 'white' : theming(props).contrast};
-  overflow: hidden;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
   min-width: 0;
   width: 0;
   transition: min-width .4s cubic-bezier(.86,.47,0,1);

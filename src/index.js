@@ -3,7 +3,7 @@ import { render } from "react-dom";
 
 import VerticalNavbar from './lib/VerticalNavbar';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { MdDashboard, MdTune, Md3dRotation, } from 'react-icons/md';
+import { MdDashboard, MdTune, Md3dRotation, MdTv, MdAccessibility, MdAccountBalance, MdSms } from 'react-icons/md';
 import DashPage from 'dash-page-component-module';
 
 const ResetCSS = createGlobalStyle`
@@ -28,7 +28,20 @@ const items = [{
   icon: <Md3dRotation size='1.9em'/>,
   title: 'Rotation',
   subTitle: 'A test about rotation app.',
-}, ]
+}, {
+  icon: <MdTv size='1.9em'/>,
+  title: 'Other Thing',
+}, {
+  icon: <MdAccessibility size='1.9em'/>,
+  title: 'Rotation',
+  subTitle: 'A test about rotation app.',
+}, {
+  icon: <MdAccountBalance size='1.9em'/>,
+  title: 'Other Thing',
+}, {
+  icon: <MdSms size='1.9em'/>,
+  title: 'SMS',
+}]
 
 
 class App extends React.Component {
