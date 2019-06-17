@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {NavbarItemStyled, NavbarItemBadge} from './Style';
+import {NavbarItemStyled, NavbarLastItemStyled, NavbarItemBadge} from './Style';
 class NavbarItem extends PureComponent {
 
   onClick = (e) => {
@@ -8,12 +8,17 @@ class NavbarItem extends PureComponent {
   }
 
   render() {
-    const {currentMode, notificationCount} = this.props;
+    const {currentMode, notificationCount, isLast} = this.props;
     return (
-      <NavbarItemStyled {...this.props} onClick={this.onClick}>
-        {this.props.children}
-        {notificationCount && <NavbarItemBadge currentMode={currentMode}>{notificationCount}</NavbarItemBadge>}
-      </NavbarItemStyled>
+      isLast ? (
+        <NavbarLastItemStyled {...this.props} onClick={this.onClick}>
+          {this.props.children}
+        </NavbarLastItemStyled>
+      ) :
+        <NavbarItemStyled {...this.props} onClick={this.onClick}>
+          {this.props.children}
+          {notificationCount && <NavbarItemBadge currentMode={currentMode}>{notificationCount}</NavbarItemBadge>}
+        </NavbarItemStyled>
     );
   }
 

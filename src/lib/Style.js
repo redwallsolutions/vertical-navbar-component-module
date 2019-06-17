@@ -18,6 +18,69 @@ export const DefaultFont = createGlobalStyle `
   }
 `
 
+export const CustomMenuStyles = createGlobalStyle`
+  .rc-menu-root {
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: none !important;
+  }
+
+  .rc-menu-item-active, .rc-menu-submenu-active > .rc-menu-submenu-title {
+    background: none !important;
+  }
+
+  .rc-menu-item-active {
+    background: ${props => theming(props).color} !important;
+    color: ${props => theming(props).contrast} !important;
+  }
+
+  .rc-menu-submenu-selected {
+    background: none !important;
+  }
+
+  .rc-menu-submenu-title {
+    background: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: background-color .3s;
+    border-radius: 0 !important;
+    color: ${props => Color(theming(props).color(props)).grayscale().lighten(0.3).string()}
+  }
+
+  .rc-menu-sub {
+    margin-left: ${props => props.currentMode === MODES.partiallyShown ? '5px' : '40px'} !important;
+    transform-origin: left bottom !important;
+    width: 100% !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1)!important;
+    background: ${props => Color(theming(props).contrast(props)).lighten(0.3).string()} !important;
+    color: ${props => theming(props).color} !important;
+  }
+
+  .rc-menu-submenu-arrow::before {
+    content: "" !important;
+  }
+
+  li.rc-menu-item {
+   font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;
+   cursor: pointer !important;
+   width: auto !important;
+   transition: background-color .3s;
+   border: none !important;
+   padding: 8px !important;
+   text-align: center;
+   border-radius: 0 !important;
+  }
+  li.rc-menu-item-selected {
+    background: ${props => Color(theming(props).color(props)).fade(.9).string()}
+  }
+`
+
+CustomMenuStyles.defaultProps = defaultProps
+
+
 const applyToNavbarWhenTottalyShown = css`
   min-width: 25vw;
   @media (max-width: 768px){
@@ -32,6 +95,7 @@ const applyToNavbarWhenPartiallyShown = css `
 `
 
 const VerticalNavbarStyled = styled.div`
+  position: relative;
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.06);
   background: ${props => props.theme.mode === 'light' ? 'white' : theming(props).contrast};
   overflow-x: hidden;
@@ -137,9 +201,18 @@ const NavbarItemStyled = styled.div `
   }
 `
 
-NavbarItemStyled.defaultProps = defaultProps
+const NavbarLastItemStyled = styled(NavbarItemStyled)`
+  position: sticky;
+  z-index: 3;
+  left: 0;
+  bottom: 0;
+  box-shadow: 0 -5px 15px 0 rgba(0,0,0,0.2);
+  background: ${props => props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string()};
+`
 
-export {NavbarItemStyled}
+NavbarItemStyled.defaultProps = NavbarLastItemStyled.defaultProps = defaultProps
+
+export {NavbarItemStyled, NavbarLastItemStyled}
 
 export const NavbarItemIconContainer = styled.div `
   width: ${props => props.currentMode === MODES.totallyShown

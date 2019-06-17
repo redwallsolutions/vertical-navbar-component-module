@@ -41,6 +41,23 @@ const items = [{
 }, {
   icon: <MdSms size='1.9em'/>,
   title: 'SMS',
+},  {
+  icon: <Md3dRotation size='1.9em'/>,
+  title: 'Rotation',
+  subTitle: 'A test about rotation app.',
+}, {
+  icon: <MdTv size='1.9em'/>,
+  title: 'Other Thing',
+}, {
+  icon: <MdAccessibility size='1.9em'/>,
+  title: 'Rotation',
+  subTitle: 'A test about rotation app.',
+}, {
+  icon: <MdAccountBalance size='1.9em'/>,
+  title: 'Other Thing',
+}, {
+  icon: <MdSms size='1.9em'/>,
+  title: 'SMS',
 }]
 
 

@@ -1,6 +1,6 @@
 {
   "name": "vertical-navbar-component-module",
-  "version": "1.9.3",
+  "version": "1.10.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -32,6 +32,8 @@
     "color": "^3.1.0",
     "color-pallete-component-module": "https://cf2066736ce8712fe9044d7176daa1edea6c4fe9:x-oauth-basic@github.com/redwallsolutions/color-pallete-component-module",
     "dash-page-component-module": "https://cf2066736ce8712fe9044d7176daa1edea6c4fe9:x-oauth-basic@github.com/redwallsolutions/dash-page-component-module.git",
+    "rc-menu": "^7.4.23",
+    "react-avatar": "^3.6.0",
     "react-easy-swipe": "^0.0.17",
     "react-icons": "^3.5.0",
     "react-tooltip": "^3.10.0",

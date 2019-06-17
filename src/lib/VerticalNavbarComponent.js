@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { MdPowerSettingsNew, MdLock, MdPerson } from 'react-icons/md';
+import Avatar from 'react-avatar';
+import Menu, {SubMenu, Item} from 'rc-menu';
+import 'rc-menu/assets/index.css'
 import {
   NavbarContainer,
   VerticalNavbarStyled,
@@ -10,7 +14,8 @@ import {
   NavbarItemIconContainer,
   Content,
   NavbarHeaderItemImage,
-  NavbarHeaderItemSubtitle
+  NavbarHeaderItemSubtitle,
+  CustomMenuStyles
 } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
@@ -126,18 +131,16 @@ class VerticalNavbarComponent extends Component {
     const {currentMode} = this.state
     const isTotallyShown =  currentMode === MODES.totallyShown
     return (
-      <React.Fragment>
-        <NavbarHeaderItem currentMode={currentMode}>
-          <NavbarHeaderItemImage src={
-            isTotallyShown ?
-            logoImg :
-            logoImgSmall
-          } alt={subtitle} currentMode={currentMode}/>
-          {isTotallyShown && <NavbarHeaderItemSubtitle title={subtitle}>
-            {subtitle}
-          </NavbarHeaderItemSubtitle>}
-        </NavbarHeaderItem>
-      </React.Fragment>
+      <NavbarHeaderItem currentMode={currentMode}>
+        <NavbarHeaderItemImage src={
+          isTotallyShown ?
+          logoImg :
+          logoImgSmall
+        } alt={subtitle} currentMode={currentMode}/>
+        {isTotallyShown && <NavbarHeaderItemSubtitle title={subtitle}>
+          {subtitle}
+        </NavbarHeaderItemSubtitle>}
+      </NavbarHeaderItem>
     );
   }
 
@@ -166,13 +169,60 @@ class VerticalNavbarComponent extends Component {
     ));
   }
 
+  buildLastItem = (user) => {
+    return (
+      <NavbarItem isLast={true} onClick={()=>{}}>
+        <CustomMenuStyles currentMode={this.state.currentMode}/>
+        <Menu triggerSubMenuAction='click' openAnimation='zoom'>
+          <SubMenu title={
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <NavbarItemIconContainer {...this.state}>
+                <Avatar name={user.fullName} round={true} size='43px' src={user.profilePic} color='#E21306'/>
+              </NavbarItemIconContainer>
+              {
+                this.isCurrentModeTotallyShown() ?
+                  <NavbarItemTextContainer>
+                    <NavbarItemTitle title={user.fullName}>
+                      {user.fullName}
+                    </NavbarItemTitle>
+                    <NavbarItemSubtitle title={user.type}>
+                      {user.type}
+                    </NavbarItemSubtitle>
+                  </NavbarItemTextContainer>
+                : null
+              }
+            </div>
+          } key="1">
+            <Item onClick={this.props.goToProfile} key={1}>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <MdPerson/> <span style={{marginLeft: 10}}>Meu Perfil</span>
+              </div>
+            </Item>
+            <Item onClick={this.props.goToChangePass} key={2}>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <MdLock/> <span style={{marginLeft: 10}}>Trocar senha</span>
+              </div>
+            </Item>
+            <Item onClick={this.props.logout} key={3}>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <MdPowerSettingsNew/> <span style={{marginLeft: 10}}>Sair</span>
+              </div>
+            </Item>
+          </SubMenu>
+        </Menu>
+      </NavbarItem>
+    )
+  }
+
   render() {
     const {currentMode} = this.state
+    const { user } = this.props
     return (
       <NavbarContainer className='vertical-navbar'>
         <VerticalNavbarStyled {...this.state}>
           {this.buildNavbarHeaderItem()}
           {this.buildNavbarItems()}
+          {this.buildLastItem(user)}
         </VerticalNavbarStyled>
         <NavbarToggler onClick={this.sequentiallyToggle} onSwipeLeft={this.onSwipeLeft} onSwipeRight={this.onSwipeRight} currentMode={currentMode}/>
         <Content currentMode={currentMode}>
@@ -196,6 +246,13 @@ VerticalNavbarComponent.defaultProps = {
     logoImg,
     logoImgSmall,
     subtitle: 'The vertical navbar.'
+  },
+  user: {
+    fullName: 'Redwall Solutions',
+    type: 'Administrador'
+  },
+  logout: () => {
+    window.location.href='/login'
   }
 }
 export default VerticalNavbarComponent;
