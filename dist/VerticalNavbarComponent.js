@@ -5,7 +5,11 @@ import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConst
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
-import { NavbarContainer, VerticalNavbarStyled, NavbarHeaderItem, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, NavbarHeaderItemImage, NavbarHeaderItemSubtitle } from './Style';
+import { MdPowerSettingsNew, MdLock, MdPerson } from 'react-icons/md';
+import Avatar from 'react-avatar';
+import Menu, { SubMenu, Item } from 'rc-menu';
+import 'rc-menu/assets/index.css';
+import { NavbarContainer, VerticalNavbarStyled, NavbarHeaderItem, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, NavbarHeaderItemImage, NavbarHeaderItemSubtitle, CustomMenuStyles } from './Style';
 import NavbarItem from './NavbarItem';
 import NavbarToggler from './NavbarToggler';
 import logoImg from './assets/img/redwall-logo.png';
@@ -124,7 +128,7 @@ function (_Component) {
           subtitle = headerItem.subtitle;
       var currentMode = _this.state.currentMode;
       var isTotallyShown = currentMode === MODES.totallyShown;
-      return React.createElement(React.Fragment, null, React.createElement(NavbarHeaderItem, {
+      return React.createElement(NavbarHeaderItem, {
         currentMode: currentMode
       }, React.createElement(NavbarHeaderItemImage, {
         src: isTotallyShown ? logoImg : logoImgSmall,
@@ -132,7 +136,7 @@ function (_Component) {
         currentMode: currentMode
       }), isTotallyShown && React.createElement(NavbarHeaderItemSubtitle, {
         title: subtitle
-      }, subtitle)));
+      }, subtitle));
     };
 
     _this.buildNavbarItems = function () {
@@ -164,6 +168,76 @@ function (_Component) {
       });
     };
 
+    _this.buildLastItem = function (user) {
+      return React.createElement(NavbarItem, {
+        isLast: true,
+        onClick: function onClick() {}
+      }, React.createElement(CustomMenuStyles, {
+        currentMode: _this.state.currentMode
+      }), React.createElement(Menu, {
+        triggerSubMenuAction: "click",
+        openAnimation: "zoom"
+      }, React.createElement(SubMenu, {
+        title: React.createElement("div", {
+          style: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        }, React.createElement(NavbarItemIconContainer, _this.state, React.createElement(Avatar, {
+          name: user.fullName,
+          round: true,
+          size: "43px",
+          src: user.profilePic,
+          color: "#E21306"
+        })), _this.isCurrentModeTotallyShown() ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
+          title: user.fullName
+        }, user.fullName), React.createElement(NavbarItemSubtitle, {
+          title: user.type
+        }, user.type)) : null),
+        key: "1"
+      }, React.createElement(Item, {
+        onClick: _this.props.goToProfile,
+        key: 1
+      }, React.createElement("div", {
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }
+      }, React.createElement(MdPerson, null), " ", React.createElement("span", {
+        style: {
+          marginLeft: 10
+        }
+      }, "Meu Perfil"))), React.createElement(Item, {
+        onClick: _this.props.goToChangePass,
+        key: 2
+      }, React.createElement("div", {
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }
+      }, React.createElement(MdLock, null), " ", React.createElement("span", {
+        style: {
+          marginLeft: 10
+        }
+      }, "Trocar senha"))), React.createElement(Item, {
+        onClick: _this.props.logout,
+        key: 3
+      }, React.createElement("div", {
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }
+      }, React.createElement(MdPowerSettingsNew, null), " ", React.createElement("span", {
+        style: {
+          marginLeft: 10
+        }
+      }, "Sair"))))));
+    };
+
     _this.previousMode = MODES.hidden;
     return _this;
   }
@@ -177,9 +251,10 @@ function (_Component) {
     key: "render",
     value: function render() {
       var currentMode = this.state.currentMode;
+      var user = this.props.user;
       return React.createElement(NavbarContainer, {
         className: "vertical-navbar"
-      }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems()), React.createElement(NavbarToggler, {
+      }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems(), this.buildLastItem(user)), React.createElement(NavbarToggler, {
         onClick: this.sequentiallyToggle,
         onSwipeLeft: this.onSwipeLeft,
         onSwipeRight: this.onSwipeRight,
@@ -199,6 +274,13 @@ VerticalNavbarComponent.defaultProps = {
     logoImg: logoImg,
     logoImgSmall: logoImgSmall,
     subtitle: 'The vertical navbar.'
+  },
+  user: {
+    fullName: 'Redwall Solutions',
+    type: 'Administrador'
+  },
+  logout: function logout() {
+    window.location.href = '/login';
   }
 };
 export default VerticalNavbarComponent;

@@ -5,7 +5,7 @@ import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConst
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { PureComponent } from 'react';
-import { NavbarItemStyled, NavbarItemBadge } from './Style';
+import { NavbarItemStyled, NavbarLastItemStyled, NavbarItemBadge } from './Style';
 
 var NavbarItem =
 /*#__PURE__*/
@@ -40,8 +40,11 @@ function (_PureComponent) {
     value: function render() {
       var _this$props = this.props,
           currentMode = _this$props.currentMode,
-          notificationCount = _this$props.notificationCount;
-      return React.createElement(NavbarItemStyled, Object.assign({}, this.props, {
+          notificationCount = _this$props.notificationCount,
+          isLast = _this$props.isLast;
+      return isLast ? React.createElement(NavbarLastItemStyled, Object.assign({}, this.props, {
+        onClick: this.onClick
+      }), this.props.children) : React.createElement(NavbarItemStyled, Object.assign({}, this.props, {
         onClick: this.onClick
       }), this.props.children, notificationCount && React.createElement(NavbarItemBadge, {
         currentMode: currentMode
