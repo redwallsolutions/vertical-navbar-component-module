@@ -15,6 +15,7 @@ const defaultProps = {
 export const DefaultFont = createGlobalStyle `
   .vertical-navbar * {
     font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;
+    box-sizing: border-box;
   }
 `
 
@@ -95,19 +96,17 @@ const applyToNavbarWhenPartiallyShown = css `
 `
 
 const applyToLastItemWhenTotallyShwon = css`
-  max-width: 24.71vw;
-  border-left-width: 4px;
+  max-width: 25vw;
   @media (max-width: 768px){
-    max-width: 39.71vw;
+    max-width: 40vw;
   }
   @media (max-width: 414px){
-    max-width: 84.71vw;
+    max-width: 85vw;
   }
 `
 
 const applyToLastItemWhenPartiallyShown = css`
-  max-width: 76px;
-  border-left-width: 4px;
+  max-width: 80px;
 `
 
 const VerticalNavbarStyled = styled.div`

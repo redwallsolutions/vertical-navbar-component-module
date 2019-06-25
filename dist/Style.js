@@ -161,7 +161,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 76px;\n  border-left-width: 4px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 80px;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -171,7 +171,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 24.71vw;\n  border-left-width: 4px;\n  @media (max-width: 768px){\n    max-width: 39.71vw;\n  }\n  @media (max-width: 414px){\n    max-width: 84.71vw;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 25vw;\n  @media (max-width: 768px){\n    max-width: 40vw;\n  }\n  @media (max-width: 414px){\n    max-width: 85vw;\n  }\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -211,7 +211,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  .vertical-navbar * {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  .vertical-navbar * {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;\n    box-sizing: border-box;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
