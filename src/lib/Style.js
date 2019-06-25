@@ -13,13 +13,13 @@ const defaultProps = {
 }
 
 export const DefaultFont = createGlobalStyle `
-  .vertical-navbar {
+  .vertical-navbar * {
     font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;
   }
 `
 
 export const CustomMenuStyles = createGlobalStyle`
-  .rc-menu-root {
+  .vertical-navbar .rc-menu-root {
     padding: 0 !important;
     margin: 0 !important;
     cursor: pointer !important;
@@ -28,20 +28,20 @@ export const CustomMenuStyles = createGlobalStyle`
     background: none !important;
   }
 
-  .rc-menu-item-active, .rc-menu-submenu-active > .rc-menu-submenu-title {
+  .vertical-navbar .rc-menu-item-active, .rc-menu-submenu-active > .rc-menu-submenu-title {
     background: none !important;
   }
 
-  .rc-menu-item-active {
+  .vertical-navbar .rc-menu-item-active {
     background: ${props => theming(props).color} !important;
     color: ${props => theming(props).contrast} !important;
   }
 
-  .rc-menu-submenu-selected {
+  .vertical-navbar .rc-menu-submenu-selected {
     background: none !important;
   }
 
-  .rc-menu-submenu-title {
+  .vertical-navbar .rc-menu-submenu-title {
     background: none;
     padding: 0 !important;
     margin: 0 !important;
@@ -50,8 +50,8 @@ export const CustomMenuStyles = createGlobalStyle`
     color: ${props => Color(theming(props).color(props)).grayscale().lighten(0.3).string()}
   }
 
-  .rc-menu-sub {
-    margin-left: ${props => props.currentMode === MODES.partiallyShown ? '5px' : '40px'} !important;
+  .vertical-navbar .rc-menu-sub {
+    margin-left: ${props => props.currentMode === MODES.partiallyShown ? '0px' : '27px'} !important;
     transform-origin: left bottom !important;
     width: 100% !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1)!important;
@@ -59,11 +59,11 @@ export const CustomMenuStyles = createGlobalStyle`
     color: ${props => theming(props).color} !important;
   }
 
-  .rc-menu-submenu-arrow::before {
+  .vertical-navbar .rc-menu-submenu-arrow::before {
     content: "" !important;
   }
 
-  li.rc-menu-item {
+  .vertical-navbar li.rc-menu-item {
    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;
    cursor: pointer !important;
    width: auto !important;
@@ -73,7 +73,7 @@ export const CustomMenuStyles = createGlobalStyle`
    text-align: center;
    border-radius: 0 !important;
   }
-  li.rc-menu-item-selected {
+  .vertical-navbar li.rc-menu-item-selected {
     background: ${props => Color(theming(props).color(props)).fade(.9).string()}
   }
 `
@@ -92,6 +92,22 @@ const applyToNavbarWhenTottalyShown = css`
 `
 const applyToNavbarWhenPartiallyShown = css `
   min-width: 80px;
+`
+
+const applyToLastItemWhenTotallyShwon = css`
+  max-width: 24.71vw;
+  border-left-width: 4px;
+  @media (max-width: 768px){
+    max-width: 39.71vw;
+  }
+  @media (max-width: 414px){
+    max-width: 84.71vw;
+  }
+`
+
+const applyToLastItemWhenPartiallyShown = css`
+  max-width: 76px;
+  border-left-width: 4px;
 `
 
 const VerticalNavbarStyled = styled.div`
@@ -202,10 +218,16 @@ const NavbarItemStyled = styled.div `
 `
 
 const NavbarLastItemStyled = styled(NavbarItemStyled)`
-  position: sticky;
+  position: fixed;
   z-index: 3;
   left: 0;
   bottom: 0;
+  max-width: 0;
+  border-left-width: 0;
+  overflow: hidden;
+  transition: max-width .4s cubic-bezier(.86,.47,0,1);
+  ${props => props.currentMode === MODES.totallyShown && applyToLastItemWhenTotallyShwon}
+  ${props => props.currentMode === MODES.partiallyShown && applyToLastItemWhenPartiallyShown}
   box-shadow: 0 -5px 15px 0 rgba(0,0,0,0.2);
   background: ${props => props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string()};
 `

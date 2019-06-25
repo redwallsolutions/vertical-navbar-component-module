@@ -3,7 +3,7 @@ import { render } from "react-dom";
 
 import VerticalNavbar from './lib/VerticalNavbar';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { MdDashboard, MdTune, Md3dRotation, MdTv, MdAccessibility, MdAccountBalance, MdSms } from 'react-icons/md';
+import { MdDashboard, MdTune, MdDns, MdTv, MdAccessibility, MdAccountBalance, MdSms } from 'react-icons/md';
 import DashPage from 'dash-page-component-module';
 
 const ResetCSS = createGlobalStyle`
@@ -25,7 +25,7 @@ const items = [{
   title: 'Other Thing',
   notificationCount: 4
 }, {
-  icon: <Md3dRotation size='1.9em'/>,
+  icon: <MdDns size='1.9em'/>,
   title: 'Rotation',
   subTitle: 'A test about rotation app.',
 }, {
@@ -42,7 +42,7 @@ const items = [{
   icon: <MdSms size='1.9em'/>,
   title: 'SMS',
 },  {
-  icon: <Md3dRotation size='1.9em'/>,
+  icon: <MdDns size='1.9em'/>,
   title: 'Rotation',
   subTitle: 'A test about rotation app.',
 }, {

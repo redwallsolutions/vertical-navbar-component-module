@@ -171,9 +171,9 @@ class VerticalNavbarComponent extends Component {
 
   buildLastItem = (user) => {
     return (
-      <NavbarItem isLast={true} onClick={()=>{}}>
+      <NavbarItem isLast={true} onClick={()=>{}} currentMode={this.state.currentMode}>
         <CustomMenuStyles currentMode={this.state.currentMode}/>
-        <Menu triggerSubMenuAction='click' openAnimation='zoom'>
+        <Menu triggerSubMenuAction='click' openAnimation='zoom' className='vertical-navbar'>
           <SubMenu title={
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <NavbarItemIconContainer {...this.state}>
@@ -192,7 +192,7 @@ class VerticalNavbarComponent extends Component {
                 : null
               }
             </div>
-          } key="1">
+          } key="1" popupClassName='vertical-navbar'>
             <Item onClick={this.props.goToProfile} key={1}>
               <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <MdPerson/> <span style={{marginLeft: 10}}>Meu Perfil</span>
