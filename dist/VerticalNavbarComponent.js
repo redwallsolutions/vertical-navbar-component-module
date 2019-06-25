@@ -171,12 +171,14 @@ function (_Component) {
     _this.buildLastItem = function (user) {
       return React.createElement(NavbarItem, {
         isLast: true,
-        onClick: function onClick() {}
+        onClick: function onClick() {},
+        currentMode: _this.state.currentMode
       }, React.createElement(CustomMenuStyles, {
         currentMode: _this.state.currentMode
       }), React.createElement(Menu, {
         triggerSubMenuAction: "click",
-        openAnimation: "zoom"
+        openAnimation: "zoom",
+        className: "vertical-navbar"
       }, React.createElement(SubMenu, {
         title: React.createElement("div", {
           style: {
@@ -195,7 +197,8 @@ function (_Component) {
         }, user.fullName), React.createElement(NavbarItemSubtitle, {
           title: user.type
         }, user.type)) : null),
-        key: "1"
+        key: "1",
+        popupClassName: "vertical-navbar"
       }, React.createElement(Item, {
         onClick: _this.props.goToProfile,
         key: 1
