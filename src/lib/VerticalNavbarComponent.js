@@ -148,7 +148,7 @@ class VerticalNavbarComponent extends Component {
     const { items } = this.props;
     const { activeItem, ...rest } = this.state;
     return items.map((item, index) => (
-      <NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem} notificationCount={item.notificationCount} data-tip={item.title}>
+      <NavbarItem {...rest} isActive={activeItem === index} key={index} id={index} customOnClick={item.onClick} onClick={this.onClickItem} notificationCount={item.notificationCount} data-for={`id${index}`} data-tip={item.title}>
         <NavbarItemIconContainer {...this.state}>
           {item.icon}
         </NavbarItemIconContainer>
@@ -164,7 +164,7 @@ class VerticalNavbarComponent extends Component {
             </NavbarItemTextContainer>
           : null
         }
-        {this.isCurrentModePartiallyShown() && <Tooltip place='right' effect='solid' type='dark' delayShow={200}/>}
+        {this.isCurrentModePartiallyShown() && <Tooltip id={`id${index}`} place='right' effect='solid' type='dark' delayShow={300}/>}
       </NavbarItem>
     ));
   }
@@ -222,6 +222,9 @@ class VerticalNavbarComponent extends Component {
         <VerticalNavbarStyled {...this.state}>
           {this.buildNavbarHeaderItem()}
           {this.buildNavbarItems()}
+          {
+            <div style={{height: 80}}></div>
+          }
           {this.buildLastItem(user)}
         </VerticalNavbarStyled>
         <NavbarToggler onClick={this.sequentiallyToggle} onSwipeLeft={this.onSwipeLeft} onSwipeRight={this.onSwipeRight} currentMode={currentMode}/>

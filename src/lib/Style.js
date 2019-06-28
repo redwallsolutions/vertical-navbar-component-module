@@ -14,7 +14,7 @@ const defaultProps = {
 
 export const DefaultFont = createGlobalStyle `
   .vertical-navbar * {
-    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;
+    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;
     box-sizing: border-box;
   }
 `
@@ -52,7 +52,7 @@ export const CustomMenuStyles = createGlobalStyle`
   }
 
   .vertical-navbar .rc-menu-sub {
-    margin-left: ${props => props.currentMode === MODES.partiallyShown ? '0px' : '27px'} !important;
+    margin-left: ${props => props.currentMode === MODES.partiallyShown ? '16px' : '60px'} !important;
     transform-origin: left bottom !important;
     width: 100% !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1)!important;

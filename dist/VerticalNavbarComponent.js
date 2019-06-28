@@ -154,16 +154,18 @@ function (_Component) {
           customOnClick: item.onClick,
           onClick: _this.onClickItem,
           notificationCount: item.notificationCount,
+          "data-for": "id".concat(index),
           "data-tip": item.title
         }), React.createElement(NavbarItemIconContainer, _this.state, item.icon), _this.isCurrentModeTotallyShown() ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
           title: item.title
         }, item.title), React.createElement(NavbarItemSubtitle, {
           title: item.subTitle
         }, item.subTitle)) : null, _this.isCurrentModePartiallyShown() && React.createElement(Tooltip, {
+          id: "id".concat(index),
           place: "right",
           effect: "solid",
           type: "dark",
-          delayShow: 200
+          delayShow: 300
         }));
       });
     };
@@ -257,7 +259,11 @@ function (_Component) {
       var user = this.props.user;
       return React.createElement(NavbarContainer, {
         className: "vertical-navbar"
-      }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems(), this.buildLastItem(user)), React.createElement(NavbarToggler, {
+      }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems(), React.createElement("div", {
+        style: {
+          height: 80
+        }
+      }), this.buildLastItem(user)), React.createElement(NavbarToggler, {
         onClick: this.sequentiallyToggle,
         onSwipeLeft: this.onSwipeLeft,
         onSwipeRight: this.onSwipeRight,

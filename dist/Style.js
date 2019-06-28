@@ -211,7 +211,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  .vertical-navbar * {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;\n    box-sizing: border-box;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  .vertical-navbar * {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;\n    box-sizing: border-box;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -239,7 +239,7 @@ export var CustomMenuStyles = createGlobalStyle(_templateObject2(), function (pr
 }, function (props) {
   return Color(theming(props).color(props)).grayscale().lighten(0.3).string();
 }, function (props) {
-  return props.currentMode === MODES.partiallyShown ? '0px' : '27px';
+  return props.currentMode === MODES.partiallyShown ? '16px' : '60px';
 }, function (props) {
   return Color(theming(props).contrast(props)).lighten(0.3).string();
 }, function (props) {
