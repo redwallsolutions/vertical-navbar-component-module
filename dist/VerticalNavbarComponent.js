@@ -202,19 +202,6 @@ function (_Component) {
         key: "1",
         popupClassName: "vertical-navbar"
       }, React.createElement(Item, {
-        onClick: _this.props.goToProfile,
-        key: 1
-      }, React.createElement("div", {
-        style: {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }
-      }, React.createElement(MdPerson, null), " ", React.createElement("span", {
-        style: {
-          marginLeft: 10
-        }
-      }, "Meu Perfil"))), React.createElement(Item, {
         onClick: _this.props.goToChangePass,
         key: 2
       }, React.createElement("div", {

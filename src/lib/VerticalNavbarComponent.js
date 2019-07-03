@@ -193,11 +193,6 @@ class VerticalNavbarComponent extends Component {
               }
             </div>
           } key="1" popupClassName='vertical-navbar'>
-            <Item onClick={this.props.goToProfile} key={1}>
-              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                <MdPerson/> <span style={{marginLeft: 10}}>Meu Perfil</span>
-              </div>
-            </Item>
             <Item onClick={this.props.goToChangePass} key={2}>
               <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <MdLock/> <span style={{marginLeft: 10}}>Trocar senha</span>
