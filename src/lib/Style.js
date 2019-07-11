@@ -87,7 +87,7 @@ const applyToNavbarWhenTottalyShown = css`
   @media (max-width: 768px){
     min-width: 40vw;
   }
-  @media (max-width: 414px){
+  @media (max-width: 714px) {
     min-width: 85vw;
   }
 `
@@ -256,6 +256,7 @@ export const NavbarItemTitle = styled.h1 `
   padding:0;
   margin:0 0 5px 0;
   font-size: 17px;
+  font-weight: bolder;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: clip;
