@@ -171,7 +171,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 25vw;\n  @media (max-width: 768px){\n    max-width: 40vw;\n  }\n  @media (max-width: 414px){\n    max-width: 85vw;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 25vw;\n  @media (max-width: 768px){\n    max-width: 40vw;\n  }\n  @media (max-width: 714px) {\n    max-width: 85vw;\n  }\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;

@@ -100,7 +100,7 @@ const applyToLastItemWhenTotallyShwon = css`
   @media (max-width: 768px){
     max-width: 40vw;
   }
-  @media (max-width: 414px){
+  @media (max-width: 714px) {
     max-width: 85vw;
   }
 `
