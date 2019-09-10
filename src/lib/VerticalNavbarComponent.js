@@ -18,7 +18,7 @@ import redwallLogo from './assets/img/redwall-logo-small.png'
 function VerticalNavbarHeader({ logo, smallLogo, title, slogan }) {
 	return (
 		<VerticalNavbarHeaderStyled>
-			<img src={logo} />
+			<img src={logo} alt="Logo do sistema"/>
 		</VerticalNavbarHeaderStyled>
 	)
 }
@@ -29,7 +29,7 @@ function VerticalNavbarItem({
 	onClick,
 	isActive,
 	isSmall,
-	id
+	amountOfItems
 }) {
 	return (
 		<VerticalNavbarItemStyled
@@ -38,6 +38,7 @@ function VerticalNavbarItem({
 			isActive={isActive}
 			isSmall={isSmall}
 			data-tip={item.name}
+			amountOfItems={amountOfItems}
 		>
 			<i>{item.icon}</i>
 			{isSmall && <p>{item.name}</p>}
@@ -86,6 +87,7 @@ function VerticalNavbarComponent({
 							onClick={onClickItem({ item, index })}
 							appearance={appearance}
 							isSmall={isTabletOrMobile}
+							amountOfItems={items.length}
 						/>
 					))}
 				</VerticalNavbarStyled>

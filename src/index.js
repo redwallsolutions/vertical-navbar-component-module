@@ -1,10 +1,19 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { render } from 'react-dom'
 import VerticalNavbarComponent from './lib/VerticalNavbarComponent'
 import { createGlobalStyle } from 'styled-components'
-import { MdPerson, MdSms, MdAccessTime, MdAirlineSeatFlat, MdWbSunny, MdFlare, MdLens, MdAccountBalance, MdAdjust, MdAcUnit, MdAllInclusive } from 'react-icons/md'
+import {
+	MdAccessTime,
+	MdAirlineSeatFlat,
+	MdWbSunny,
+	MdFlare,
+	MdLens,
+	MdAccountBalance,
+	MdAdjust,
+	MdAcUnit,
+	MdAllInclusive
+} from 'react-icons/md'
 import { ThemeProvider } from 'styled-components'
-import smallLogo from './lib/assets/img/redwall-logo-small.png'
 
 const Reset = createGlobalStyle`
   body {
@@ -15,9 +24,8 @@ const Reset = createGlobalStyle`
 `
 
 const App = () => {
-
-  const [themeMode, setThemeMode] = useState('light')
-  return (
+	const [themeMode, setThemeMode] = useState('light')
+	return (
 		<ThemeProvider
 			theme={{
 				mode: themeMode
@@ -66,12 +74,8 @@ const App = () => {
 							name: 'All Inclusive'
 						}
 					]}
-					appearance="default"
-					logo={smallLogo}
 				>
-					<div style={{height: '5000px'}}>
-            oi pessoal
-          </div>
+					<div style={{ height: '5000px' }}>oi pessoal</div>
 				</VerticalNavbarComponent>
 			</>
 		</ThemeProvider>

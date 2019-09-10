@@ -135,7 +135,7 @@ export const VerticalNavbarHeaderStyled = styled.header`
 export const ContentContainer = styled.div`
   z-index: 0;
   width: 100%;
-  height: calc(100% - ${props => props.isSmall ? '80px' : '0px'});
+  height: calc(100% - ${props => (props.isSmall ? '80px' : '0px')});
   position: absolute;
 	background: linear-gradient(135deg, #f7f7f7, #eaeaea);
   ${props => props.theme.mode === 'dark' && darkModeDefaults}
@@ -146,27 +146,32 @@ export const ContentContainer = styled.div`
 
 export const VerticalNavbarItemStyled = styled.div`
   ${defaultSizes}
-  ${props => props.isSmall && 'width: 25vw; max-width: 25vw; min-width: 25vw;'}
+  ${props =>
+		props.isSmall &&
+		(props.amountOfItems > 3
+			? 'width: 25vw; max-width: 25vw; min-width: 25vw;'
+			: `width: ${100 / props.amountOfItems}vw;max-width: ${100 /
+					props.amountOfItems}vw;min-width: ${100 / props.amountOfItems}vw;`)}	
 	display: flex;
 	justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80%;
-    white-space: nowrap;
-    font-size: 11px;
-  }
+	align-items: center;
+	flex-direction: column;
+		p {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 80%;
+			white-space: nowrap;
+			font-size: 11px;
+		}
 	color: ${props => theming(props).color};
 	border-${props => (props.isSmall ? 'top' : 'right')}: 2px solid transparent;
 	cursor: pointer;
-  ${props => props.isActive && isItemActive}
+	${props => props.isActive && isItemActive}
 	&:hover {
 		${isItemActive}
 	}
 	&:active {
-    transform: scale(1.06);
+		transform: scale(1.06);
 	}
 `
 
