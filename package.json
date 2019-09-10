@@ -1,6 +1,6 @@
 {
   "name": "vertical-navbar-component-module",
-  "version": "2.0.1",
+  "version": "2.2.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -36,7 +36,7 @@
     "react-avatar": "^3.6.0",
     "react-easy-swipe": "^0.0.17",
     "react-responsive": "^8.0.1",
-    "react-tooltip": "^3.10.0",
+    "react-tooltip": "^3.11.1",
     "styled-components": "^4.3.2",
     "theming-component-module": "https://cf2066736ce8712fe9044d7176daa1edea6c4fe9:x-oauth-basic@github.com/redwallsolutions/theming-component-module"
   }

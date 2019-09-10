@@ -63,6 +63,13 @@ export const Reset = createGlobalStyle`
     margin: 0;
     transition: .3s;
   }
+
+  .vertical-navbar-tooltip {
+	  font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;
+	  font-size: 14px;
+	  letter-spacing: 1px;
+	  padding: 10px;
+  }
 `
 
 export const VerticalNavbarContainer = styled.div`

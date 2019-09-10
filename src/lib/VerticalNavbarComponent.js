@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
+import Tooltip from 'react-tooltip'
+import { useMediaQuery } from 'react-responsive'
+import { ThemeContext } from 'styled-components'
 import {
 	VerticalNavbarItemStyled,
 	VerticalNavbarContainer,
@@ -10,7 +13,7 @@ import {
 	VerticalNavbarScrollWrapper
 } from './Style'
 import { useVerticalNavbarController } from './useVerticalNavbarController'
-import { useMediaQuery } from 'react-responsive'
+import redwallLogo from './assets/img/redwall-logo-small.png'
 
 function VerticalNavbarHeader({ logo, smallLogo, title, slogan }) {
 	return (
@@ -20,13 +23,21 @@ function VerticalNavbarHeader({ logo, smallLogo, title, slogan }) {
 	)
 }
 
-function VerticalNavbarItem({ appearance, item, onClick, isActive, isSmall }) {
+function VerticalNavbarItem({
+	appearance,
+	item,
+	onClick,
+	isActive,
+	isSmall,
+	id
+}) {
 	return (
 		<VerticalNavbarItemStyled
 			appearance={appearance}
 			onClick={onClick}
 			isActive={isActive}
 			isSmall={isSmall}
+			data-tip={item.name}
 		>
 			<i>{item.icon}</i>
 			{isSmall && <p>{item.name}</p>}
@@ -36,10 +47,7 @@ function VerticalNavbarItem({ appearance, item, onClick, isActive, isSmall }) {
 
 function VerticalNavbarComponent({
 	items = [],
-	logo,
-	smallLogo,
-	title,
-	slogan,
+	logo = redwallLogo,
 	appearance = 'default',
 	children
 }) {
@@ -49,10 +57,12 @@ function VerticalNavbarComponent({
 		controller.setActiveItem = setActiveItem
 	}, [controller])
 	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+	const theme = useContext(ThemeContext)
+
 	function onClickItem({ item, index }) {
 		return function() {
 			setActiveItem(index + 1)
-			if(item.handler){
+			if (item.handler) {
 				item.handler()
 			}
 		}
@@ -70,6 +80,7 @@ function VerticalNavbarComponent({
 					{items.map((item, index) => (
 						<VerticalNavbarItem
 							key={index}
+							id={`item-${index}`}
 							item={item}
 							isActive={activeItem === index + 1}
 							onClick={onClickItem({ item, index })}
@@ -79,6 +90,14 @@ function VerticalNavbarComponent({
 					))}
 				</VerticalNavbarStyled>
 			</VerticalNavbarScrollWrapper>
+			{!isTabletOrMobile && (
+				<Tooltip
+					place="right"
+					effect="solid"
+					type={theme.mode === 'light' ? 'dark' : 'light'}
+					className="vertical-navbar-tooltip"
+				/>
+			)}
 			<ContentContainer appearance={appearance} isSmall={isTabletOrMobile}>
 				{children}
 			</ContentContainer>
@@ -90,9 +109,6 @@ VerticalNavbarComponent.propTypes = {
 	items: PropTypes.array,
 	appearance: PropTypes.string,
 	logo: PropTypes.string,
-	smallLogo: PropTypes.string,
-	title: PropTypes.string,
-	slogan: PropTypes.string
 }
 
 export default VerticalNavbarComponent
