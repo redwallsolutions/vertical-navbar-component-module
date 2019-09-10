@@ -1,93 +1,79 @@
-import React from 'react';
-import { render } from "react-dom";
+import React, {useState} from 'react'
+import { render } from 'react-dom'
+import VerticalNavbarComponent from './lib/VerticalNavbarComponent'
+import { createGlobalStyle } from 'styled-components'
+import { MdPerson, MdSms, MdAccessTime, MdAirlineSeatFlat, MdWbSunny, MdFlare, MdLens, MdAccountBalance, MdAdjust, MdAcUnit, MdAllInclusive } from 'react-icons/md'
+import { ThemeProvider } from 'styled-components'
+import smallLogo from './lib/assets/img/redwall-logo-small.png'
 
-import VerticalNavbar from './lib/VerticalNavbar';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { MdDashboard, MdTune, MdDns, MdTv, MdAccessibility, MdAccountBalance, MdSms } from 'react-icons/md';
-import DashPage from 'dash-page-component-module';
-
-const ResetCSS = createGlobalStyle`
+const Reset = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
   }
 `
 
-const items = [{
-  icon: <MdDashboard size='1.9em'/>,
-  title: 'Visão Geral',
-  subTitle: 'Tenha acesso rápido a todas as funcionalidades.',
-  onClick: (e) => {
-    console.log(e);
-  }
-}, {
-  icon: <MdTune size='1.9em'/>,
-  title: 'Other Thing',
-  notificationCount: 4
-}, {
-  icon: <MdDns size='1.9em'/>,
-  title: 'Rotation',
-  subTitle: 'A test about rotation app.',
-}, {
-  icon: <MdTv size='1.9em'/>,
-  title: 'Other Thing',
-}, {
-  icon: <MdAccessibility size='1.9em'/>,
-  title: 'Rotation',
-  subTitle: 'A test about rotation app.',
-}, {
-  icon: <MdAccountBalance size='1.9em'/>,
-  title: 'Other Thing',
-}, {
-  icon: <MdSms size='1.9em'/>,
-  title: 'SMS',
-},  {
-  icon: <MdDns size='1.9em'/>,
-  title: 'Rotation',
-  subTitle: 'A test about rotation app.',
-}, {
-  icon: <MdTv size='1.9em'/>,
-  title: 'Other Thing',
-}, {
-  icon: <MdAccessibility size='1.9em'/>,
-  title: 'Rotation',
-  subTitle: 'A test about rotation app.',
-}, {
-  icon: <MdAccountBalance size='1.9em'/>,
-  title: 'Other Thing',
-}, {
-  icon: <MdSms size='1.9em'/>,
-  title: 'SMS',
-}]
+const App = () => {
 
-
-class App extends React.Component {
-
-  setVerticalNavbarController = (verticalNavbarController) => {
-    this.verticalNavbarController = verticalNavbarController;
-    setTimeout(() => {
-      this.verticalNavbarController.setItem(0);
-    }, 1000);
-  }
-
-  render() {
-    return (
-      <ThemeProvider theme={{mode:'dark', primaryContrastDark: '#2b324c', primaryDark: '#ebebeb' }}>
-        <React.Fragment>
-          <ResetCSS/>
-          <VerticalNavbar items={items} getVerticalNavbarController={this.setVerticalNavbarController}>
-            <DashPage>
-              <React.Fragment>
-                <div style={{height: '100vh'}}>OI</div>
-                <div style={{height: '100vh'}}>OI</div>
-                <div style={{height: '100vh'}}>OI</div>
-              </React.Fragment>
-            </DashPage>
-          </VerticalNavbar>
-        </React.Fragment>
-      </ThemeProvider>
-    )
-  }
+  const [themeMode, setThemeMode] = useState('light')
+  return (
+		<ThemeProvider
+			theme={{
+				mode: themeMode
+			}}
+		>
+			<>
+				<Reset />
+				<VerticalNavbarComponent
+					items={[
+						{
+							icon: <MdFlare size="1.9em" />,
+							name: 'Light',
+							handler: () => setThemeMode('light')
+						},
+						{
+							icon: <MdLens size="1.9em" />,
+							name: 'Dark',
+							handler: () => setThemeMode('dark')
+						},
+						{
+							icon: <MdAccessTime size="1.9em" />,
+							name: 'Time'
+						},
+						{
+							icon: <MdAirlineSeatFlat size="1.9em" />,
+							name: 'Seat'
+						},
+						{
+							icon: <MdWbSunny size="1.9em" />,
+							name: 'Sunny'
+						},
+						{
+							icon: <MdAccountBalance size="1.9em" />,
+							name: 'Balance'
+						},
+						{
+							icon: <MdAdjust size="1.9em" />,
+							name: 'Adjust'
+						},
+						{
+							icon: <MdAcUnit size="1.9em" />,
+							name: 'AcUnit'
+						},
+						{
+							icon: <MdAllInclusive size="1.9em" />,
+							name: 'All Inclusive'
+						}
+					]}
+					appearance="default"
+					logo={smallLogo}
+				>
+					oi pessoal
+				</VerticalNavbarComponent>
+			</>
+		</ThemeProvider>
+	)
 }
 
-render(<App/>, document.getElementById("root"));
+render(<App />, document.getElementById('root'))
