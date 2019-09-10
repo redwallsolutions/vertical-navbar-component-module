@@ -69,7 +69,9 @@ const App = () => {
 					appearance="default"
 					logo={smallLogo}
 				>
-					oi pessoal
+					<div style={{height: '5000px'}}>
+            oi pessoal
+          </div>
 				</VerticalNavbarComponent>
 			</>
 		</ThemeProvider>

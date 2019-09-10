@@ -23,7 +23,8 @@ const darkModeDefaults = css`
 `
 
 const isItemActive = css`
-	border-${props=> props.isSmall ? 'top' : 'right'}-color: ${props => theming(props).color};
+	border-${props => (props.isSmall ? 'top' : 'right')}-color: ${props =>
+	theming(props).color};
 	background: ${props =>
 		props.theme.mode === 'light'
 			? Color(theming(props).contrast(props))
@@ -37,12 +38,12 @@ const isItemActive = css`
 `
 
 const isSmall = css`
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    height: 80px;
-    min-height: 80px;
-    max-height: 80px;
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	height: 80px;
+	min-height: 80px;
+	max-height: 80px;
 `
 
 const defaultSizes = css`
@@ -78,19 +79,23 @@ export const VerticalNavbarScrollWrapper = styled.div`
   height: 100%;
   background: transparent;
   overflow: auto;
-  overflow-${props => props.isSmall ? 'y' : 'x'}: hidden;
+  overflow-${props => (props.isSmall ? 'y' : 'x')}: hidden;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     width: 0px;
   }
+  position: fixed; 
+  z-index: 1;
   ${props => props.isSmall && isSmall}
-  ${props => props.isSmall && 'position: fixed; bottom:0; height: 100px; min-height: 100px; max-height: 100px; display: flex; align-items: flex-end;'}
+  ${props =>
+		props.isSmall &&
+		'bottom:0; height: 100px; min-height: 100px; max-height: 100px; display: flex; align-items: flex-end;'}
   
 `
 
 export const VerticalNavbarStyled = styled.nav`
   width: 80px;
-  height: ${props => props.amountOfItems > 8 ? 'auto' : '100%'};
+  height: ${props => (props.amountOfItems > 8 ? 'auto' : '100%')};
 	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1), 0 0 17px 0 rgba(0, 0, 0, 0.08),
 		0 0 30px 0 rgba(0, 0, 0, 0.04);
   ${props => props.theme.mode === 'dark' && darkModeDefaults}
@@ -100,9 +105,10 @@ export const VerticalNavbarStyled = styled.nav`
 			: Color(theming(props).contrast(props))
 					.lighten(0.8)
 					.toString()};
-  z-index: 2;
   ${props => props.isSmall && isSmall}
-  ${props => props.isSmall && 'display: flex; width: auto; min-width: auto; max-width: max-content;'}
+  ${props =>
+		props.isSmall &&
+		'display: flex; width: auto; min-width: auto; max-width: max-content;'}
 
 `
 
@@ -120,12 +126,15 @@ export const VerticalNavbarHeaderStyled = styled.header`
 `
 
 export const ContentContainer = styled.div`
-  z-index: -1;
+  z-index: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - ${props => props.isSmall ? '80px' : '0px'});
   position: absolute;
 	background: linear-gradient(135deg, #f7f7f7, #eaeaea);
-	${props => props.theme.mode === 'dark' && darkModeDefaults}
+  ${props => props.theme.mode === 'dark' && darkModeDefaults}
+  padding-left: ${props => (!props.isSmall ? '98px' : '0px')}
+  overflow: auto;
+  overflow-x: hidden;
 `
 
 export const VerticalNavbarItemStyled = styled.div`
