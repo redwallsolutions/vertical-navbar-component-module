@@ -4,7 +4,7 @@ import Tooltip from 'react-tooltip';
 import { useMediaQuery } from 'react-responsive';
 import { ThemeContext } from 'styled-components';
 import { VerticalNavbarItemStyled, VerticalNavbarContainer, VerticalNavbarStyled, ContentContainer, Reset, VerticalNavbarHeaderStyled, VerticalNavbarScrollWrapper } from './Style';
-import { useVerticalNavbarController } from './useVerticalNavbarController';
+import useVerticalNavbarController from './useVerticalNavbarController';
 import redwallLogo from './assets/img/redwall-logo-small.png';
 
 function VerticalNavbarHeader(_ref) {

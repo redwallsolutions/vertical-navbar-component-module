@@ -12,7 +12,7 @@ import {
 	VerticalNavbarHeaderStyled,
 	VerticalNavbarScrollWrapper
 } from './Style'
-import { useVerticalNavbarController } from './useVerticalNavbarController'
+import useVerticalNavbarController from './useVerticalNavbarController'
 import redwallLogo from './assets/img/redwall-logo-small.png'
 
 function VerticalNavbarHeader({ logo, smallLogo, title, slogan }) {
