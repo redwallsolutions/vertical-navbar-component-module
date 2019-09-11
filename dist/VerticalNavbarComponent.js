@@ -1,10 +1,10 @@
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Tooltip from 'react-tooltip';
 import { useMediaQuery } from 'react-responsive';
 import { ThemeContext } from 'styled-components';
+import VerticalNavbarContext from './VerticalNavbarContext';
 import { VerticalNavbarItemStyled, VerticalNavbarContainer, VerticalNavbarStyled, ContentContainer, Reset, VerticalNavbarHeaderStyled, VerticalNavbarScrollWrapper } from './Style';
-import useVerticalNavbarController from './useVerticalNavbarController';
 import redwallLogo from './assets/img/redwall-logo-small.png';
 
 function VerticalNavbarHeader(_ref) {
@@ -43,16 +43,12 @@ function VerticalNavbarComponent(_ref3) {
       _ref3$appearance = _ref3.appearance,
       appearance = _ref3$appearance === void 0 ? 'default' : _ref3$appearance,
       children = _ref3.children;
-  var controller = useVerticalNavbarController();
 
   var _useState = useState(1),
       _useState2 = _slicedToArray(_useState, 2),
       activeItem = _useState2[0],
       setActiveItem = _useState2[1];
 
-  useEffect(function () {
-    controller.setActiveItem = setActiveItem;
-  }, [controller]);
   var isTabletOrMobile = useMediaQuery({
     query: '(max-width: 1224px)'
   });
@@ -70,7 +66,11 @@ function VerticalNavbarComponent(_ref3) {
     };
   }
 
-  return React.createElement(VerticalNavbarContainer, {
+  return React.createElement(VerticalNavbarContext.Provider, {
+    value: {
+      setActiveItem: setActiveItem
+    }
+  }, React.createElement(VerticalNavbarContainer, {
     className: "vertical-navbar-component-module"
   }, React.createElement(Reset, null), React.createElement(VerticalNavbarScrollWrapper, {
     isSmall: isTabletOrMobile
@@ -102,7 +102,7 @@ function VerticalNavbarComponent(_ref3) {
   }), React.createElement(ContentContainer, {
     appearance: appearance,
     isSmall: isTabletOrMobile
-  }, children));
+  }, children)));
 }
 
 export default VerticalNavbarComponent;

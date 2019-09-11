@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { render } from 'react-dom'
-import VerticalNavbarComponent from './lib/VerticalNavbarComponent'
+import VerticalNavbarComponent, {useVerticalNavbarController} from './lib'
 import { createGlobalStyle } from 'styled-components'
 import {
 	MdAccessTime,
@@ -75,11 +75,17 @@ const App = () => {
 						}
 					]}
 				>
-					<div style={{ height: '5000px' }}>oi pessoal</div>
+					<Content/>
 				</VerticalNavbarComponent>
 			</>
 		</ThemeProvider>
 	)
+}
+
+const Content = () => {
+	const controller = useVerticalNavbarController()
+	controller.setActiveItem(2)
+	return <div style={{ height: '5000px' }}>oi pessoal</div>
 }
 
 render(<App />, document.getElementById('root'))

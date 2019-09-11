@@ -1,8 +1,9 @@
-const controller = {}
+import { useContext } from 'react'
+import VerticalNavbarContext from './VerticalNavbarContext'
 
 const useVerticalNavbarController = () => {
-    return controller
+	const controller = useContext(VerticalNavbarContext)
+	return controller
 }
 
 export default useVerticalNavbarController
-
