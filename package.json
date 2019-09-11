@@ -1,6 +1,6 @@
 {
   "name": "vertical-navbar-component-module",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [

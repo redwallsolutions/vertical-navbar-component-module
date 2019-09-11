@@ -4,5 +4,5 @@ const useVerticalNavbarController = () => {
     return controller
 }
 
-export {useVerticalNavbarController}
+export default useVerticalNavbarController
 
