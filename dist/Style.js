@@ -1,117 +1,7 @@
 import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
-function _templateObject22() {
-  var data = _taggedTemplateLiteral(["\n  overflow-y: auto;\n  max-height: 100vh;\n  width: 99%;\n  padding: 10px;\n  padding-left: 0;\n  background-color: ", ";\n"]);
-
-  _templateObject22 = function _templateObject22() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject21() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  width: $70%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 12px;\n  text-align: center;\n  margin:15px 0 0 0;\n"]);
-
-  _templateObject21 = function _templateObject21() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject20() {
-  var data = _taggedTemplateLiteral(["\n  width: 70%;\n"]);
-
-  _templateObject20 = function _templateObject20() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject19() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  width: 100%;\n  height: ", ";\n  max-height: 30vh;\n  transition: height .2s ease-in-out .3s;\n  min-height: 75px;\n  cursor: pointer;\n"]);
-
-  _templateObject19 = function _templateObject19() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject18() {
-  var data = _taggedTemplateLiteral(["\n  display: inline-block;\n  position: absolute;\n  padding: 2px 7px;\n  margin-right: 10%;\n  border-radius: 50px;\n  font-size: 12px;\n  box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);\n  background-color: ", ";\n  color: ", ";\n  right: 0;\n"]);
-
-  _templateObject18 = function _templateObject18() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject17() {
-  var data = _taggedTemplateLiteral(["\n  font-size: .8em;\n  padding:0;\n  margin: 5px 0 0 0;\n  font-weight: 300;\n  letter-spacing: 1px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n"]);
-
-  _templateObject17 = function _templateObject17() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject16() {
-  var data = _taggedTemplateLiteral(["\n  padding:0;\n  margin:0 0 5px 0;\n  font-size: 17px;\n  font-weight: bolder;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: clip;\n"]);
-
-  _templateObject16 = function _templateObject16() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject15() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  width: 100%;\n  overflow: hidden;\n  padding: 1em;\n"]);
-
-  _templateObject15 = function _templateObject15() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject14() {
-  var data = _taggedTemplateLiteral(["\n  width: ", ";\n  padding: 0;\n  margin: 0;\n  display: flex;\n  justify-content: ", ";\n"]);
-
-  _templateObject14 = function _templateObject14() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject13() {
-  var data = _taggedTemplateLiteral(["\n  position: fixed;\n  z-index: 3;\n  left: 0;\n  bottom: 0;\n  max-width: 0;\n  border-left-width: 0;\n  overflow: hidden;\n  transition: max-width .4s cubic-bezier(.86,.47,0,1);\n  ", "\n  ", "\n  box-shadow: 0 -5px 15px 0 rgba(0,0,0,0.2);\n  background: ", ";\n"]);
-
-  _templateObject13 = function _templateObject13() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject12() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: relative;\n  align-items: center;\n  justify-content: center;\n  min-height: 80px;\n  max-height: 80px;\n  width: 100%;\n  color: ", ";\n  background: ", ";\n  cursor: pointer;\n  border-left-style: solid;\n  border-left-width: 4px;\n  border-left-color: ", ";\n  transition: all .2s ease-in-out;\n  &:hover {\n    border-left-color: ", ";\n  }\n  &:focus {\n    border-left-color: ", ";\n  }\n  &:active {\n    color: ", ";\n  }\n"]);
-
-  _templateObject12 = function _templateObject12() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject11() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  top: 50%;\n  color: ", ";\n  opacity: ", ";\n  transform: ", ";\n  transition: all .3s .8s ease-out;\n  left: 5px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  ", "\n  ", "\t\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\tflex-direction: column;\n\t\tp {\n\t\t\toverflow: hidden;\n\t\t\ttext-overflow: ellipsis;\n\t\t\tmax-width: 80%;\n\t\t\twhite-space: nowrap;\n\t\t\tfont-size: 11px;\n\t\t}\n\tcolor: ", ";\n\tborder-", ": 2px solid transparent;\n\tcursor: pointer;\n\t", "\n\t&:hover {\n\t\t", "\n\t}\n\t&:active {\n\t\ttransform: scale(1.06);\n\t}\n"]);
 
   _templateObject11 = function _templateObject11() {
     return data;
@@ -121,7 +11,7 @@ function _templateObject11() {
 }
 
 function _templateObject10() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  width: 16px;\n  height: 100%;\n  cursor: pointer;\n  background-color: ", ";\n  &:hover span, &:hover div {\n    transition: all .3s ease-out;\n    opacity: .7;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  z-index: 0;\n  width: 100%;\n  height: calc(100% - ", ");\n  position: absolute;\n\tbackground: linear-gradient(135deg, #f7f7f7, #eaeaea);\n  ", "\n  padding-left: ", "\n  overflow: auto;\n  overflow-x: hidden;\n"]);
 
   _templateObject10 = function _templateObject10() {
     return data;
@@ -131,7 +21,7 @@ function _templateObject10() {
 }
 
 function _templateObject9() {
-  var data = _taggedTemplateLiteral(["\n  width: 2px;\n  height: inherit;\n  background-color: ", ";\n  opacity: ", ";\n  margin-left: 3px;\n  transition: opacity .3s .8s ease-out;\n"]);
+  var data = _taggedTemplateLiteral(["\n\t", "\n\theight: 120px;\n\tmax-height: 120px;\n\tmin-height: 120px;\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\timg {\n\t\twidth: 70%;\n\t}\n"]);
 
   _templateObject9 = function _templateObject9() {
     return data;
@@ -141,7 +31,7 @@ function _templateObject9() {
 }
 
 function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  width: 100vw;\n  height: 100vh;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 80px;\n  height: ", ";\n\tbox-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1), 0 0 17px 0 rgba(0, 0, 0, 0.08),\n\t\t0 0 30px 0 rgba(0, 0, 0, 0.04);\n  ", "\n  background: ", ";\n  ", "\n  ", "\n\n"]);
 
   _templateObject8 = function _templateObject8() {
     return data;
@@ -151,7 +41,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  box-shadow: 0 0 2px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,.06);\n  background: ", ";\n  overflow-x: hidden;\n  scrollbar-width: none;\n  &::-webkit-scrollbar {\n    width: 0px;\n  }\n  min-width: 0;\n  width: 0;\n  transition: min-width .4s cubic-bezier(.86,.47,0,1);\n  ", "\n  ", "\n  z-index: 1;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100px;\n  height: 100%;\n  background: transparent;\n  overflow: auto;\n  overflow-", ": hidden;\n  scrollbar-width: none;\n  &::-webkit-scrollbar {\n    width: 0px;\n  }\n  position: fixed; \n  z-index: 1;\n  ", "\n  ", "\n  \n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -161,7 +51,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 80px;\n"]);
+  var data = _taggedTemplateLiteral(["\n\twidth: 100vw;\n\tmax-width: 100vw;\n\theight: 100vh;\n\tmax-height: 100vh;\n\tdisplay: flex;\n\tposition: relative;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -171,7 +61,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 25vw;\n  @media (max-width: 768px){\n    max-width: 40vw;\n  }\n  @media (max-width: 714px) {\n    max-width: 85vw;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  .vertical-navbar-component-module, .vertical-navbar-component-module * {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0;\n    transition: .3s;\n  }\n\n  .vertical-navbar-tooltip {\n\t  font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;\n\t  font-size: 14px;\n\t  letter-spacing: 1px;\n\t  padding: 10px;\n  }\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -181,7 +71,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  min-width: 80px;\n"]);
+  var data = _taggedTemplateLiteral(["\n\twidth: 80px;\n\tmax-width: 80px;\n\tmin-width: 80px;\n\theight: 80px;\n\tmax-height: 80px;\n\tmin-height: 80px;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -191,7 +81,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  min-width: 25vw;\n  @media (max-width: 768px){\n    min-width: 40vw;\n  }\n  @media (max-width: 714px) {\n    min-width: 85vw;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n\twidth: 100%;\n\tmin-width: 100%;\n\tmax-width: 100%;\n\theight: 80px;\n\tmin-height: 80px;\n\tmax-height: 80px;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -201,7 +91,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  .vertical-navbar .rc-menu-root {\n    padding: 0 !important;\n    margin: 0 !important;\n    cursor: pointer !important;\n    box-shadow: none !important;\n    border: none !important;\n    background: none !important;\n  }\n\n  .vertical-navbar .rc-menu-item-active, .rc-menu-submenu-active > .rc-menu-submenu-title {\n    background: none !important;\n  }\n\n  .vertical-navbar .rc-menu-item-active {\n    background: ", " !important;\n    color: ", " !important;\n  }\n\n  .vertical-navbar .rc-menu-submenu-selected {\n    background: none !important;\n  }\n\n  .vertical-navbar .rc-menu-submenu-title {\n    background: none;\n    padding: 0 !important;\n    margin: 0 !important;\n    transition: background-color .3s;\n    border-radius: 0 !important;\n    color: ", "\n  }\n\n  .vertical-navbar .rc-menu-sub {\n    margin-left: ", " !important;\n    transform-origin: left bottom !important;\n    width: 100% !important;\n    box-shadow: 0 4px 15px rgba(0,0,0,0.1)!important;\n    background: ", " !important;\n    color: ", " !important;\n  }\n\n  .vertical-navbar .rc-menu-submenu-arrow::before {\n    content: \"\" !important;\n  }\n\n  .vertical-navbar li.rc-menu-item {\n   font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif;\n   cursor: pointer !important;\n   width: auto !important;\n   transition: background-color .3s;\n   border: none !important;\n   padding: 8px !important;\n   text-align: center;\n   border-radius: 0 !important;\n  }\n  .vertical-navbar li.rc-menu-item-selected {\n    background: ", "\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n\tborder-", "-color: ", ";\n\tbackground: ", ";\n\ttransform: ", ";\n  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.03), 0 0 20px 0 rgba(0, 0, 0, 0.05);\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -211,7 +101,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  .vertical-navbar * {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;\n    box-sizing: border-box;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n\tbackground: linear-gradient(\n\t\t135deg,\n\t\t", ",\n\t\t", "\n\t);\n\tcolor: ", ";\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -221,120 +111,68 @@ function _templateObject() {
 }
 
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { MODES } from './VerticalNavbarComponent';
 import Color from 'color';
 import Theming from 'theming-component-module';
 var theming = Theming.createThemeWithAppearance();
 var defaultProps = {
-  appearance: 'primary',
+  appearance: 'default',
   theme: {
     mode: 'light'
   }
 };
-export var DefaultFont = createGlobalStyle(_templateObject());
-export var CustomMenuStyles = createGlobalStyle(_templateObject2(), function (props) {
-  return theming(props).color;
+var darkModeDefaults = css(_templateObject(), function (props) {
+  return Color(theming(props).contrast(props)).lighten(0.5).toString();
 }, function (props) {
   return theming(props).contrast;
 }, function (props) {
-  return Color(theming(props).color(props)).grayscale().lighten(0.3).string();
-}, function (props) {
-  return props.currentMode === MODES.partiallyShown ? '16px' : '60px';
-}, function (props) {
-  return Color(theming(props).contrast(props)).lighten(0.3).string();
+  return theming(props).color;
+});
+var isItemActive = css(_templateObject2(), function (props) {
+  return props.isSmall ? 'top' : 'right';
 }, function (props) {
   return theming(props).color;
 }, function (props) {
-  return Color(theming(props).color(props)).fade(.9).string();
+  return props.theme.mode === 'light' ? Color(theming(props).contrast(props)).darken(0.02).toString() : Color(theming(props).color(props)).darken(0.76).toString();
+}, function (props) {
+  return 'scale(1.08)';
 });
-CustomMenuStyles.defaultProps = defaultProps;
-var applyToNavbarWhenTottalyShown = css(_templateObject3());
-var applyToNavbarWhenPartiallyShown = css(_templateObject4());
-var applyToLastItemWhenTotallyShwon = css(_templateObject5());
-var applyToLastItemWhenPartiallyShown = css(_templateObject6());
-var VerticalNavbarStyled = styled.div(_templateObject7(), function (props) {
-  return props.theme.mode === 'light' ? 'white' : theming(props).contrast;
+var isSmall = css(_templateObject3());
+var defaultSizes = css(_templateObject4());
+export var Reset = createGlobalStyle(_templateObject5());
+export var VerticalNavbarContainer = styled.div(_templateObject6());
+export var VerticalNavbarScrollWrapper = styled.div(_templateObject7(), function (props) {
+  return props.isSmall ? 'y' : 'x';
 }, function (props) {
-  return props.currentMode === MODES.totallyShown && applyToNavbarWhenTottalyShown;
+  return props.isSmall && isSmall;
 }, function (props) {
-  return props.currentMode === MODES.partiallyShown && applyToNavbarWhenPartiallyShown;
+  return props.isSmall && 'bottom:0; height: 100px; min-height: 100px; max-height: 100px; display: flex; align-items: flex-end;';
 });
-VerticalNavbarStyled.defaultProps = defaultProps;
-export { VerticalNavbarStyled };
-var NavbarContainer = styled.div(_templateObject8());
-NavbarContainer.defaultProps = defaultProps;
-export { NavbarContainer };
-var NavbarTogglerStyled = styled.div(_templateObject9(), function (props) {
-  return theming(props).color;
+export var VerticalNavbarStyled = styled.nav(_templateObject8(), function (props) {
+  return props.amountOfItems > 8 ? 'auto' : '100%';
 }, function (props) {
-  return props.currentMode === MODES.hidden ? .3 : 0;
+  return props.theme.mode === 'dark' && darkModeDefaults;
+}, function (props) {
+  return props.theme.mode === 'light' ? 'white' : Color(theming(props).contrast(props)).lighten(0.8).toString();
+}, function (props) {
+  return props.isSmall && isSmall;
+}, function (props) {
+  return props.isSmall && 'display: flex; width: auto; min-width: auto; max-width: max-content;';
 });
-NavbarTogglerStyled.defaultProps = defaultProps;
-export { NavbarTogglerStyled };
-var NavbarTogglerContainer = styled.div(_templateObject10(), function (props) {
-  return props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string();
+export var VerticalNavbarHeaderStyled = styled.header(_templateObject9(), defaultSizes);
+export var ContentContainer = styled.div(_templateObject10(), function (props) {
+  return props.isSmall ? '80px' : '0px';
+}, function (props) {
+  return props.theme.mode === 'dark' && darkModeDefaults;
+}, function (props) {
+  return !props.isSmall ? '98px' : '0px';
 });
-NavbarTogglerContainer.defaultProps = defaultProps;
-export { NavbarTogglerContainer };
-var NavbarTogglerIndicator = styled.span(_templateObject11(), function (props) {
-  return theming(props).color;
-}, function (props) {
-  return props.currentMode === MODES.hidden ? .3 : 0;
-}, function (props) {
-  return props.currentMode === MODES.totallyShown ? 'rotate(180deg)' : 'rotate(0deg)';
-});
-NavbarTogglerIndicator.defaultProps = defaultProps;
-export { NavbarTogglerIndicator };
-var NavbarItemStyled = styled.div(_templateObject12(), function (props) {
-  return props.isActive ? theming(props).color : props.theme.mode === 'light' ? Color(theming(props).color(props)).darken(.7).string() : Color(theming(props).color(props)).darken(.3).string();
-}, function (props) {
-  return props.isActive ? props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string() : 'none';
-}, function (props) {
-  return props.isActive ? theming(props).color : 'transparent';
+export var VerticalNavbarItemStyled = styled.div(_templateObject11(), defaultSizes, function (props) {
+  return props.isSmall && (props.amountOfItems > 3 ? 'width: 25vw; max-width: 25vw; min-width: 25vw;' : "width: ".concat(100 / props.amountOfItems, "vw;max-width: ").concat(100 / props.amountOfItems, "vw;min-width: ").concat(100 / props.amountOfItems, "vw;"));
 }, function (props) {
   return theming(props).color;
 }, function (props) {
-  return theming(props).color;
+  return props.isSmall ? 'top' : 'right';
 }, function (props) {
-  return Color(theming(props).color(props)).lighten(.6).string();
-});
-var NavbarLastItemStyled = styled(NavbarItemStyled)(_templateObject13(), function (props) {
-  return props.currentMode === MODES.totallyShown && applyToLastItemWhenTotallyShwon;
-}, function (props) {
-  return props.currentMode === MODES.partiallyShown && applyToLastItemWhenPartiallyShown;
-}, function (props) {
-  return props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string();
-});
-NavbarItemStyled.defaultProps = NavbarLastItemStyled.defaultProps = defaultProps;
-export { NavbarItemStyled, NavbarLastItemStyled };
-export var NavbarItemIconContainer = styled.div(_templateObject14(), function (props) {
-  return props.currentMode === MODES.totallyShown ? '30%' : '100%';
-}, function (props) {
-  return props.currentMode === MODES.totallyShown ? 'flex-end' : 'center';
-});
-export var NavbarItemTextContainer = styled.div(_templateObject15());
-export var NavbarItemTitle = styled.h1(_templateObject16());
-export var NavbarItemSubtitle = styled.h3(_templateObject17());
-var NavbarItemBadge = styled.span(_templateObject18(), function (props) {
-  return theming(props).color;
-}, function (props) {
-  return theming(props).contrast;
-});
-NavbarItemBadge.defaultProps = defaultProps;
-export { NavbarItemBadge };
-export var NavbarHeaderItem = styled.header(_templateObject19(), function (props) {
-  return props.currentMode === MODES.totallyShown ? '30vh' : '20vh';
-});
-var NavbarHeaderItemImage = styled.img(_templateObject20());
-NavbarHeaderItemImage.defaultProps = defaultProps;
-export { NavbarHeaderItemImage };
-var NavbarHeaderItemSubtitle = styled.h4(_templateObject21(), function (props) {
-  return Color(theming(props).color(props)).fade(.7).string();
-});
-NavbarHeaderItemSubtitle.defaultProps = defaultProps;
-export { NavbarHeaderItemSubtitle };
-var Content = styled.div(_templateObject22(), function (props) {
-  return props.theme.mode === 'light' ? '#F7F8FC' : Color(theming(props).contrast(props)).darken(.3).string();
-});
-Content.defaultProps = defaultProps;
-export { Content };
+  return props.isActive && isItemActive;
+}, isItemActive);
+Reset.defaultProps = VerticalNavbarContainer.defaultProps = VerticalNavbarStyled.defaultProps = ContentContainer.defaultProps = VerticalNavbarItemStyled.defaultProps = VerticalNavbarHeaderStyled.defaultProps = defaultProps;
