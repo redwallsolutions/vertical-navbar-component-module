@@ -136,7 +136,7 @@ export const VerticalNavbarHeaderStyled = styled.header`
 
 export const ContentContainer = styled.div`
   z-index: 0;
-  width: calc(100% - ${props => (!props.isSmall ? '98px' : '0px')});
+  width: 100%;
   height: calc(100% - ${props => (props.isSmall ? '80px' : '0px')});
   position: absolute;
 	background: linear-gradient(135deg, #f7f7f7, #eaeaea);

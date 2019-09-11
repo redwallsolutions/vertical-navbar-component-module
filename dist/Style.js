@@ -11,7 +11,7 @@ function _templateObject11() {
 }
 
 function _templateObject10() {
-  var data = _taggedTemplateLiteral(["\n  z-index: 0;\n  width: calc(100% - ", ");\n  height: calc(100% - ", ");\n  position: absolute;\n\tbackground: linear-gradient(135deg, #f7f7f7, #eaeaea);\n  ", "\n  padding-left: ", "\n  overflow: auto;\n  overflow-x: hidden;\n"]);
+  var data = _taggedTemplateLiteral(["\n  z-index: 0;\n  width: 100%;\n  height: calc(100% - ", ");\n  position: absolute;\n\tbackground: linear-gradient(135deg, #f7f7f7, #eaeaea);\n  ", "\n  padding-left: ", "\n  overflow: auto;\n  overflow-x: hidden;\n"]);
 
   _templateObject10 = function _templateObject10() {
     return data;
@@ -160,8 +160,6 @@ export var VerticalNavbarStyled = styled.nav(_templateObject8(), function (props
 });
 export var VerticalNavbarHeaderStyled = styled.header(_templateObject9(), defaultSizes);
 export var ContentContainer = styled.div(_templateObject10(), function (props) {
-  return !props.isSmall ? '98px' : '0px';
-}, function (props) {
   return props.isSmall ? '80px' : '0px';
 }, function (props) {
   return props.theme.mode === 'dark' && darkModeDefaults;

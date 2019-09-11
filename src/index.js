@@ -16,7 +16,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 
 const Reset = createGlobalStyle`
-  body {
+  body, * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
