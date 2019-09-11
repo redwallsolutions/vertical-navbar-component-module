@@ -1,282 +1,108 @@
-import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
-import _classCallCheck from "@babel/runtime/helpers/esm/classCallCheck";
-import _createClass from "@babel/runtime/helpers/esm/createClass";
-import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConstructorReturn";
-import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
-import _inherits from "@babel/runtime/helpers/esm/inherits";
-import React, { Component } from 'react';
-import { MdPowerSettingsNew, MdLock, MdPerson } from 'react-icons/md';
-import Avatar from 'react-avatar';
-import Menu, { SubMenu, Item } from 'rc-menu';
-import 'rc-menu/assets/index.css';
-import { NavbarContainer, VerticalNavbarStyled, NavbarHeaderItem, NavbarItemTextContainer, NavbarItemTitle, NavbarItemSubtitle, NavbarItemIconContainer, Content, NavbarHeaderItemImage, NavbarHeaderItemSubtitle, CustomMenuStyles } from './Style';
-import NavbarItem from './NavbarItem';
-import NavbarToggler from './NavbarToggler';
-import logoImg from './assets/img/redwall-logo.png';
-import logoImgSmall from './assets/img/redwall-logo-small.png';
+import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
+import React, { useState, useEffect, useContext } from 'react';
 import Tooltip from 'react-tooltip';
-export var MODES = {
-  hidden: 1,
-  partiallyShown: 2,
-  totallyShown: 3
-};
+import { useMediaQuery } from 'react-responsive';
+import { ThemeContext } from 'styled-components';
+import { VerticalNavbarItemStyled, VerticalNavbarContainer, VerticalNavbarStyled, ContentContainer, Reset, VerticalNavbarHeaderStyled, VerticalNavbarScrollWrapper } from './Style';
+import { useVerticalNavbarController } from './useVerticalNavbarController';
+import redwallLogo from './assets/img/redwall-logo-small.png';
 
-var VerticalNavbarComponent =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(VerticalNavbarComponent, _Component);
+function VerticalNavbarHeader(_ref) {
+  var logo = _ref.logo,
+      smallLogo = _ref.smallLogo,
+      title = _ref.title,
+      slogan = _ref.slogan;
+  return React.createElement(VerticalNavbarHeaderStyled, null, React.createElement("img", {
+    src: logo,
+    alt: "Logo do sistema"
+  }));
+}
 
-  function VerticalNavbarComponent(props) {
-    var _this;
+function VerticalNavbarItem(_ref2) {
+  var appearance = _ref2.appearance,
+      item = _ref2.item,
+      onClick = _ref2.onClick,
+      isActive = _ref2.isActive,
+      isSmall = _ref2.isSmall,
+      amountOfItems = _ref2.amountOfItems;
+  return React.createElement(VerticalNavbarItemStyled, {
+    appearance: appearance,
+    onClick: onClick,
+    isActive: isActive,
+    isSmall: isSmall,
+    "data-tip": item.name,
+    amountOfItems: amountOfItems
+  }, React.createElement("i", null, item.icon), isSmall && React.createElement("p", null, item.name));
+}
 
-    _classCallCheck(this, VerticalNavbarComponent);
+function VerticalNavbarComponent(_ref3) {
+  var _ref3$items = _ref3.items,
+      items = _ref3$items === void 0 ? [] : _ref3$items,
+      _ref3$logo = _ref3.logo,
+      logo = _ref3$logo === void 0 ? redwallLogo : _ref3$logo,
+      _ref3$appearance = _ref3.appearance,
+      appearance = _ref3$appearance === void 0 ? 'default' : _ref3$appearance,
+      children = _ref3.children;
+  var controller = useVerticalNavbarController();
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(VerticalNavbarComponent).call(this, props));
-    _this.state = {
-      activeItem: -1,
-      currentMode: MODES.partiallyShown
-    };
+  var _useState = useState(1),
+      _useState2 = _slicedToArray(_useState, 2),
+      activeItem = _useState2[0],
+      setActiveItem = _useState2[1];
 
-    _this.isCurrentModeTotallyShown = function () {
-      return _this.state.currentMode === MODES.totallyShown;
-    };
+  useEffect(function () {
+    controller.setActiveItem = setActiveItem;
+  }, [controller]);
+  var isTabletOrMobile = useMediaQuery({
+    query: '(max-width: 1224px)'
+  });
+  var theme = useContext(ThemeContext);
 
-    _this.isCurrentModePartiallyShown = function () {
-      return _this.state.currentMode === MODES.partiallyShown;
-    };
+  function onClickItem(_ref4) {
+    var item = _ref4.item,
+        index = _ref4.index;
+    return function () {
+      setActiveItem(index + 1);
 
-    _this.toggleNavbar = function () {
-      var newMode = undefined;
-
-      if (_this.state.currentMode !== MODES.hidden) {
-        newMode = MODES.hidden;
-        _this.previousMode = _this.state.currentMode;
-      } else {
-        newMode = _this.previousMode;
-      }
-
-      _this.setState({
-        currentMode: newMode
-      });
-    };
-
-    _this.sequentiallyToggle = function () {
-      var currentMode = _this.state.currentMode;
-      var newMode = currentMode;
-      if (currentMode === MODES.hidden) newMode = MODES.partiallyShown;else if (currentMode === MODES.partiallyShown) newMode = MODES.totallyShown;else if (currentMode === MODES.totallyShown) newMode = MODES.hidden;
-
-      _this.setState({
-        currentMode: newMode
-      });
-    };
-
-    _this.changeMode = function (newMode) {
-      _this.setState({
-        currentMode: newMode
-      });
-    };
-
-    _this.hide = function () {
-      _this.changeMode(MODES.hidden);
-    };
-
-    _this.showPartially = function () {
-      _this.changeMode(MODES.partiallyShown);
-    };
-
-    _this.showTotally = function () {
-      _this.changeMode(MODES.totallyShown);
-    };
-
-    _this.onSwipeLeft = function () {
-      _this.changeMode(MODES.hidden);
-    };
-
-    _this.onSwipeRight = function () {
-      _this.changeMode(MODES.totallyShown);
-    };
-
-    _this.onClickItem = function (item) {
-      _this.setState({
-        activeItem: item.id
-      });
-
-      if (item.onClick) {
-        var onClick = item.onClick,
-            rest = _objectWithoutProperties(item, ["onClick"]);
-
-        onClick(rest);
+      if (item.handler) {
+        item.handler();
       }
     };
-
-    _this.setItem = function (itemIndex) {
-      _this.setState({
-        activeItem: itemIndex
-      });
-    };
-
-    _this.exposeVerticalNavbarController = function () {
-      return {
-        setItem: _this.setItem
-      };
-    };
-
-    _this.buildNavbarHeaderItem = function () {
-      var headerItem = _this.props.headerItem;
-      var logoImg = headerItem.logoImg,
-          logoImgSmall = headerItem.logoImgSmall,
-          subtitle = headerItem.subtitle;
-      var currentMode = _this.state.currentMode;
-      var isTotallyShown = currentMode === MODES.totallyShown;
-      return React.createElement(NavbarHeaderItem, {
-        currentMode: currentMode
-      }, React.createElement(NavbarHeaderItemImage, {
-        src: isTotallyShown ? logoImg : logoImgSmall,
-        alt: subtitle,
-        currentMode: currentMode
-      }), isTotallyShown && React.createElement(NavbarHeaderItemSubtitle, {
-        title: subtitle
-      }, subtitle));
-    };
-
-    _this.buildNavbarItems = function () {
-      var items = _this.props.items;
-
-      var _this$state = _this.state,
-          activeItem = _this$state.activeItem,
-          rest = _objectWithoutProperties(_this$state, ["activeItem"]);
-
-      return items.map(function (item, index) {
-        return React.createElement(NavbarItem, Object.assign({}, rest, {
-          isActive: activeItem === index,
-          key: index,
-          id: index,
-          customOnClick: item.onClick,
-          onClick: _this.onClickItem,
-          notificationCount: item.notificationCount,
-          "data-for": "id".concat(index),
-          "data-tip": item.title
-        }), React.createElement(NavbarItemIconContainer, _this.state, item.icon), _this.isCurrentModeTotallyShown() ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
-          title: item.title
-        }, item.title), React.createElement(NavbarItemSubtitle, {
-          title: item.subTitle
-        }, item.subTitle)) : null, _this.isCurrentModePartiallyShown() && React.createElement(Tooltip, {
-          id: "id".concat(index),
-          place: "right",
-          effect: "solid",
-          type: "dark",
-          delayShow: 300
-        }));
-      });
-    };
-
-    _this.buildLastItem = function (user) {
-      return React.createElement(NavbarItem, {
-        isLast: true,
-        onClick: function onClick() {},
-        currentMode: _this.state.currentMode
-      }, React.createElement(CustomMenuStyles, {
-        currentMode: _this.state.currentMode
-      }), React.createElement(Menu, {
-        triggerSubMenuAction: "click",
-        openAnimation: "zoom",
-        className: "vertical-navbar"
-      }, React.createElement(SubMenu, {
-        title: React.createElement("div", {
-          style: {
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }
-        }, React.createElement(NavbarItemIconContainer, _this.state, React.createElement(Avatar, {
-          name: user.fullName,
-          round: true,
-          size: "43px",
-          src: user.profilePic,
-          color: "#E21306"
-        })), _this.isCurrentModeTotallyShown() ? React.createElement(NavbarItemTextContainer, null, React.createElement(NavbarItemTitle, {
-          title: user.fullName
-        }, user.fullName), React.createElement(NavbarItemSubtitle, {
-          title: user.type
-        }, user.type)) : null),
-        key: "1",
-        popupClassName: "vertical-navbar"
-      }, React.createElement(Item, {
-        onClick: _this.props.goToChangePass,
-        key: 2
-      }, React.createElement("div", {
-        style: {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }
-      }, React.createElement(MdLock, null), " ", React.createElement("span", {
-        style: {
-          marginLeft: 10
-        }
-      }, "Trocar senha"))), React.createElement(Item, {
-        onClick: _this.props.logout,
-        key: 3
-      }, React.createElement("div", {
-        style: {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }
-      }, React.createElement(MdPowerSettingsNew, null), " ", React.createElement("span", {
-        style: {
-          marginLeft: 10
-        }
-      }, "Sair"))))));
-    };
-
-    _this.previousMode = MODES.hidden;
-    return _this;
   }
 
-  _createClass(VerticalNavbarComponent, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.getVerticalNavbarController(this.exposeVerticalNavbarController());
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var currentMode = this.state.currentMode;
-      var user = this.props.user;
-      return React.createElement(NavbarContainer, {
-        className: "vertical-navbar"
-      }, React.createElement(VerticalNavbarStyled, this.state, this.buildNavbarHeaderItem(), this.buildNavbarItems(), React.createElement("div", {
-        style: {
-          height: 80
-        }
-      }), this.buildLastItem(user)), React.createElement(NavbarToggler, {
-        onClick: this.sequentiallyToggle,
-        onSwipeLeft: this.onSwipeLeft,
-        onSwipeRight: this.onSwipeRight,
-        currentMode: currentMode
-      }), React.createElement(Content, {
-        currentMode: currentMode
-      }, this.props.children));
-    }
-  }]);
+  return React.createElement(VerticalNavbarContainer, {
+    className: "vertical-navbar-component-module"
+  }, React.createElement(Reset, null), React.createElement(VerticalNavbarScrollWrapper, {
+    isSmall: isTabletOrMobile
+  }, React.createElement(VerticalNavbarStyled, {
+    appearance: appearance,
+    isSmall: isTabletOrMobile,
+    amountOfItems: items.length
+  }, !isTabletOrMobile && React.createElement(VerticalNavbarHeader, {
+    logo: logo
+  }), items.map(function (item, index) {
+    return React.createElement(VerticalNavbarItem, {
+      key: index,
+      id: "item-".concat(index),
+      item: item,
+      isActive: activeItem === index + 1,
+      onClick: onClickItem({
+        item: item,
+        index: index
+      }),
+      appearance: appearance,
+      isSmall: isTabletOrMobile,
+      amountOfItems: items.length
+    });
+  }))), !isTabletOrMobile && React.createElement(Tooltip, {
+    place: "right",
+    effect: "solid",
+    type: theme.mode === 'light' ? 'dark' : 'light',
+    className: "vertical-navbar-tooltip"
+  }), React.createElement(ContentContainer, {
+    appearance: appearance,
+    isSmall: isTabletOrMobile
+  }, children));
+}
 
-  return VerticalNavbarComponent;
-}(Component);
-
-VerticalNavbarComponent.defaultProps = {
-  isShown: true,
-  headerItem: {
-    logoImg: logoImg,
-    logoImgSmall: logoImgSmall,
-    subtitle: 'The vertical navbar.'
-  },
-  user: {
-    fullName: 'Redwall Solutions',
-    type: 'Administrador'
-  },
-  logout: function logout() {
-    window.location.href = '/login';
-  }
-};
 export default VerticalNavbarComponent;

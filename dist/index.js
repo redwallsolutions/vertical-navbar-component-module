@@ -1,2 +1,2 @@
-import VerticalNavbar from './VerticalNavbar';
+import VerticalNavbar from './VerticalNavbarComponent';
 export default VerticalNavbar;
