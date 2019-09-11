@@ -11,7 +11,7 @@ function _templateObject11() {
 }
 
 function _templateObject10() {
-  var data = _taggedTemplateLiteral(["\n  z-index: 0;\n  width: 100%;\n  height: calc(100% - ", ");\n  position: absolute;\n\tbackground: linear-gradient(135deg, #f7f7f7, #eaeaea);\n  ", "\n  padding-left: ", "\n  overflow: auto;\n  overflow-x: hidden;\n"]);
+  var data = _taggedTemplateLiteral(["\n  z-index: 0;\n  width: calc(100% - ", ");\n  height: calc(100% - ", ");\n  position: absolute;\n\tbackground: linear-gradient(135deg, #f7f7f7, #eaeaea);\n  ", "\n  padding-left: ", "\n  overflow: auto;\n  overflow-x: hidden;\n"]);
 
   _templateObject10 = function _templateObject10() {
     return data;
@@ -51,7 +51,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n\twidth: 100vw;\n\tmax-width: 100vw;\n\theight: 100vh;\n\tmax-height: 100vh;\n\tdisplay: flex;\n\tposition: relative;\n"]);
+  var data = _taggedTemplateLiteral(["\n\twidth: 100vw;\n\tmax-width: 100vw;\n\theight: 100vh;\n\tmax-height: 100vh;\n\tposition: relative;\n\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -61,7 +61,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  .vertical-navbar-component-module, .vertical-navbar-component-module * {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0;\n    transition: .3s;\n  }\n\n  .vertical-navbar-tooltip {\n\t  font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;\n\t  font-size: 14px;\n\t  letter-spacing: 1px;\n\t  padding: 10px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  .vertical-navbar-component-module {\n    font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;\n    box-sizing: border-box !important;\n    padding: 0;\n    margin: 0;\n\t* {\n\t\ttransition: .3s;\n\t}\n  }\n\n  .vertical-navbar-tooltip {\n\t  font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;\n\t  font-size: 14px;\n\t  letter-spacing: 1px;\n\t  padding: 10px;\n  }\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -160,6 +160,8 @@ export var VerticalNavbarStyled = styled.nav(_templateObject8(), function (props
 });
 export var VerticalNavbarHeaderStyled = styled.header(_templateObject9(), defaultSizes);
 export var ContentContainer = styled.div(_templateObject10(), function (props) {
+  return !props.isSmall ? '98px' : '0px';
+}, function (props) {
   return props.isSmall ? '80px' : '0px';
 }, function (props) {
   return props.theme.mode === 'dark' && darkModeDefaults;

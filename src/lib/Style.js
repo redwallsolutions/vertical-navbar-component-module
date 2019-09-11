@@ -56,12 +56,14 @@ const defaultSizes = css`
 `
 
 export const Reset = createGlobalStyle`
-  .vertical-navbar-component-module, .vertical-navbar-component-module * {
+  .vertical-navbar-component-module {
     font-family: Arial, Heveltica, Tahoma, Geneva, sans-serif !important;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     padding: 0;
     margin: 0;
-    transition: .3s;
+	* {
+		transition: .3s;
+	}
   }
 
   .vertical-navbar-tooltip {
@@ -77,8 +79,8 @@ export const VerticalNavbarContainer = styled.div`
 	max-width: 100vw;
 	height: 100vh;
 	max-height: 100vh;
-	display: flex;
 	position: relative;
+
 `
 
 export const VerticalNavbarScrollWrapper = styled.div`
@@ -134,7 +136,7 @@ export const VerticalNavbarHeaderStyled = styled.header`
 
 export const ContentContainer = styled.div`
   z-index: 0;
-  width: 100%;
+  width: calc(100% - ${props => (!props.isSmall ? '98px' : '0px')});
   height: calc(100% - ${props => (props.isSmall ? '80px' : '0px')});
   position: absolute;
 	background: linear-gradient(135deg, #f7f7f7, #eaeaea);
