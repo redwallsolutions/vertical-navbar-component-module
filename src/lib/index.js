@@ -1,3 +1,4 @@
-import VerticalNavbar from './VerticalNavbarComponent';
-
-export default VerticalNavbar;
+import VerticalNavbar from './VerticalNavbarComponent'
+import useVerticalNavbarController from './useVerticalNavbarController'
+export { useVerticalNavbarController }
+export default VerticalNavbar
