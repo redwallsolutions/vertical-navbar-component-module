@@ -16,7 +16,7 @@ import {
 import { ThemeProvider } from 'styled-components'
 
 const Reset = createGlobalStyle`
-  body, * {
+  body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -28,7 +28,11 @@ const App = () => {
 	return (
 		<ThemeProvider
 			theme={{
-				mode: themeMode
+				mode: themeMode,
+				primaryContrastDark: '#2b324c',
+				primaryDark: '#ebebeb',
+				secondaryDark: 'rgb(106, 140, 147)',
+				secondaryContrastDark: 'rgb(238, 238, 238)'
 			}}
 		>
 			<>
@@ -74,8 +78,9 @@ const App = () => {
 							name: 'All Inclusive'
 						}
 					]}
+					appearance="primary"
 				>
-					<Content/>
+					<Content />
 				</VerticalNavbarComponent>
 			</>
 		</ThemeProvider>

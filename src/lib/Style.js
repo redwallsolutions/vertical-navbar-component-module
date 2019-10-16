@@ -13,11 +13,11 @@ const defaultProps = {
 const darkModeDefaults = css`
 	background: linear-gradient(
 		135deg,
+		${props => theming(props).contrast},
 		${props =>
 			Color(theming(props).contrast(props))
-				.lighten(0.5)
-				.toString()},
-		${props => theming(props).contrast}
+				.darken(0.5)
+				.toString()}
 	);
 	color: ${props => theming(props).color};
 `
@@ -26,15 +26,11 @@ const isItemActive = css`
 	border-${props => (props.isSmall ? 'top' : 'right')}-color: ${props =>
 	theming(props).color};
 	background: ${props =>
-		props.theme.mode === 'light'
-			? Color(theming(props).contrast(props))
-					.darken(0.02)
-					.toString()
-			: Color(theming(props).color(props))
-					.darken(0.76)
-					.toString()};
+		Color(theming(props).contrast(props))
+			.darken(0.03)
+			.toString()};
 	transform: ${props => 'scale(1.08)'};
-  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.03), 0 0 20px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.03), 0 0 20px 0 rgba(0, 0, 0, 0.05), 0 0 15px 0 ${props => Color(theming(props).contrast(props)).darken(0.1).toString()} inset;
 `
 
 const isSmall = css`
@@ -80,7 +76,6 @@ export const VerticalNavbarContainer = styled.div`
 	height: 100vh;
 	max-height: 100vh;
 	position: relative;
-
 `
 
 export const VerticalNavbarScrollWrapper = styled.div`
@@ -112,7 +107,7 @@ export const VerticalNavbarStyled = styled.nav`
 		props.theme.mode === 'light'
 			? 'white'
 			: Color(theming(props).contrast(props))
-					.lighten(0.8)
+					.lighten(0.15)
 					.toString()};
   ${props => props.isSmall && isSmall}
   ${props =>

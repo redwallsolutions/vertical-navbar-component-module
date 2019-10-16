@@ -51,7 +51,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n\twidth: 100vw;\n\tmax-width: 100vw;\n\theight: 100vh;\n\tmax-height: 100vh;\n\tposition: relative;\n\n"]);
+  var data = _taggedTemplateLiteral(["\n\twidth: 100vw;\n\tmax-width: 100vw;\n\theight: 100vh;\n\tmax-height: 100vh;\n\tposition: relative;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -91,7 +91,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n\tborder-", "-color: ", ";\n\tbackground: ", ";\n\ttransform: ", ";\n  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.03), 0 0 20px 0 rgba(0, 0, 0, 0.05);\n"]);
+  var data = _taggedTemplateLiteral(["\n\tborder-", "-color: ", ";\n\tbackground: ", ";\n\ttransform: ", ";\n  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.03), 0 0 20px 0 rgba(0, 0, 0, 0.05), 0 0 15px 0 ", " inset;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -121,9 +121,9 @@ var defaultProps = {
   }
 };
 var darkModeDefaults = css(_templateObject(), function (props) {
-  return Color(theming(props).contrast(props)).lighten(0.5).toString();
-}, function (props) {
   return theming(props).contrast;
+}, function (props) {
+  return Color(theming(props).contrast(props)).darken(0.5).toString();
 }, function (props) {
   return theming(props).color;
 });
@@ -132,9 +132,11 @@ var isItemActive = css(_templateObject2(), function (props) {
 }, function (props) {
   return theming(props).color;
 }, function (props) {
-  return props.theme.mode === 'light' ? Color(theming(props).contrast(props)).darken(0.02).toString() : Color(theming(props).color(props)).darken(0.76).toString();
+  return Color(theming(props).contrast(props)).darken(0.03).toString();
 }, function (props) {
   return 'scale(1.08)';
+}, function (props) {
+  return Color(theming(props).contrast(props)).darken(0.1).toString();
 });
 var isSmall = css(_templateObject3());
 var defaultSizes = css(_templateObject4());
@@ -152,7 +154,7 @@ export var VerticalNavbarStyled = styled.nav(_templateObject8(), function (props
 }, function (props) {
   return props.theme.mode === 'dark' && darkModeDefaults;
 }, function (props) {
-  return props.theme.mode === 'light' ? 'white' : Color(theming(props).contrast(props)).lighten(0.8).toString();
+  return props.theme.mode === 'light' ? 'white' : Color(theming(props).contrast(props)).lighten(0.15).toString();
 }, function (props) {
   return props.isSmall && isSmall;
 }, function (props) {
