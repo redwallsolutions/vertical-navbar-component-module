@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { render } from 'react-dom'
-import VerticalNavbarComponent, {useVerticalNavbarController} from './lib'
+import VerticalNavbarComponent, { useVerticalNavbarController } from './lib'
 import { createGlobalStyle } from 'styled-components'
 import {
 	MdAccessTime,
@@ -19,12 +19,14 @@ const Reset = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+	box-sizing: border-box;
   }
 `
 
 const App = () => {
 	const [themeMode, setThemeMode] = useState('light')
+
+
 	return (
 		<ThemeProvider
 			theme={{
@@ -79,6 +81,7 @@ const App = () => {
 						}
 					]}
 					appearance="primary"
+					logo="hauhau"
 				>
 					<Content />
 				</VerticalNavbarComponent>
@@ -86,11 +89,29 @@ const App = () => {
 		</ThemeProvider>
 	)
 }
-
+let progress = 0
 const Content = () => {
 	const controller = useVerticalNavbarController()
-	controller.setActiveItem(2)
-	return <div style={{ height: '5000px' }}>oi pessoal</div>
+	controller.setActiveItem(3)
+	return (
+		<div style={{ height: '5000px' }}>
+			Hello World!
+			<button
+				style={{ padding: '5px', margin: '10px' }}
+				type="button"
+				onClick={controller.startLoading}
+			>
+				Start Loading
+			</button>
+			<button
+				style={{ padding: '5px', margin: '10px' }}
+				type="button"
+				onClick={controller.finishLoading}
+			>
+				Finish Loading
+			</button>
+		</div>
+	)
 }
 
 render(<App />, document.getElementById('root'))

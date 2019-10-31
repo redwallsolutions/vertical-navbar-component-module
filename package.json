@@ -1,28 +1,37 @@
 {
-  "name": "vertical-navbar-component-module",
-  "version": "2.5.0",
+  "name": "@redwallsolutions/vertical-navbar-component-module",
+  "version": "3.0.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "license": "MIT",
+  "repository": "https://github.com/redwallsolutions/vertical-navbar-component-module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build-examples": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "build": "rimraf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
+    "start": "rimraf demo/output && parcel demo/index.html -d demo/output --open",
+    "build": "rimraf dist && tsc",
+    "release": "yarn build && npm publish"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.0",
-    "@babel/core": "^7.6.0",
-    "@babel/preset-react": "^7.0.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-react": "^7.6.3",
+    "@types/color": "^3.0.0",
+    "@types/node": "^12.12.3",
+    "@types/react-responsive": "^8.0.1",
+    "@types/react-tooltip": "^3.9.3",
+    "babel-preset-react-app": "^9.0.2",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-icons": "^3.7.0",
-    "react-scripts": "^3.1.1",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "typescript": "^3.6.4"
   },
   "browserslist": [
     ">0.2%",
@@ -31,13 +40,12 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@redwallsolutions/loading-bar-component-module": "^2.0.2",
+    "@redwallsolutions/theming-component-module": "^2.0.1",
+    "@types/styled-components": "^4.1.20",
     "color": "^3.1.0",
-    "color-pallete-component-module": "https://cf2066736ce8712fe9044d7176daa1edea6c4fe9:x-oauth-basic@github.com/redwallsolutions/color-pallete-component-module",
-    "react-avatar": "^3.6.0",
-    "react-easy-swipe": "^0.0.17",
     "react-responsive": "^8.0.1",
     "react-tooltip": "^3.11.1",
-    "styled-components": "^4.3.2",
-    "theming-component-module": "https://cf2066736ce8712fe9044d7176daa1edea6c4fe9:x-oauth-basic@github.com/redwallsolutions/theming-component-module"
+    "styled-components": "^4.4.1"
   }
 }
