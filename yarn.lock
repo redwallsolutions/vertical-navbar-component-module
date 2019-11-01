@@ -1062,8 +1062,9 @@
   resolved "https://npm.pkg.github.com/download/@redwallsolutions/color-pallete-component-module/2.0.2/c63e656f780d36da484a1249ea1d8e46be2696e8753a1c1bef376871e820c939#"
 
 "@redwallsolutions/loading-bar-component-module@^2.0.2":
-  version "2.0.2"
-  resolved "https://npm.pkg.github.com/download/@redwallsolutions/loading-bar-component-module/2.0.2/7261522244bf725afc7ae26de9389d711e005038c6f4b3b4e8c4c6b21ef9da88#"
+  version "2.0.3"
+  resolved "https://npm.pkg.github.com/download/@redwallsolutions/loading-bar-component-module/2.0.3/b5a38c652ccc07ac3b9c69b9cb76eb77c1e9e952e93feed7b54f7f0a6802581a#"
+  integrity sha512-xQoLCFUWH/bCi50HD77Z37sr0XiPyvmx/wJXQfl8UIXAswjX3skJFp5OobYKs2q+0mqBxhm9YDog7npkoXoZ0Q==
   dependencies:
     "@redwallsolutions/theming-component-module" "^2.0.1"
     color "3.1.2"

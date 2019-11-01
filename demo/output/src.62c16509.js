@@ -41095,15 +41095,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var styled_components_1 = __importStar(require("styled-components"));
 var theming_component_module_1 = require("@redwallsolutions/theming-component-module");
 exports.theme = theming_component_module_1.createThemeWithAppearance();
-exports.Reset = styled_components_1.createGlobalStyle(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    .loading-bar-component-module {\n        padding: 0;\n        margin: 0;\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 100vw;\n        * {\n            transition: 0.4s ease-in-out;\n        }\n    }\n"], ["\n    .loading-bar-component-module {\n        padding: 0;\n        margin: 0;\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 100vw;\n        * {\n            transition: 0.4s ease-in-out;\n        }\n    }\n"])));
+exports.Reset = styled_components_1.createGlobalStyle(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    .loading-bar-component-module {\n        padding: 0;\n        margin: 0;\n        position: fixed;\n        top: 0;\n        left: 0;\n\t\twidth: 100vw;\n\t\tz-index: 999;\n        * {\n\t\t\ttransition: 0.4s ease-in-out;\n\t\t\tbox-sizing: border-box;\n        }\n    }\n"], ["\n    .loading-bar-component-module {\n        padding: 0;\n        margin: 0;\n        position: fixed;\n        top: 0;\n        left: 0;\n\t\twidth: 100vw;\n\t\tz-index: 999;\n        * {\n\t\t\ttransition: 0.4s ease-in-out;\n\t\t\tbox-sizing: border-box;\n        }\n    }\n"])));
 var hideLoadingBar = styled_components_1.keyframes(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    0% {\n        opacity: 1;\n    }\n    100% {\n        opacity: 0;\n    }\n"], ["\n    0% {\n        opacity: 1;\n    }\n    100% {\n        opacity: 0;\n    }\n"])));
-exports.LoadingBarStyled = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n\theight: 3px;\n\tbox-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);\n\tbackground-color: ", ";\n\twidth: ", "%;\n\tanimation-delay: 2s;\n\tanimation-duration: 0.3s;\n\tanimation-delay: 0.5s;\n\tanimation-fill-mode: both;\n\tanimation-name: ", ";\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n"], ["\n\theight: 3px;\n\tbox-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);\n\tbackground-color: ", ";\n\twidth: ", "%;\n\tanimation-delay: 2s;\n\tanimation-duration: 0.3s;\n\tanimation-delay: 0.5s;\n\tanimation-fill-mode: both;\n\tanimation-name: ",
-    ";\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n"])), function (props) { return exports.theme(props).color; }, function (props) { return props.progress; }, function (props) {
+exports.LoadingBarStyled = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n\theight: 3px;\n\tbox-shadow: 0 0 10px 0 ", ";\n\tbackground-color: ", ";\n\twidth: ", "%;\n\tanimation-delay: 2s;\n\tanimation-duration: 0.3s;\n\tanimation-delay: 0.5s;\n\tanimation-fill-mode: both;\n\tanimation-name: ", ";\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n"], ["\n\theight: 3px;\n\tbox-shadow: 0 0 10px 0 ", ";\n\tbackground-color: ", ";\n\twidth: ", "%;\n\tanimation-delay: 2s;\n\tanimation-duration: 0.3s;\n\tanimation-delay: 0.5s;\n\tanimation-fill-mode: both;\n\tanimation-name: ",
+    ";\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n"])), function (props) { return exports.theme(props).color; }, function (props) { return exports.theme(props).color; }, function (props) { return props.progress; }, function (props) {
     return props.progress >= 100 || props.progress <= -1 ? hideLoadingBar : 'redwall';
 });
-exports.SpinnerContainer = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n\topacity: ", ";\n\tanimation-delay: 2s;\n\tanimation-duration: 0.3s;\n\tanimation-delay: 0.5s;\n\tanimation-fill-mode: both;\n\tanimation-name: ", ";\n\tposition: fixed;\n\ttop: 10px;\n\tright: 7px;\n"], ["\n\topacity: ",
+exports.SpinnerContainer = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n\topacity: ", ";\n\tanimation-delay: 2s;\n\tanimation-duration: 0.3s;\n\tanimation-delay: 0.5s;\n\tanimation-fill-mode: both;\n\tanimation-name: ", ";\n\tposition: fixed;\n\ttop: 10px;\n\tright: 18px;\n"], ["\n\topacity: ",
     ";\n\tanimation-delay: 2s;\n\tanimation-duration: 0.3s;\n\tanimation-delay: 0.5s;\n\tanimation-fill-mode: both;\n\tanimation-name: ",
-    ";\n\tposition: fixed;\n\ttop: 10px;\n\tright: 7px;\n"])), function (props) {
+    ";\n\tposition: fixed;\n\ttop: 10px;\n\tright: 18px;\n"])), function (props) {
     return props.progress >= 1 && props.progress <= 100 ? '1' : '0';
 }, function (props) {
     return props.progress >= 100 || props.progress <= -1 ? hideLoadingBar : 'redwall';
@@ -43184,7 +43184,7 @@ var Style_1 = require("./Style");
 var ScaleLoader_1 = __importDefault(require("react-spinners/ScaleLoader"));
 var styled_components_1 = require("styled-components");
 var LoadingBarComponent = function (_a) {
-    var _b = _a.progress, progress = _b === void 0 ? 0 : _b, appearance = _a.appearance, onFinish = _a.onFinish, theme = _a.theme;
+    var _b = _a.progress, progress = _b === void 0 ? 0 : _b, _c = _a.appearance, appearance = _c === void 0 ? "primary" : _c, onFinish = _a.onFinish, theme = _a.theme;
     react_1.useEffect(function () {
         if (progress >= 100 && onFinish) {
             onFinish(new Promise(function (resolve) {
@@ -61705,7 +61705,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36099" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38311" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
