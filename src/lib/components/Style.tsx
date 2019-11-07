@@ -2,9 +2,9 @@ import styled, { createGlobalStyle, css } from 'styled-components'
 import Color from 'color'
 import { createThemeWithAppearance } from '@redwallsolutions/theming-component-module'
 import {
-	INavbarPieces,
 	INavbarResponsive,
-	INavbarResponsiveItem
+	INavbarResponsiveItem,
+	INavbarPieces
 } from './interfaces'
 
 import { ICommonProps } from '@redwallsolutions/common-interfaces-ts'

@@ -14,7 +14,6 @@ import {
 	MdAllInclusive
 } from 'react-icons/md'
 import { ThemeProvider } from 'styled-components'
-import { IThemeProps, IThemeMode } from './lib/components/interfaces'
 
 const Reset = createGlobalStyle`
   body {

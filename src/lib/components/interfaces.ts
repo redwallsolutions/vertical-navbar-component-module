@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { ICommonProps } from '@redwallsolutions/common-interfaces-ts'
 
-export interface INavbarPieces extends ICommonProps {
+export interface INavbarPieces extends ICommonProps{
 	isMobileOrTablet: boolean
 }
 
