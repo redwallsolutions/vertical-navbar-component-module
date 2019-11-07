@@ -14,6 +14,7 @@ import {
 	MdAllInclusive
 } from 'react-icons/md'
 import { ThemeProvider } from 'styled-components'
+import { IThemeProps, IThemeMode } from './lib/components/interfaces'
 
 const Reset = createGlobalStyle`
   body {
@@ -26,67 +27,63 @@ const Reset = createGlobalStyle`
 const App = () => {
 	const [themeMode, setThemeMode] = useState('light')
 
-
 	return (
-		<ThemeProvider
-			theme={{
-				mode: themeMode,
-				primaryContrastDark: '#2b324c',
-				primaryDark: '#ebebeb',
-				secondaryDark: 'rgb(106, 140, 147)',
-				secondaryContrastDark: 'rgb(238, 238, 238)'
-			}}
-		>
-			<>
-				<Reset />
-				<VerticalNavbarComponent
-					items={[
-						{
-							icon: <MdFlare size="1.9em" />,
-							name: 'Light',
-							handler: () => setThemeMode('light')
-						},
-						{
-							icon: <MdLens size="1.9em" />,
-							name: 'Dark',
-							handler: () => setThemeMode('dark')
-						},
-						{
-							icon: <MdAccessTime size="1.9em" />,
-							name: 'Time'
-						},
-						{
-							icon: <MdAirlineSeatFlat size="1.9em" />,
-							name: 'Seat'
-						},
-						{
-							icon: <MdWbSunny size="1.9em" />,
-							name: 'Sunny'
-						},
-						{
-							icon: <MdAccountBalance size="1.9em" />,
-							name: 'Balance'
-						},
-						{
-							icon: <MdAdjust size="1.9em" />,
-							name: 'Adjust'
-						},
-						{
-							icon: <MdAcUnit size="1.9em" />,
-							name: 'AcUnit'
-						},
-						{
-							icon: <MdAllInclusive size="1.9em" />,
-							name: 'All Inclusive'
-						}
-					]}
-					appearance="primary"
-					logo="hauhau"
-				>
-					<Content />
-				</VerticalNavbarComponent>
-			</>
-		</ThemeProvider>
+		<>
+			<Reset />
+			<VerticalNavbarComponent
+				items={[
+					{
+						icon: <MdFlare size="1.9em" />,
+						name: 'Light',
+						handler: () => setThemeMode('light')
+					},
+					{
+						icon: <MdLens size="1.9em" />,
+						name: 'Dark',
+						handler: () => setThemeMode('dark')
+					},
+					{
+						icon: <MdAccessTime size="1.9em" />,
+						name: 'Time'
+					},
+					{
+						icon: <MdAirlineSeatFlat size="1.9em" />,
+						name: 'Seat'
+					},
+					{
+						icon: <MdWbSunny size="1.9em" />,
+						name: 'Sunny'
+					},
+					{
+						icon: <MdAccountBalance size="1.9em" />,
+						name: 'Balance'
+					},
+					{
+						icon: <MdAdjust size="1.9em" />,
+						name: 'Adjust'
+					},
+					{
+						icon: <MdAcUnit size="1.9em" />,
+						name: 'AcUnit'
+					},
+					{
+						icon: <MdAllInclusive size="1.9em" />,
+						name: 'All Inclusive'
+					}
+				]}
+				logo="haha"
+				appearance="primary"
+				theme={{
+					mode: themeMode as IThemeMode, 
+					primaryContrastDark: '#2b324c',
+					primaryDark: 'cyan',
+					secondaryDark: 'rgb(106, 140, 147)',
+					secondaryContrastDark: 'rgb(238, 238, 238)'
+				}}
+			>
+				<Content />
+			</VerticalNavbarComponent>
+		</>
 	)
 }
 let progress = 0

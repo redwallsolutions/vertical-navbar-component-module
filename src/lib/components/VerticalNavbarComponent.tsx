@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
 import Tooltip from 'react-tooltip'
 import { useMediaQuery } from 'react-responsive'
-import { ThemeContext } from 'styled-components'
 import VerticalNavbarContext from './VerticalNavbarContext'
+import { ThemeContext } from 'styled-components'
 import {
 	VerticalNavbarItemStyled,
 	VerticalNavbarContainer,
@@ -12,11 +12,11 @@ import {
 	VerticalNavbarHeaderStyled,
 	VerticalNavbarScrollWrapper
 } from './Style'
-import LoadingBar from '@redwallsolutions/loading-bar-component-module'
+import LoadingBar from '@redwallsolutions/loadingbar-component-module'
 import {
-	IVerticalNavbarComponentProps,
 	IVerticalNavbarComponentHeaderProps,
-	INavbarComponentItemProps
+	INavbarItemProps,
+	INavbarProps
 } from './interfaces'
 
 const VerticalNavbarHeader: React.FC<IVerticalNavbarComponentHeaderProps> = ({
@@ -27,13 +27,14 @@ const VerticalNavbarHeader: React.FC<IVerticalNavbarComponentHeaderProps> = ({
 	</VerticalNavbarHeaderStyled>
 )
 
-const VerticalNavbarItem: React.FC<INavbarComponentItemProps> = ({
+const VerticalNavbarItem: React.FC<INavbarItemProps> = ({
 	appearance,
 	item,
 	onClick,
 	isActive,
 	isMobileOrTablet,
-	amountOfItems
+	amountOfItems,
+	theme
 }) => {
 	return (
 		<VerticalNavbarItemStyled
@@ -43,6 +44,7 @@ const VerticalNavbarItem: React.FC<INavbarComponentItemProps> = ({
 			isMobileOrTablet={isMobileOrTablet}
 			data-tip={item.name}
 			amountOfItems={amountOfItems}
+			theme={theme}
 		>
 			<i>{item.icon}</i>
 			{isMobileOrTablet && <p>{item.name}</p>}
@@ -55,16 +57,17 @@ const clearIntervalIfExists = () => {
 	if (interval) clearInterval(interval)
 }
 
-const VerticalNavbarComponent: React.FC<IVerticalNavbarComponentProps> = ({
+const VerticalNavbarComponent: React.FC<INavbarProps> = ({
+	appearance = 'default',
 	items = [],
 	logo,
-	appearance = 'default',
+	theme = {mode:'light'},
 	children
 }) => {
 	const [activeItem, setActiveItem] = useState(1)
 	const [loadingProgress, setLoadingProgress] = useState(0)
 	const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' })
-	const theme = useContext(ThemeContext)
+	const themeToApply = useContext(ThemeContext) || theme
 
 	const onClickItem: (props: any) => () => void = ({ item, index }) => {
 		return function() {
@@ -91,7 +94,7 @@ const VerticalNavbarComponent: React.FC<IVerticalNavbarComponentProps> = ({
 		setLoadingProgress(100)
 	}
 
-	const onFinished = async (finished: Promise<boolean>) => {
+	const onFinished = async (finished: Promise<void>) => {
 		await finished
 		setLoadingProgress(-1)
 		setLoadingProgress(0)
@@ -110,6 +113,7 @@ const VerticalNavbarComponent: React.FC<IVerticalNavbarComponentProps> = ({
 						appearance={appearance}
 						isMobileOrTablet={isMobileOrTablet}
 						amountOfItems={items.length}
+						theme={themeToApply}
 					>
 						{!isMobileOrTablet && <VerticalNavbarHeader logo={logo} />}
 						{items.map((item, index) => (
@@ -121,6 +125,7 @@ const VerticalNavbarComponent: React.FC<IVerticalNavbarComponentProps> = ({
 								appearance={appearance}
 								isMobileOrTablet={isMobileOrTablet}
 								amountOfItems={items.length}
+								theme={themeToApply}
 							/>
 						))}
 					</VerticalNavbarStyled>
@@ -129,22 +134,19 @@ const VerticalNavbarComponent: React.FC<IVerticalNavbarComponentProps> = ({
 					<Tooltip
 						place="right"
 						effect="solid"
-						type={theme.mode === 'light' ? 'dark' : 'light'}
+						type={themeToApply.mode === 'light' ? 'dark' : 'light'}
 						className="vertical-navbar-tooltip"
 					/>
 				)}
 				<ContentContainer
 					appearance={appearance}
 					isMobileOrTablet={isMobileOrTablet}
+					theme={theme}
 				>
 					{children}
 				</ContentContainer>
+				<LoadingBar progress={loadingProgress} appearance={appearance} theme={themeToApply} onFinish={onFinished}/>
 			</VerticalNavbarContainer>
-			<LoadingBar
-				progress={loadingProgress}
-				onFinish={onFinished}
-				appearance={appearance}
-			/>
 		</VerticalNavbarContext.Provider>
 	)
 }

@@ -2,19 +2,14 @@ import styled, { createGlobalStyle, css } from 'styled-components'
 import Color from 'color'
 import { createThemeWithAppearance } from '@redwallsolutions/theming-component-module'
 import {
-	ICommonProps,
-	IStyledComponentsProps,
-	IStyledNavbarItemProps
+	INavbarPieces,
+	INavbarResponsive,
+	INavbarResponsiveItem
 } from './interfaces'
 
-const theming = createThemeWithAppearance()
+import { ICommonProps } from '@redwallsolutions/common-interfaces-ts'
 
-const defaultProps: ICommonProps = {
-	theme: {
-		mode: 'light'
-	},
-	appearance: 'default'
-}
+const theming = createThemeWithAppearance()
 
 const darkModeDefaults = css<ICommonProps>`
 	background: linear-gradient(
@@ -28,14 +23,14 @@ const darkModeDefaults = css<ICommonProps>`
 	color: ${props => theming(props).color};
 `
 
-const isItemActive = css<IStyledComponentsProps>`
+const isItemActive = css<INavbarPieces>`
 	border-${props => (props.isMobileOrTablet ? 'top' : 'right')}-color: ${props =>
 	theming(props).color};
 	background: ${props =>
 		Color(theming(props).contrast(props))
 			.darken(0.03)
 			.toString()};
-	transform: ${props => 'scale(1.08)'};
+	transform: scale(1.08);
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.03), 0 0 20px 0 rgba(0, 0, 0, 0.05), 0 0 15px 0 ${props =>
 		Color(theming(props).contrast(props))
 			.darken(0.1)
@@ -88,7 +83,7 @@ export const VerticalNavbarContainer = styled.div`
 	position: relative;
 `
 
-export const VerticalNavbarScrollWrapper = styled.div<IStyledComponentsProps>`
+export const VerticalNavbarScrollWrapper = styled.div<INavbarPieces>`
   width: 100px;
   height: 100%;
   background: transparent;
@@ -107,9 +102,7 @@ export const VerticalNavbarScrollWrapper = styled.div<IStyledComponentsProps>`
   
 `
 
-VerticalNavbarScrollWrapper.defaultProps = defaultProps
-
-export const VerticalNavbarStyled = styled.nav<IStyledNavbarItemProps>`
+export const VerticalNavbarStyled = styled.nav<INavbarResponsive>`
   width: 80px;
   height: ${props => (props.amountOfItems > 8 ? 'auto' : '100%')};
 	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1), 0 0 17px 0 rgba(0, 0, 0, 0.08),
@@ -128,8 +121,6 @@ export const VerticalNavbarStyled = styled.nav<IStyledNavbarItemProps>`
 
 `
 
-VerticalNavbarStyled.defaultProps = defaultProps
-
 export const VerticalNavbarHeaderStyled = styled.header`
 	${defaultSizes}
 	height: 120px;
@@ -143,9 +134,7 @@ export const VerticalNavbarHeaderStyled = styled.header`
 	}
 `
 
-VerticalNavbarHeaderStyled.defaultProps = defaultProps
-
-export const ContentContainer = styled.div<IStyledComponentsProps>`
+export const ContentContainer = styled.div<INavbarPieces>`
   z-index: 0;
   width: 100%;
   height: calc(100% - ${props => (props.isMobileOrTablet ? '80px' : '0px')});
@@ -157,9 +146,7 @@ export const ContentContainer = styled.div<IStyledComponentsProps>`
   overflow-x: hidden;
 `
 
-ContentContainer.defaultProps = defaultProps
-
-export const VerticalNavbarItemStyled = styled.div<IStyledNavbarItemProps>`
+export const VerticalNavbarItemStyled = styled.div<INavbarResponsiveItem>`
   ${defaultSizes}
   ${props =>
 		props.isMobileOrTablet &&
@@ -190,5 +177,3 @@ export const VerticalNavbarItemStyled = styled.div<IStyledNavbarItemProps>`
 		transform: scale(1.06);
 	}
 `
-
-VerticalNavbarItemStyled.defaultProps = defaultProps

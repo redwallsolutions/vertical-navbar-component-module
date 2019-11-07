@@ -3,6 +3,8 @@
 /build
 /dist
 /.cache
+/.docz
+/demo/output
 .DS_Store
 .env.local
 .env.development.local
