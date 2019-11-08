@@ -16,7 +16,9 @@
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output --open",
     "build": "rimraf dist && tsc",
     "docz:dev": "docz dev",
-    "docz:build": "docz build",
+    "docz:build": "rimraf demo/output && docz build",
+    "predeploy": "yarn docz:build",
+    "deploy": "gh-pages -d demo/output",
     "release": "yarn build && npm publish"
   },
   "devDependencies": {
@@ -30,6 +32,7 @@
     "@types/styled-components": "^4.1.22",
     "babel-preset-react-app": "^9.0.2",
     "docz": "^2.0.0-rc.70",
+    "gh-pages": "^2.1.1",
     "parcel-bundler": "^1.12.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
