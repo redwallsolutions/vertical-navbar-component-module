@@ -8,9 +8,11 @@
     "dist"
   ],
   "license": "MIT",
+  "author": "Andrew Ribeiro",
+  "keywords": ["vertical navbar", "navbar", "material bar", "menu"],
   "repository": "https://github.com/redwallsolutions/vertical-navbar-component-module",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "scripts": {
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output --open",
@@ -18,8 +20,7 @@
     "docz:dev": "docz dev",
     "docz:build": "rimraf demo/output && docz build",
     "predeploy": "yarn docz:build",
-    "deploy": "gh-pages -d demo/output",
-    "release": "yarn build && npm publish"
+    "deploy": "gh-pages -d demo/output"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -48,7 +49,7 @@
   ],
   "dependencies": {
     "@redwallsolutions/common-interfaces-ts": "^1.0.1",
-    "@redwallsolutions/loadingbar-component-module": "^2.1.2",
+    "@redwallsolutions/loadingbar-component-module": "^2.1.3",
     "@redwallsolutions/theming-component-module": "^2.0.1",
     "color": "^3.1.0",
     "react-responsive": "^8.0.1",
