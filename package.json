@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output --open",
+    "test": "echo \"No tests were specified.\"",
     "build": "rimraf dist && tsc",
     "docz:dev": "docz dev",
     "docz:build": "rimraf demo/output && docz build",
