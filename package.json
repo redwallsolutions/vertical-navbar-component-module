@@ -1,6 +1,6 @@
 {
   "name": "@redwallsolutions/vertical-navbar-component-module",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,9 +9,15 @@
   ],
   "license": "MIT",
   "author": "Andrew Ribeiro",
-  "keywords": ["vertical navbar", "navbar", "material bar", "menu"],
+  "keywords": [
+    "vertical navbar",
+    "navbar",
+    "material bar",
+    "menu"
+  ],
   "repository": "https://github.com/redwallsolutions/vertical-navbar-component-module",
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
   "scripts": {
