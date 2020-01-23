@@ -98,7 +98,7 @@ export const VerticalNavbarScrollWrapper = styled.div<INavbarPieces>`
   ${props => props.isMobileOrTablet && isSmall}
   ${props =>
 		props.isMobileOrTablet &&
-		'bottom:0; height: 100px; min-height: 100px; max-height: 100px; display: flex; align-items: flex-end;'}
+		'bottom:0; height: 75px; min-height: 75px; max-height: 75px; display: flex; align-items: flex-end;'}
   
 `
 
@@ -144,6 +144,7 @@ export const ContentContainer = styled.div<INavbarPieces>`
   padding-left: ${props => (!props.isMobileOrTablet ? '98px' : '0px')}
   overflow: auto;
   overflow-x: hidden;
+  transition: none;
 `
 
 export const VerticalNavbarItemStyled = styled.div<INavbarResponsiveItem>`
