@@ -13,7 +13,6 @@ import {
 	MdAcUnit,
 	MdAllInclusive
 } from 'react-icons/md'
-import { ThemeProvider } from 'styled-components'
 import { IThemeMode } from '@redwallsolutions/common-interfaces-ts'
 
 const Reset = createGlobalStyle`
