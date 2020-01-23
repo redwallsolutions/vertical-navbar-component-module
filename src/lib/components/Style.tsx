@@ -41,18 +41,18 @@ const isSmall = css`
 	width: 100%;
 	min-width: 100%;
 	max-width: 100%;
-	height: 80px;
-	min-height: 80px;
-	max-height: 80px;
+	height: 60px;
+	min-height: 60px;
+	max-height: 60px;
 `
 
 const defaultSizes = css`
-	width: 80px;
-	max-width: 80px;
-	min-width: 80px;
-	height: 80px;
-	max-height: 80px;
-	min-height: 80px;
+	width: 60px;
+	max-width: 60px;
+	min-width: 60px;
+	height: 60px;
+	max-height: 60px;
+	min-height: 60px;
 `
 
 export const Reset = createGlobalStyle`
@@ -93,7 +93,7 @@ export const VerticalNavbarScrollWrapper = styled.div<INavbarPieces>`
   &::-webkit-scrollbar {
     width: 0px;
   }
-  position: absolute; 
+  position: fixed; 
   z-index: 1;
   ${props => props.isMobileOrTablet && isSmall}
   ${props =>
@@ -103,8 +103,8 @@ export const VerticalNavbarScrollWrapper = styled.div<INavbarPieces>`
 `
 
 export const VerticalNavbarStyled = styled.nav<INavbarResponsive>`
-  width: 80px;
-  height: ${props => (props.amountOfItems > 8 ? 'auto' : '100%')};
+  width: 60px;
+  height: ${props => (props.amountOfItems > 10 ? 'auto' : '100%')};
 	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1), 0 0 17px 0 rgba(0, 0, 0, 0.08),
 		0 0 30px 0 rgba(0, 0, 0, 0.04);
   ${props => props.theme.mode === 'dark' && darkModeDefaults}
@@ -137,9 +137,9 @@ export const VerticalNavbarHeaderStyled = styled.header`
 export const ContentContainer = styled.div<INavbarPieces>`
   z-index: 0;
   width: 100%;
-  height: calc(100% - ${props => props.isNavVisible && props.isMobileOrTablet ? '80px' : '0px'});
+  height: calc(100% - ${props => props.isNavVisible && props.isMobileOrTablet ? '60px' : '0px'});
   position: absolute;
-	background: linear-gradient(135deg, #f7f7f7, #eaeaea);
+  background: linear-gradient(135deg, #f7f7f7, #eaeaea);
   ${props => props.theme.mode === 'dark' && darkModeDefaults}
   padding-left: ${props => (!props.isMobileOrTablet ? '98px' : '0px')}
   overflow: auto;
@@ -159,11 +159,12 @@ export const VerticalNavbarItemStyled = styled.div<INavbarResponsiveItem>`
 	align-items: center;
 	flex-direction: column;
 		p {
+			margin: 0;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			max-width: 80%;
 			white-space: nowrap;
-			font-size: 11px;
+			font-size: 10px;
 		}
 	color: ${props => theming(props).color};
 	border-${props =>

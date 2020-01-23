@@ -11,7 +11,8 @@ import {
 	MdAccountBalance,
 	MdAdjust,
 	MdAcUnit,
-	MdAllInclusive
+	MdAllInclusive,
+	MdAlbum
 } from 'react-icons/md'
 import { IThemeMode } from '@redwallsolutions/common-interfaces-ts'
 
@@ -32,42 +33,46 @@ const App = () => {
 			<VerticalNavbarComponent
 				items={[
 					{
-						icon: <MdFlare size="1.9em" />,
+						icon: <MdFlare size="1.5em" />,
 						name: 'Light',
 						handler: () => setThemeMode('light')
 					},
 					{
-						icon: <MdLens size="1.9em" />,
+						icon: <MdLens size="1.5em" />,
 						name: 'Dark',
 						handler: () => setThemeMode('dark')
 					},
 					{
-						icon: <MdAccessTime size="1.9em" />,
+						icon: <MdAccessTime size="1.5em" />,
 						name: 'Time'
 					},
 					{
-						icon: <MdAirlineSeatFlat size="1.9em" />,
+						icon: <MdAirlineSeatFlat size="1.5em" />,
 						name: 'Seat'
 					},
 					{
-						icon: <MdWbSunny size="1.9em" />,
+						icon: <MdWbSunny size="1.5em" />,
 						name: 'Sunny'
 					},
 					{
-						icon: <MdAccountBalance size="1.9em" />,
+						icon: <MdAccountBalance size="1.5em" />,
 						name: 'Balance'
 					},
 					{
-						icon: <MdAdjust size="1.9em" />,
+						icon: <MdAdjust size="1.5em" />,
 						name: 'Adjust'
 					},
 					{
-						icon: <MdAcUnit size="1.9em" />,
+						icon: <MdAcUnit size="1.5em" />,
 						name: 'AcUnit'
 					},
 					{
-						icon: <MdAllInclusive size="1.9em" />,
+						icon: <MdAllInclusive size="1.5em" />,
 						name: 'All Inclusive'
+					},
+					{
+						icon: <MdAlbum size="1.5em" />,
+						name: 'Album'
 					}
 				]}
 				logo="haha"
