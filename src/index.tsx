@@ -14,6 +14,7 @@ import {
 	MdAllInclusive
 } from 'react-icons/md'
 import { ThemeProvider } from 'styled-components'
+import { IThemeMode } from '@redwallsolutions/common-interfaces-ts'
 
 const Reset = createGlobalStyle`
   body {
@@ -73,7 +74,7 @@ const App = () => {
 				logo="haha"
 				appearance="primary"
 				theme={{
-					mode: themeMode as IThemeMode, 
+					mode: themeMode as IThemeMode,
 					primaryContrastDark: '#2b324c',
 					primaryDark: 'cyan',
 					secondaryDark: 'rgb(106, 140, 147)',
@@ -105,6 +106,20 @@ const Content = () => {
 				onClick={controller.finishLoading}
 			>
 				Finish Loading
+			</button>
+			<button
+				style={{ padding: '5px', margin: '10px' }}
+				type="button"
+				onClick={controller.showNavbar}
+			>
+				Show Navbar
+			</button>
+			<button
+				style={{ padding: '5px', margin: '10px' }}
+				type="button"
+				onClick={controller.hideNavbar}
+			>
+				Hide Navbar
 			</button>
 		</div>
 	)

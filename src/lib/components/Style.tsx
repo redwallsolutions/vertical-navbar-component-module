@@ -93,7 +93,7 @@ export const VerticalNavbarScrollWrapper = styled.div<INavbarPieces>`
   &::-webkit-scrollbar {
     width: 0px;
   }
-  position: fixed; 
+  position: absolute; 
   z-index: 1;
   ${props => props.isMobileOrTablet && isSmall}
   ${props =>
@@ -137,7 +137,7 @@ export const VerticalNavbarHeaderStyled = styled.header`
 export const ContentContainer = styled.div<INavbarPieces>`
   z-index: 0;
   width: 100%;
-  height: calc(100% - ${props => (props.isMobileOrTablet ? '80px' : '0px')});
+  height: calc(100% - ${props => props.isNavVisible && props.isMobileOrTablet ? '80px' : '0px'});
   position: absolute;
 	background: linear-gradient(135deg, #f7f7f7, #eaeaea);
   ${props => props.theme.mode === 'dark' && darkModeDefaults}

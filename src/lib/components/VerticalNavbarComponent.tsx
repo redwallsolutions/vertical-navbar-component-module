@@ -61,11 +61,12 @@ const VerticalNavbarComponent: React.FC<INavbarProps> = ({
 	appearance = 'default',
 	items = [],
 	logo,
-	theme = {mode:'light'},
+	theme = { mode: 'light' },
 	children
 }) => {
 	const [activeItem, setActiveItem] = useState(1)
 	const [loadingProgress, setLoadingProgress] = useState(0)
+	const [isVisible, setIsVisible] = useState(true)
 	const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' })
 	const themeToApply = useContext(ThemeContext) || theme
 
@@ -94,6 +95,13 @@ const VerticalNavbarComponent: React.FC<INavbarProps> = ({
 		setLoadingProgress(100)
 	}
 
+	const hideNavbar = () => {
+		setIsVisible(false)
+	}
+	const showNavbar = () => {
+		setIsVisible(true)
+	}
+
 	const onFinished = async (finished: Promise<void>) => {
 		await finished
 		setLoadingProgress(-1)
@@ -101,51 +109,67 @@ const VerticalNavbarComponent: React.FC<INavbarProps> = ({
 	}
 	return (
 		<VerticalNavbarContext.Provider
-			value={{ setActiveItem, startLoading, finishLoading }}
+			value={{
+				setActiveItem,
+				startLoading,
+				finishLoading,
+				showNavbar,
+				hideNavbar
+			}}
 		>
 			<VerticalNavbarContainer className="vertical-navbar-component-module">
 				<Reset />
-				<VerticalNavbarScrollWrapper
-					isMobileOrTablet={isMobileOrTablet}
-					appearance={appearance}
-				>
-					<VerticalNavbarStyled
-						appearance={appearance}
-						isMobileOrTablet={isMobileOrTablet}
-						amountOfItems={items.length}
-						theme={themeToApply}
-					>
-						{!isMobileOrTablet && <VerticalNavbarHeader logo={logo} />}
-						{items.map((item, index) => (
-							<VerticalNavbarItem
-								key={index}
-								item={item}
-								isActive={activeItem === index + 1}
-								onClick={onClickItem({ item, index })}
+				{isVisible && (
+					<>
+						<VerticalNavbarScrollWrapper
+							isMobileOrTablet={isMobileOrTablet}
+							appearance={appearance}
+						>
+							<VerticalNavbarStyled
 								appearance={appearance}
 								isMobileOrTablet={isMobileOrTablet}
 								amountOfItems={items.length}
 								theme={themeToApply}
+							>
+								{!isMobileOrTablet && <VerticalNavbarHeader logo={logo} />}
+								{items.map((item, index) => (
+									<VerticalNavbarItem
+										key={index}
+										item={item}
+										isActive={activeItem === index + 1}
+										onClick={onClickItem({ item, index })}
+										appearance={appearance}
+										isMobileOrTablet={isMobileOrTablet}
+										amountOfItems={items.length}
+										theme={themeToApply}
+									/>
+								))}
+							</VerticalNavbarStyled>
+						</VerticalNavbarScrollWrapper>
+						{!isMobileOrTablet && (
+							<Tooltip
+								place="right"
+								effect="solid"
+								type={themeToApply.mode === 'light' ? 'dark' : 'light'}
+								className="vertical-navbar-tooltip"
 							/>
-						))}
-					</VerticalNavbarStyled>
-				</VerticalNavbarScrollWrapper>
-				{!isMobileOrTablet && (
-					<Tooltip
-						place="right"
-						effect="solid"
-						type={themeToApply.mode === 'light' ? 'dark' : 'light'}
-						className="vertical-navbar-tooltip"
-					/>
+						)}
+					</>
 				)}
 				<ContentContainer
 					appearance={appearance}
 					isMobileOrTablet={isMobileOrTablet}
 					theme={theme}
+					isNavVisible={isVisible}
 				>
 					{children}
 				</ContentContainer>
-				<LoadingBar progress={loadingProgress} appearance={appearance} theme={themeToApply} onFinish={onFinished}/>
+				<LoadingBar
+					progress={loadingProgress}
+					appearance={appearance}
+					theme={themeToApply}
+					onFinish={onFinished}
+				/>
 			</VerticalNavbarContainer>
 		</VerticalNavbarContext.Provider>
 	)
