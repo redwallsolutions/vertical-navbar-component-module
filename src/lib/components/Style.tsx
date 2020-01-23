@@ -62,7 +62,7 @@ export const Reset = createGlobalStyle`
     padding: 0;
     margin: 0;
 	* {
-		transition: .3s;
+		transition: .2s;
 		box-sizing: border-box;
 	}
   }
@@ -144,7 +144,6 @@ export const ContentContainer = styled.div<INavbarPieces>`
   padding-left: ${props => (!props.isMobileOrTablet ? '98px' : '0px')}
   overflow: auto;
   overflow-x: hidden;
-  transition: none;
 `
 
 export const VerticalNavbarItemStyled = styled.div<INavbarResponsiveItem>`
