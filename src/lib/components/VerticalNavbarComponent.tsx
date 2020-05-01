@@ -1,178 +1,144 @@
-import React, { useState, useContext } from 'react'
-import Tooltip from 'react-tooltip'
-import { useMediaQuery } from 'react-responsive'
-import VerticalNavbarContext from './VerticalNavbarContext'
-import { ThemeContext } from 'styled-components'
+import React, {
+  useState,
+  useContext,
+  FC,
+  HTMLAttributes,
+  useCallback,
+  memo,
+  SFC,
+} from "react";
+import Tooltip from "react-tooltip";
+import { useMediaQuery } from "react-responsive";
+import { ICommonProps } from "@redwallsolutions/common-interfaces-ts";
+import VerticalNavbarContext from "./VerticalNavbarContext";
+import { ThemeContext } from "styled-components";
+import { VerticalNavbarContainer, Navbar, Content, Item } from "./Style";
 import {
-	VerticalNavbarItemStyled,
-	VerticalNavbarContainer,
-	VerticalNavbarStyled,
-	ContentContainer,
-	Reset,
-	VerticalNavbarHeaderStyled,
-	VerticalNavbarScrollWrapper
-} from './Style'
-import LoadingBar from '@redwallsolutions/loadingbar-component-module'
-import {
-	IVerticalNavbarComponentHeaderProps,
-	INavbarItemProps,
-	INavbarProps
-} from './interfaces'
+  IVerticalNavbarProps,
+  IItemProps,
+  IResponsive,
+  MemoChildren,
+} from "./interfaces";
 
-const VerticalNavbarHeader: React.FC<IVerticalNavbarComponentHeaderProps> = ({
-	logo
-}) => (
-	<VerticalNavbarHeaderStyled>
-		<img src={logo} alt="Some small logo here." />
-	</VerticalNavbarHeaderStyled>
-)
-
-const VerticalNavbarItem: React.FC<INavbarItemProps> = ({
-	appearance,
-	item,
-	onClick,
-	isActive,
-	isMobileOrTablet,
-	amountOfItems,
-	theme
+const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
+  item,
+  isTabletOrMobile,
+  index,
+  itemsLength,
+  active,
+  onClick,
+  theme,
+  appearance,
 }) => {
-	return (
-		<VerticalNavbarItemStyled
-			appearance={appearance}
-			onClick={onClick}
-			isActive={isActive}
-			isMobileOrTablet={isMobileOrTablet}
-			data-tip={item.name}
-			amountOfItems={amountOfItems}
-			theme={theme}
-		>
-			<i>{item.icon}</i>
-			{isMobileOrTablet && <p>{item.name}</p>}
-		</VerticalNavbarItemStyled>
-	)
-}
+  const innerOnClick = useCallback(() => {
+    onClick({ handler: item.handler, index });
+  }, []);
+  return (
+    <Item
+      onClick={innerOnClick}
+      role="button"
+      itemsLength={itemsLength}
+      isTabletOrMobile={isTabletOrMobile}
+      active={active}
+      theme={theme}
+      appearance={appearance}
+    >
+      <div>
+        {item.icon}
+        {isTabletOrMobile && <small>{item.name}</small>}
+      </div>
+    </Item>
+  );
+};
 
-let interval: any
-const clearIntervalIfExists = () => {
-	if (interval) clearInterval(interval)
-}
-
-const VerticalNavbarComponent: React.FC<INavbarProps> = ({
-	appearance = 'default',
-	items = [],
-	logo,
-	theme = { mode: 'light' },
-	children
+const ContentComponent: FC<ICommonProps & MemoChildren> = ({
+  children,
+  theme,
+  appearance,
 }) => {
-	const [activeItem, setActiveItem] = useState(1)
-	const [loadingProgress, setLoadingProgress] = useState(0)
-	const [isVisible, setIsVisible] = useState(true)
-	const isMobileOrTablet = useMediaQuery({ query: '(max-width: 1224px)' })
-	const themeToApply = useContext(ThemeContext) || theme
+  return (
+    <Content theme={theme} appearance={appearance}>
+      {console.log("rendered content component")}
+      {children}
+    </Content>
+  );
+};
 
-	const onClickItem: (props: any) => () => void = ({ item, index }) => {
-		return function() {
-			setActiveItem(index + 1)
-			if (item.handler) {
-				item.handler()
-			}
-		}
-	}
+const ContentMemoized = memo(ContentComponent);
 
-	const startLoading = () => {
-		clearIntervalIfExists()
-		let prevLoadingProgress: number = 10
-		setLoadingProgress(prevLoadingProgress)
-		interval = setInterval(() => {
-			prevLoadingProgress += Math.random() * 10
-			if (prevLoadingProgress > 99) clearIntervalIfExists()
-			else setLoadingProgress(prevLoadingProgress)
-		}, 500)
-	}
+const defaultTheme = {
+  mode: "light",
+};
 
-	const finishLoading = () => {
-		clearIntervalIfExists()
-		setLoadingProgress(100)
-	}
+const VerticalNavbarComponent: FC<IVerticalNavbarProps &
+  ICommonProps &
+  HTMLAttributes<HTMLDivElement>> = ({
+  items = [],
+  children,
+  className,
+  theme,
+  appearance = "default",
+}) => {
+  const themeToApply = theme || useContext(ThemeContext) || defaultTheme;
 
-	const hideNavbar = () => {
-		setIsVisible(false)
-	}
-	const showNavbar = () => {
-		setIsVisible(true)
-	}
+  const [activeItem, setActiveItem] = useState(-1);
+  const [navbarVisible, setNavbarVisible] = useState(true);
 
-	const onFinished = async (finished: Promise<void>) => {
-		await finished
-		setLoadingProgress(-1)
-		setLoadingProgress(0)
-	}
-	return (
-		<VerticalNavbarContext.Provider
-			value={{
-				setActiveItem,
-				startLoading,
-				finishLoading,
-				showNavbar,
-				hideNavbar
-			}}
-		>
-			<VerticalNavbarContainer className="vertical-navbar-component-module">
-				<Reset />
-				{isVisible && (
-					<>
-						<VerticalNavbarScrollWrapper
-							isMobileOrTablet={isMobileOrTablet}
-							appearance={appearance}
-						>
-							<VerticalNavbarStyled
-								appearance={appearance}
-								isMobileOrTablet={isMobileOrTablet}
-								amountOfItems={items.length}
-								theme={themeToApply}
-							>
-								{!isMobileOrTablet && <VerticalNavbarHeader logo={logo} />}
-								{items.map((item, index) => (
-									<VerticalNavbarItem
-										key={index}
-										item={item}
-										isActive={activeItem === index + 1}
-										onClick={onClickItem({ item, index })}
-										appearance={appearance}
-										isMobileOrTablet={isMobileOrTablet}
-										amountOfItems={items.length}
-										theme={themeToApply}
-									/>
-								))}
-							</VerticalNavbarStyled>
-						</VerticalNavbarScrollWrapper>
-						{!isMobileOrTablet && (
-							<Tooltip
-								place="right"
-								effect="solid"
-								type={themeToApply.mode === 'light' ? 'dark' : 'light'}
-								className="vertical-navbar-tooltip"
-							/>
-						)}
-					</>
-				)}
-				<ContentContainer
-					appearance={appearance}
-					isMobileOrTablet={isMobileOrTablet}
-					theme={theme}
-					isNavVisible={isVisible}
-				>
-					{children}
-				</ContentContainer>
-				<LoadingBar
-					progress={loadingProgress}
-					appearance={appearance}
-					theme={themeToApply}
-					onFinish={onFinished}
-				/>
-			</VerticalNavbarContainer>
-		</VerticalNavbarContext.Provider>
-	)
-}
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
-export default VerticalNavbarComponent
+  const onClickItem = useCallback(({ handler, index }) => {
+    setActiveItem(index);
+    if (handler) {
+      handler();
+    }
+  }, []);
+
+  const hideNavbar = useCallback(() => {
+    setNavbarVisible(false);
+  }, []);
+  const showNavbar = useCallback(() => {
+    setNavbarVisible(true);
+  }, []);
+
+  return (
+    <VerticalNavbarContext.Provider
+      value={{
+        setActiveItem,
+        hideNavbar,
+        showNavbar,
+      }}
+    >
+      <VerticalNavbarContainer
+        className={className}
+        isTabletOrMobile={isTabletOrMobile}
+      >
+        {console.log("rendered navbar")}
+        <Navbar
+          isTabletOrMobile={isTabletOrMobile}
+          theme={theme}
+          appearance={appearance}
+          visible={navbarVisible}
+        >
+          {items.map((item, index) => (
+            <ItemComponent
+              itemsLength={items.length}
+              item={item}
+              key={index}
+              index={index}
+              onClick={onClickItem}
+              theme={themeToApply}
+              appearance={appearance}
+              isTabletOrMobile={isTabletOrMobile}
+              active={index === activeItem}
+            />
+          ))}
+        </Navbar>
+        <ContentMemoized theme={theme} appearance={appearance}>
+          {children}
+        </ContentMemoized>
+      </VerticalNavbarContainer>
+    </VerticalNavbarContext.Provider>
+  );
+};
+
+export default VerticalNavbarComponent;
