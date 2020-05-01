@@ -17,7 +17,7 @@ export const VerticalNavbarContainer = styled.div<IVerticalNavbarStyledProps>`
   padding: 0;
   margin: 0;
   display: flex;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   box-sizing: border-box;
   flex-direction: ${({ isTabletOrMobile }) =>
@@ -67,37 +67,32 @@ export const Content = styled.main<ICommonProps>`
 `;
 
 export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
-  &:active {
-    transform: scale(0.9);
-  }
   cursor: pointer;
   display: ${({ isTabletOrMobile }) =>
     isTabletOrMobile ? "inline-block" : "block"};
-  transition: transform 0.3s, box-shadow 0.3s, color 0.2s;
-  transform: ${({ active }) => (active ? "scale(1.05)" : "scale(1)")};
-  color: ${({ active, ...rest }) =>
-    active
-      ? theming(rest).color
-      : isLight(rest.theme.mode)
-      ? Color(theming(rest).color(rest))
-          .lighten(0.4)
-          .grayscale()
-          .toString()
-      : Color(theming(rest).color(rest))
-          .fade(0.8)
-          .toString()};
+  transition: box-shadow 0.3s, color 0.2s;
+  color: ${(props) => theming(props).color};
+  opacity: ${({ active, ...rest }) => (active ? 1 : 0.7)};
+  filter: ${({ active }) => (!active ? 'grayscale(.5)': 'none')};
   box-shadow: ${({ active }) =>
     active
       ? "0 0 50px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,0.14), 0 0 1px 0 rgb(0,0,0,0.1)"
       : "none"};
+  width: ${({ isTabletOrMobile, itemsLength = 1 }) =>
+    isTabletOrMobile
+      ? itemsLength > 3
+        ? "25%"
+        : `${100 / itemsLength}%`
+      : "60px"};
+  height: 60px;
   div {
-    width: ${({ isTabletOrMobile, itemsLength = 1 }) =>
-      isTabletOrMobile
-        ? itemsLength > 3
-          ? "25vw"
-          : `${100 / itemsLength}%`
-        : "60px"};
-    height: 60px;
+    &:active {
+      transform: scale(0.9);
+    }
+    transition: transform 0.2s;
+    transform: ${({ active }) => (active ? "scale(1.05)" : "scale(1)")};
+    width: 100%;
+    height: 100%;
     background: transparent;
     display: flex;
     flex-direction: column;

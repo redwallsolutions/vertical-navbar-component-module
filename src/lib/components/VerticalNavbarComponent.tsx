@@ -5,7 +5,6 @@ import React, {
   HTMLAttributes,
   useCallback,
   memo,
-  SFC,
 } from "react";
 import Tooltip from "react-tooltip";
 import { useMediaQuery } from "react-responsive";
@@ -115,7 +114,7 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
         {console.log("rendered navbar")}
         <Navbar
           isTabletOrMobile={isTabletOrMobile}
-          theme={theme}
+          theme={themeToApply}
           appearance={appearance}
           visible={navbarVisible}
         >
@@ -133,7 +132,7 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
             />
           ))}
         </Navbar>
-        <ContentMemoized theme={theme} appearance={appearance}>
+        <ContentMemoized theme={themeToApply} appearance={appearance}>
           {children}
         </ContentMemoized>
       </VerticalNavbarContainer>
