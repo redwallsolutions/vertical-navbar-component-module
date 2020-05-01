@@ -2,7 +2,7 @@
  name: Vertical Navbar Component Module
  route: /
 ---
-
+import {useState} from 'react';
 import {Props, Playground} from 'docz'
 import Navbar from './src/lib/'
 
@@ -24,32 +24,29 @@ transforming the vertical navbar to a horizontal navbar at the bottom of the pag
 
 You may use this component as a wrapper of all (almost) your components.
 
-    import Navbar from '@redwallsolutions/vertical-navbar-component-module'
-    import mylogo from './assets/mylogo.png'
-    ...
-    <App>
-        <SomeStoreOrThemeProvider>
-            <Navbar items={[]} logo={mylogo}>
-                {/*All your application components here/*}
-            </Navbar>
-        </SomeStoreOrThemeProvider>
-    </App>
-
-<br/>
+<Playground>
+  <div style={{height: '300px'}}>
+    <Navbar items={[
+        {
+            name: 'Home', 
+            icon: <span role="img" aria-label="home">🏠</span>
+        }, {
+            name: 'Achievements',
+            icon: <span role="img" aria-label="achievements">🏆</span> 
+        }, {
+            name: 'Calendar',
+            icon: <span role="img" aria-label="calendar">🗓️</span> 
+        }
+    ]}>
+        <p>Contents here may be controller by some router logic.<br/><small><em>Decrease/Increase screen size to see the responsiveness.</em></small></p>
+    </Navbar>
+  </div>
+</Playground>
 
 **Passing some awesome icon**
 
 You can render anything in the `icon` item prop attribute. 
 For example, using the [react-icon](https://react-icons.netlify.com/#/) package or other awesome icon package of your taste:
-
-    import Navbar from '@redwallsolutions/vertical-navbar-component-module'
-    import {MdInsertChart} from 'react-icons/md'
-    ...
-    <Navbar items={[name: 'Dashboard', icon: <MdInsertChart/>, handler:console.log]}>
-        {/*All your application components here/*}
-    </Navbar>
-
-<br/>
 
 **Changing the appearance and theme**
 
@@ -58,7 +55,9 @@ This component supports two additional props: `appearance` and `theme`.
 The `appearance` can receive one of these three values: `'default'`, `'primary'` or `'secondary'`. 
 Each one of these changes completety the appearance of the component.
 
-    <Navbar appearance="primary"></Navbar>
+    <Navbar appearance="primary">
+        /* All your application components here */
+    </Navbar>
 
 The `theme` can receive an object value with the following structure:
 
@@ -82,18 +81,37 @@ The best way to understand how these attrs work together is to passing a complet
 theme object with some of your favorite colors and switching the theme mode between `'light'`, `'dark'`. To get better results,
 switch also the `appearance` prop between the three available values.
 
-    <Navbar 
-      items={[{name:'Some Option', icon: <SomeIcon/>, handler: someHandler}]}
-      appearance="default"
-      theme={{
-          mode: 'light',
-          primary: 'red',
-          secondary: 'blue',
-          default: 'green',
-          ...
-      }}>
-        <div>I'm a pretty div content</div>
-    </Navbar>
+<Playground>
+    {
+        () => {
+            const [mode, setMode] = useState('light');
+            return (
+                <div style={{height: '300px'}}>
+                    <Navbar items={[
+                        {
+                            name: 'Day', 
+                            icon: <span role="img" aria-label="light">💡</span>,
+                            handler: () => setMode('light')
+                        }, {
+                            name: 'Night',
+                            icon: <span role="img" aria-label="night">🌃</span>,
+                            handler: () => setMode('dark')
+                        }
+                    ]}
+                    theme={{
+                        mode,
+                        default: 'teal',
+                        defaultContrast: 'white',
+                        defaultDark: 'aliceblue',
+                        defaultContrastDark: '#1e1e1e'
+                    }}>
+                        <div style={{color:'green'}}>Current mode is {mode}</div>
+                    </Navbar>
+                </div>
+            )
+        }
+    }
+</Playground>
 
 ## Hooks
 
@@ -128,22 +146,11 @@ If you try to call the controller hook outside the component, it will be undefin
 *What can I do with hooks?*
 
 Hooks allow you to have access to Navbar Controller. This important object exposes to you some interesting methods.
-What about to start a built-in loadingbar automatically with fluid animations?
-
-    const MyContent = () => {
-        const navbar = useVerticalNavbarController()
-        navbar.startLoading() //look at the top of the page
-        return (<div>I'm just a child</div>)
-    }
-
-You can finish the loadingbar animation anytime.
-
-    navbar.finishLoading()
 
 What about to programmatically set an active item of Navbar?
 
     const MyContent = () => {
-        const navbar = useVerticalNavbarController()
-        navbar.setActiveItem(2) //will set the second item as active
+        const controller = useVerticalNavbarController()
+        controller.setActiveItem(2) //will set the third item as active
         return (<div>I'm just a child</div>)
     }
