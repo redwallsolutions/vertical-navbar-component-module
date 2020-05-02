@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { render } from "react-dom";
 import VerticalNavbarComponent, { useVerticalNavbarController } from "./lib";
 import { createGlobalStyle } from "styled-components";
@@ -84,22 +84,22 @@ const App = () => {
           secondaryContrastDark: "rgb(238, 238, 238)",
         }}
       >
-        <Content />
+        <MemoizedContend>
+          <div style={{ height: "5000px" }}>
+            {console.log("rendered content")}
+            Hello World!
+          </div>
+        </MemoizedContend>
       </VerticalNavbarComponent>
     </div>
   );
 };
 let progress = 0;
-const Content = () => {
+const Content = ({ children }) => {
   const controller = useVerticalNavbarController();
-  controller.setActiveItem(3);
-  return (
-    <div style={{ height: "5000px" }}>
-      Hello World!
-      <button onClick={()=>controller.hideNavbar()}>Hide</button>
-      <button onClick={()=>controller.showNavbar()}>Show</button>
-    </div>
-  );
+  return children;
 };
+
+const MemoizedContend = memo(Content);
 
 render(<App />, document.getElementById("root"));

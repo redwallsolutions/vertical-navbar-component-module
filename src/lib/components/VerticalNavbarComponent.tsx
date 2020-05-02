@@ -4,7 +4,6 @@ import React, {
   FC,
   HTMLAttributes,
   useCallback,
-  memo,
 } from "react";
 import Ink from "@redwallsolutions/react-ink";
 import { useMediaQuery } from "react-responsive";
@@ -15,8 +14,7 @@ import { VerticalNavbarContainer, Navbar, Content, Item } from "./Style";
 import {
   IVerticalNavbarProps,
   IItemProps,
-  IResponsive,
-  MemoChildren,
+  IResponsive
 } from "./interfaces";
 
 const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
@@ -46,25 +44,10 @@ const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
         {item.icon}
         {isTabletOrMobile && <small>{item.name}</small>}
       </div>
-      <Ink radius={70} duration={1200} opacity={0.1} background={false}/>
+      <Ink radius={70} duration={1200} opacity={0.1} background={false} />
     </Item>
   );
 };
-
-const ContentComponent: FC<ICommonProps & MemoChildren> = ({
-  children,
-  theme,
-  appearance,
-}) => {
-  return (
-    <Content theme={theme} appearance={appearance}>
-      {console.log("rendered content component")}
-      {children}
-    </Content>
-  );
-};
-
-const ContentMemoized = memo(ContentComponent);
 
 const defaultTheme = {
   mode: "light",
@@ -112,7 +95,6 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
         className={className}
         isTabletOrMobile={isTabletOrMobile}
       >
-        {console.log("rendered navbar")}
         <Navbar
           isTabletOrMobile={isTabletOrMobile}
           theme={themeToApply}
@@ -133,9 +115,9 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
             />
           ))}
         </Navbar>
-        <ContentMemoized theme={themeToApply} appearance={appearance}>
+        <Content theme={themeToApply} appearance={appearance}>
           {children}
-        </ContentMemoized>
+        </Content>
       </VerticalNavbarContainer>
     </VerticalNavbarContext.Provider>
   );

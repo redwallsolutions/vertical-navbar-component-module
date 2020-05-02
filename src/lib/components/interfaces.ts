@@ -1,10 +1,3 @@
-import { ReactNode } from "react";
-import { ICommonProps } from "@redwallsolutions/common-interfaces-ts";
-
-export interface MemoChildren {
-  children?: ReactNode;
-}
-
 export interface IResponsive {
   isTabletOrMobile: boolean;
 }
