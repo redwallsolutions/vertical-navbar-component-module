@@ -67,17 +67,17 @@ export const Content = styled.main<ICommonProps>`
 `;
 
 export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
+  &:active div {
+    transform: scale(0.97);
+  }
   cursor: pointer;
+  position: relative;
   display: ${({ isTabletOrMobile }) =>
     isTabletOrMobile ? "inline-block" : "block"};
-  transition: box-shadow 0.3s, color 0.2s;
+  transition: box-shadow 0.3s, color 0.2s, background 0.4s;
   color: ${(props) => theming(props).color};
   opacity: ${({ active, ...rest }) => (active ? 1 : 0.7)};
-  filter: ${({ active }) => (!active ? 'grayscale(.5)': 'none')};
-  box-shadow: ${({ active }) =>
-    active
-      ? "0 0 50px 0 rgba(0,0,0,0.1), 0 0 20px 0 rgba(0,0,0,0.14), 0 0 1px 0 rgb(0,0,0,0.1)"
-      : "none"};
+  filter: ${({ active }) => (!active ? "grayscale(.5)" : "none")};
   width: ${({ isTabletOrMobile, itemsLength = 1 }) =>
     isTabletOrMobile
       ? itemsLength > 3
@@ -85,12 +85,19 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
         : `${100 / itemsLength}%`
       : "60px"};
   height: 60px;
+  background: ${({ active, ...rest }) =>
+    active
+      ? isLight(rest.theme.mode)
+        ? Color(theming(rest).contrast(rest))
+            .darken(0.05)
+            .toString()
+        : Color(theming(rest).contrast(rest))
+            .lighten(0.6)
+            .toString()
+      : "tranparent"};
   div {
-    &:active {
-      transform: scale(0.9);
-    }
-    transition: transform 0.2s;
-    transform: ${({ active }) => (active ? "scale(1.05)" : "scale(1)")};
+    transition: transform 0.4s;
+    transform: ${({ active }) => (active ? "scale(1.1)" : "scale(1)")};
     width: 100%;
     height: 100%;
     background: transparent;

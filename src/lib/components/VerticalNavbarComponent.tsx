@@ -6,7 +6,7 @@ import React, {
   useCallback,
   memo,
 } from "react";
-import Tooltip from "react-tooltip";
+import Ink from "@redwallsolutions/react-ink";
 import { useMediaQuery } from "react-responsive";
 import { ICommonProps } from "@redwallsolutions/common-interfaces-ts";
 import VerticalNavbarContext from "./VerticalNavbarContext";
@@ -46,6 +46,7 @@ const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
         {item.icon}
         {isTabletOrMobile && <small>{item.name}</small>}
       </div>
+      <Ink radius={70} duration={1200} opacity={0.1} background={false}/>
     </Item>
   );
 };
