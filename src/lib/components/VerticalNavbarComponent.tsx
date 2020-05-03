@@ -11,28 +11,20 @@ import { ICommonProps } from "@redwallsolutions/common-interfaces-ts";
 import VerticalNavbarContext from "./VerticalNavbarContext";
 import { ThemeContext } from "styled-components";
 import { VerticalNavbarContainer, Navbar, Content, Item } from "./Style";
-import {
-  IVerticalNavbarProps,
-  IItemProps,
-  IResponsive
-} from "./interfaces";
+import { IVerticalNavbarProps, IItemProps, IResponsive } from "./interfaces";
 
 const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
   item,
   isTabletOrMobile,
-  index,
   itemsLength,
   active,
   onClick,
   theme,
   appearance,
 }) => {
-  const innerOnClick = useCallback(() => {
-    onClick({ handler: item.handler, index });
-  }, []);
   return (
     <Item
-      onClick={innerOnClick}
+      onClick={onClick}
       role="button"
       itemsLength={itemsLength}
       isTabletOrMobile={isTabletOrMobile}
@@ -44,7 +36,7 @@ const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
         {item.icon}
         {isTabletOrMobile && <small>{item.name}</small>}
       </div>
-      <Ink radius={70} duration={1200} opacity={0.1} background={false} />
+      <Ink radius={70} duration={1600} opacity={0.1} background={false} />
     </Item>
   );
 };
@@ -69,12 +61,15 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
-  const onClickItem = useCallback(({ handler, index }) => {
-    setActiveItem(index);
-    if (handler) {
-      handler();
-    }
-  }, []);
+  const onClickItem = useCallback(
+    ({ handler, index }) => () => {
+      setActiveItem(index);
+      if (handler) {
+        handler();
+      }
+    },
+    []
+  );
 
   const hideNavbar = useCallback(() => {
     setNavbarVisible(false);
@@ -107,7 +102,7 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
               item={item}
               key={index}
               index={index}
-              onClick={onClickItem}
+              onClick={onClickItem({ handler: item.handler, index })}
               theme={themeToApply}
               appearance={appearance}
               isTabletOrMobile={isTabletOrMobile}

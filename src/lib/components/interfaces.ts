@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+
 export interface IResponsive {
   isTabletOrMobile: boolean;
 }
@@ -17,7 +19,7 @@ export interface IItemProps {
   itemsLength: number;
   active: boolean;
   index: number;
-  onClick: (itemWithIndex: ItemOnClick) => void;
+  onClick: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
 export interface IItemAttr {
