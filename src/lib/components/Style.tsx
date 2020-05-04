@@ -75,7 +75,7 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
   position: relative;
   display: ${({ isTabletOrMobile }) =>
     isTabletOrMobile ? "inline-block" : "block"};
-  transition: box-shadow 0.3s, color 0.2s, background 0.4s;
+  transition: box-shadow 0.3s, color 0.2s, background 0.7s;
   color: ${(props) => theming(props).color};
   width: ${({ isTabletOrMobile, itemsLength = 1 }) =>
     isTabletOrMobile
@@ -87,8 +87,8 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
   background: ${({ active, ...rest }) =>
     active
       ? isLight(rest.theme.mode)
-        ? Color(theming(rest).contrast(rest))
-            .darken(0.05)
+        ? Color(theming(rest).color(rest))
+            .fade(0.9)
             .toString()
         : Color(theming(rest).contrast(rest))
             .lighten(0.6)

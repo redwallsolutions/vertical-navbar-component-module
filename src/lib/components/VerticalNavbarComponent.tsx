@@ -36,7 +36,7 @@ const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
         {item.icon}
         {isTabletOrMobile && <small>{item.name}</small>}
       </div>
-      <Ink radius={70} duration={1600} opacity={0.1} background={true} />
+      <Ink radius={80} duration={1600} opacity={0.1} background={false} />
     </Item>
   );
 };
