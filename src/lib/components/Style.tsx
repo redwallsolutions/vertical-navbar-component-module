@@ -57,6 +57,7 @@ export const Navbar = styled.nav<IVerticalNavbarStyledProps & ICommonProps>`
 
 export const Content = styled.main<ICommonProps>`
   display: block;
+  position: relative;
   height: 100%;
   flex-grow: 1;
   overflow: auto;
