@@ -28,7 +28,7 @@ const App = () => {
   const [themeMode, setThemeMode] = useState("light");
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "100vh", width: "100vw" }}>
       <Reset />
       <VerticalNavbarComponent
         items={[

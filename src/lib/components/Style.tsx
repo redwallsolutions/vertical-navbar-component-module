@@ -70,14 +70,13 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
   &:active div {
     transform: scale(0.97);
   }
+  flex-shrink: 0;
   cursor: pointer;
   position: relative;
   display: ${({ isTabletOrMobile }) =>
     isTabletOrMobile ? "inline-block" : "block"};
   transition: box-shadow 0.3s, color 0.2s, background 0.4s;
   color: ${(props) => theming(props).color};
-  opacity: ${({ active, ...rest }) => (active ? 1 : 0.7)};
-  filter: ${({ active }) => (!active ? "grayscale(.5)" : "none")};
   width: ${({ isTabletOrMobile, itemsLength = 1 }) =>
     isTabletOrMobile
       ? itemsLength > 3
@@ -98,6 +97,8 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
   div {
     transition: transform 0.4s;
     transform: ${({ active }) => (active ? "scale(1.1)" : "scale(1)")};
+    opacity: ${({ active, ...rest }) => (active ? 1 : 0.7)};
+    filter: ${({ active }) => (!active ? "grayscale(.5)" : "none")};
     width: 100%;
     height: 100%;
     background: transparent;
