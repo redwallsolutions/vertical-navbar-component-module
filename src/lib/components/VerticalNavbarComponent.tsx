@@ -21,6 +21,7 @@ const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
   onClick,
   theme,
   appearance,
+  notifications,
 }) => {
   return (
     <Item
@@ -35,6 +36,9 @@ const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
       <div>
         {item.icon}
         {isTabletOrMobile && <small>{item.name}</small>}
+        {notifications && notifications !== 0 ? (
+          <span className="notifications">{notifications}</span>
+        ) : null}
       </div>
       <Ink radius={80} duration={1600} opacity={0.1} background={false} />
     </Item>
@@ -107,6 +111,7 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
               appearance={appearance}
               isTabletOrMobile={isTabletOrMobile}
               active={index === activeItem}
+              notifications={item.notifications}
             />
           ))}
         </Navbar>

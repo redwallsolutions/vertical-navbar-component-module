@@ -119,5 +119,23 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
       -ms-user-select: none;
       user-select: none;
     }
+
+    span.notifications {
+      position: absolute;
+      font-size: 10px;
+      font-weight: bold;
+      top: 5px;
+      left: 56%;
+      color: #fff;
+      background: #dc143c;
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      padding: 2px;
+      line-height: 10px;
+      text-align: center;
+      
+    }
   }
 `;

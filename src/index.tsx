@@ -41,14 +41,17 @@ const App = () => {
             icon: <MdLens size="1.5em" />,
             name: "Dark",
             handler: () => setThemeMode("dark"),
+            notifications: 0,
           },
           {
             icon: <MdAccessTime size="1.5em" />,
             name: "Time",
+            notifications: 5,
           },
           {
             icon: <MdAirlineSeatFlat size="1.5em" />,
             name: "Seat",
+            notifications: 3
           },
           {
             icon: <MdWbSunny size="1.5em" />,

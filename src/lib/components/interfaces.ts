@@ -20,12 +20,14 @@ export interface IItemProps {
   active: boolean;
   index: number;
   onClick: (event: MouseEvent<HTMLDivElement>) => void;
+  notifications?: number;
 }
 
 export interface IItemAttr {
   name: String;
   icon: any;
   handler?: () => void;
+  notifications?: number;
 }
 
 export interface IVerticalNavbarProps {
