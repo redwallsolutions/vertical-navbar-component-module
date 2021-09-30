@@ -67,16 +67,27 @@ export const Content = styled.main<ICommonProps>`
       : theming(props).contrast};
 `;
 
-export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
-  &:active div {
-    transform: scale(0.97);
+const desktopHovers = css`
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  &:hover {
+    border-right: 3px solid
+      ${(props) =>
+        isLight(props.theme.mode)
+          ? theming(props).color
+          : theming(props).contrast};
   }
+`;
+
+export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
+  /* &:active div {
+    transform: scale(0.97);
+  } */
   flex-shrink: 0;
   cursor: pointer;
   position: relative;
   display: ${({ isTabletOrMobile }) =>
     isTabletOrMobile ? "inline-block" : "block"};
-  transition: box-shadow 0.3s, color 0.2s, background 0.7s;
   color: ${(props) => theming(props).color};
   width: ${({ isTabletOrMobile, itemsLength = 1 }) =>
     isTabletOrMobile
@@ -85,6 +96,7 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
         : `${100 / itemsLength}%`
       : "60px"};
   height: 60px;
+  box-sizing: border-box;
   background: ${({ active, ...rest }) =>
     active
       ? isLight(rest.theme.mode)
@@ -95,6 +107,9 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
             .lighten(0.6)
             .toString()
       : "tranparent"};
+
+  transition: border-right 0.2s, background 0.5s;
+  ${(props) => !props.isTabletOrMobile && desktopHovers}
   div {
     transition: transform 0.4s;
     transform: ${({ active }) => (active ? "scale(1.1)" : "scale(1)")};
@@ -122,7 +137,7 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
 
     span.notifications {
       position: absolute;
-      font-size: 10px;
+      font-size: 8px;
       font-weight: bold;
       top: 5px;
       left: 56%;
@@ -133,9 +148,8 @@ export const Item = styled.div<IItemsStyledProps & IResponsive & ICommonProps>`
       height: 12px;
       border-radius: 50%;
       padding: 2px;
-      line-height: 10px;
+      line-height: 13px;
       text-align: center;
-      
     }
   }
 `;

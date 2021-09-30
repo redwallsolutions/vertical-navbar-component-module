@@ -46,7 +46,7 @@ const App = () => {
           {
             icon: <MdAccessTime size="1.5em" />,
             name: "Time",
-            notifications: 5,
+            notifications: 50,
           },
           {
             icon: <MdAirlineSeatFlat size="1.5em" />,

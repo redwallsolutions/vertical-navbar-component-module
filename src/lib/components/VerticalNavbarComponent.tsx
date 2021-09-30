@@ -12,6 +12,7 @@ import VerticalNavbarContext from "./VerticalNavbarContext";
 import { ThemeContext } from "styled-components";
 import { VerticalNavbarContainer, Navbar, Content, Item } from "./Style";
 import { IVerticalNavbarProps, IItemProps, IResponsive } from "./interfaces";
+import ReactTooltip from "react-tooltip";
 
 const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
   item,
@@ -32,6 +33,7 @@ const ItemComponent: FC<IItemProps & IResponsive & ICommonProps> = ({
       active={active}
       theme={theme}
       appearance={appearance}
+      data-tip={item.name}
     >
       <div>
         {item.icon}
@@ -63,7 +65,7 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
   const [activeItem, setActiveItem] = useState(-1);
   const [navbarVisible, setNavbarVisible] = useState(true);
 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const onClickItem = useCallback(
     ({ handler, index }) => () => {
@@ -90,6 +92,7 @@ const VerticalNavbarComponent: FC<IVerticalNavbarProps &
         showNavbar,
       }}
     >
+      <ReactTooltip effect="solid" />
       <VerticalNavbarContainer
         className={className}
         isTabletOrMobile={isTabletOrMobile}
