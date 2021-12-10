@@ -61,6 +61,6 @@
     "color": "^3.1.0",
     "react-responsive": "^8.0.1",
     "react-tooltip": "^4.2.21",
-    "styled-components": "^5.3.1"
+    "styled-components": "^4.4.1"
   }
 }
